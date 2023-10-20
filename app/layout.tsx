@@ -1,9 +1,7 @@
 import { Header } from '@/components/shared/Header'
+import { baseFont } from '@/consts/fonts'
 import type { Metadata } from 'next'
-import { Zen_Kurenaido } from 'next/font/google'
 import 'sanitize.css'
-
-const inter = Zen_Kurenaido({ weight: '400', subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -12,9 +10,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
-      <Header />
-      <body className={inter.className}>{children}</body>
+    <html lang='ja'>
+      <body className={baseFont.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }
