@@ -1,9 +1,9 @@
 import { Header } from '@/components/shared/Header'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Zen_Kurenaido } from 'next/font/google'
 import 'sanitize.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Zen_Kurenaido({ weight: '400', subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
