@@ -1,5 +1,141 @@
+import { MicroCMSResponse } from '@/types'
+
 export const baseTransition = '0.3s'
 export const shortTransition = '0.1s'
 
 export const pcHeaderHeight = '70px'
 export const spHeaderHeight = '60px'
+
+export const mockQAResponse: MicroCMSResponse = {
+  contents: [
+    {
+      id: '63u2t6rjoqv',
+      createdAt: '2023-10-19T04:21:51.570Z',
+      updatedAt: '2023-10-19T12:47:05.846Z',
+      publishedAt: '2023-10-19T04:21:51.570Z',
+      revisedAt: '2023-10-19T12:47:05.846Z',
+      question: 'ビターくんって何歳ですか？',
+      answer: '存じ上げないです。ネコサークルさんなら分かるのでしょうか……？(錨)',
+      replyTweetId: '1714986525761634514',
+      state: 'requirement',
+      replies: [],
+    },
+    {
+      id: 'udwxso7coo',
+      createdAt: '2023-10-18T15:48:06.786Z',
+      updatedAt: '2023-10-18T22:18:42.892Z',
+      publishedAt: '2023-10-18T15:48:06.786Z',
+      revisedAt: '2023-10-18T22:18:42.892Z',
+      question: '履修確認・訂正期間に追加で履修登録することはできますか？',
+      answer:
+        '履修登録期間(昨日まで)に1科目でも登録をしていれば、履修確認・訂正期間でも追加で登録することができます。（ささ）',
+      replyTweetId: '1714767989969653933',
+      state: 'answered',
+      replies: [],
+    },
+    {
+      id: '0o27a6j_itp0',
+      createdAt: '2023-10-18T05:18:43.795Z',
+      updatedAt: '2023-10-18T10:12:55.517Z',
+      publishedAt: '2023-10-18T05:18:43.795Z',
+      revisedAt: '2023-10-18T10:12:55.517Z',
+      question: '経済です。受講調整外れた授業を履修登録したらどうなりますか',
+      answer: 'エラーが表示され、履修登録できません。(錨)',
+      replyTweetId: '1714585339392892988',
+      state: 'answered',
+      replies: [],
+    },
+    {
+      id: 'y38lhqu5mut',
+      createdAt: '2023-10-18T05:11:29.968Z',
+      updatedAt: '2023-10-18T10:23:33.427Z',
+      publishedAt: '2023-10-18T05:11:29.968Z',
+      revisedAt: '2023-10-18T10:23:33.427Z',
+      question:
+        '経営学部2年です。経営者が語るこれからの企業戦略の仮登録を2から始まるコードで行なっていて、経営学部のコードで仮登録しようと思ったのですが、見つかりません。どうすれば良いでしょうか？',
+      answer:
+        '複数の時間割コードで開講される科目は、資料掲載･案内発信を1つのコードのみで行う場合があります。心配であればQ&Aで質問するのが良いと思いますが、3で始まるものを仮登録できていなくても受講するうえで問題にはならないはずです。(錨)',
+      replyTweetId: '1714588014524166434',
+      state: 'answered',
+      replies: [],
+    },
+    {
+      id: '3vzmsegb5c0',
+      createdAt: '2023-10-17T16:52:35.150Z',
+      updatedAt: '2023-10-18T10:11:29.912Z',
+      publishedAt: '2023-10-17T16:52:35.150Z',
+      revisedAt: '2023-10-18T10:11:29.912Z',
+      question:
+        '理工2年です。一般教養で同じ先生のオンデマンド系授業を2つ受講しようと思っているのですが問題ないですよね？',
+      answer: 'はい、特に問題ないです。(錨)',
+      replyTweetId: '1714584980318490829',
+      state: 'answered',
+      replies: [],
+    },
+    {
+      id: 'fznllcvay',
+      createdAt: '2023-10-17T14:06:41.810Z',
+      updatedAt: '2023-10-17T15:22:51.109Z',
+      publishedAt: '2023-10-17T14:06:41.810Z',
+      revisedAt: '2023-10-17T15:22:51.109Z',
+      question: '都市科1年です。社会科学の歴史という般教は楽単が教えて欲しいです',
+      answer: '授業の評判についてはお答えできません。（ささ）',
+      replyTweetId: '1714300947097342237',
+      state: 'answered',
+      replies: [],
+    },
+    {
+      id: '4c5v4s1f1',
+      createdAt: '2023-10-17T13:25:55.122Z',
+      updatedAt: '2023-10-19T12:46:24.767Z',
+      publishedAt: '2023-10-17T13:25:55.122Z',
+      revisedAt: '2023-10-19T12:46:24.767Z',
+      question:
+        '都市科学部1年です。\n成績表が郵送で届かないのですが、いつ頃発送されるのでしょうか。',
+      answer: '都市科学部の2年以上の方に情報提供いただきたいです。(錨)',
+      replyTweetId: '1714986353078030704',
+      state: 'requirement',
+      replies: [],
+    },
+    {
+      id: 'j2761omjtxxn',
+      createdAt: '2023-10-17T10:44:34.070Z',
+      updatedAt: '2023-10-17T13:31:13.273Z',
+      publishedAt: '2023-10-17T10:44:34.070Z',
+      revisedAt: '2023-10-17T13:31:13.273Z',
+      question: '理工1年です。インフルエンザに感染した際は授業ごとの欠席連絡のみで大丈夫ですか？',
+      answer: 'はい、それで問題ないと思います。(錨)',
+      replyTweetId: '1714272853925957836',
+      state: 'answered',
+      replies: [],
+    },
+    {
+      id: 'pccz39-2g5jl',
+      createdAt: '2023-10-17T09:58:05.464Z',
+      updatedAt: '2023-10-18T10:10:17.958Z',
+      publishedAt: '2023-10-17T09:58:05.464Z',
+      revisedAt: '2023-10-18T10:10:17.958Z',
+      question:
+        '経営4年です。\n秋学期、単位を取り終わっていれば、履修登録は自分のゼミと卒論だけで良いんですよね…？',
+      answer: '他の卒業要件を満たしているならそれで問題ないと思います。(錨)',
+      replyTweetId: '1714584678383153292',
+      state: 'answered',
+      replies: [],
+    },
+    {
+      id: '2any032omu',
+      createdAt: '2023-10-17T05:37:28.728Z',
+      updatedAt: '2023-10-17T06:39:49.211Z',
+      publishedAt: '2023-10-17T05:37:28.728Z',
+      revisedAt: '2023-10-17T06:39:49.211Z',
+      question: '理工学部です\n第5タームの授業の履修登録も明日までにしないとダメなのですか',
+      answer: 'はい、その通りです。(れいぱぱれ)',
+      replyTweetId: '1714169322019729909',
+      state: 'answered',
+      replies: [],
+    },
+  ],
+  totalCount: 2097,
+  offset: 0,
+  limit: 10,
+}
