@@ -21,6 +21,13 @@ export const createdAt = style({
   borderRadius: '5px',
   color: 'white',
   whiteSpace: 'nowrap',
+  fontSize: '1rem',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      width: '100px',
+      fontSize: '0.8rem',
+    },
+  },
 })
 
 export const answered = style({
@@ -46,6 +53,11 @@ export const answer = style({
   width: '90%',
   margin: '0 auto',
   fontSize: '1.2rem',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      fontSize: '0.8rem',
+    },
+  },
 })
 
 export const repliesContainer = style({
@@ -53,4 +65,8 @@ export const repliesContainer = style({
   flexDirection: 'column',
   alignItems: 'center',
   width: '80%',
+  marginTop: '10px',
+  '@media': {
+    'screen and (max-width: 768px)': {},
+  },
 })
