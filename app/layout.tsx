@@ -1,5 +1,6 @@
 import { Footer } from '@/components/shared/Footer'
 import { Header } from '@/components/shared/Header'
+import { ShadowHeader } from '@/components/shared/ShadowHeader'
 import { baseFont } from '@/consts/fonts'
 import type { Metadata } from 'next'
 import 'sanitize.css'
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='ja'>
       <body className={baseFont.className}>
         <Header />
+        <ShadowHeader />
         {children}
         <Footer />
       </body>
