@@ -1,3 +1,4 @@
+import { baseTransition } from '@/consts'
 import { style } from '@vanilla-extract/css'
 
 export const searchModal = style({
@@ -61,7 +62,7 @@ export const searchModalItem = style({
   color: 'white',
   borderRadius: '5px',
   cursor: 'pointer',
-  transition: '0.3s',
+  transition: baseTransition,
   overflow: 'hidden',
   ':hover': {
     backgroundColor: 'white',

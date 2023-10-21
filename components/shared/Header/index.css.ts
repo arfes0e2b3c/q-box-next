@@ -1,3 +1,4 @@
+import { baseTransition } from '@/consts'
 import { style } from '@vanilla-extract/css'
 
 export const header = style({
@@ -26,7 +27,7 @@ export const linkToHome = style({
   color: '#333',
   textDecoration: 'none',
   userSelect: 'none',
-  transition: '0.3s',
+  transition: baseTransition,
   ':hover': {
     backgroundColor: 'rgba(48, 48, 48, 1)',
     color: 'white',
