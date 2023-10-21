@@ -2,8 +2,9 @@
 
 import { baseFont } from '@/consts/fonts'
 import { noticeMessage, postBox, postBoxInput, postBoxTitle, submitButton } from './index.css'
+import { PostMode } from '@/types'
 
-export const PostForm = ({ mode }: { mode: string }) => {
+export const PostForm = ({ mode }: { mode: PostMode }) => {
   const isQuestion = mode === 'question'
   const formProps = isQuestion
     ? {
