@@ -1,3 +1,4 @@
+import { baseTransition } from '@/consts'
 import { style } from '@vanilla-extract/css'
 
 export const searchSection = style({
@@ -12,7 +13,7 @@ export const searchInput = style({
   fontSize: '1.2em',
   border: 'none',
   outline: 'none',
-  transition: '0.3s',
+  transition: baseTransition,
   zIndex: 100,
   ':focus': {
     backgroundColor: 'rgb(48, 48, 48)',

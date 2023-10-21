@@ -1,3 +1,4 @@
+import { baseTransition, shortTransition } from '@/consts'
 import { style } from '@vanilla-extract/css'
 
 export const postBox = style({
@@ -7,7 +8,7 @@ export const postBox = style({
   marginTop: '20px',
   marginBottom: '10px',
   overflow: 'hidden',
-  transition: '0.5s',
+  transition: baseTransition,
   '@media': {
     'screen and (max-width: 768px)': {
       marginTop: '10px',
@@ -37,7 +38,7 @@ export const postBoxInput = style({
   borderWidth: '2px',
   borderRadius: '0',
   fontSize: '1rem',
-  transition: '.2s',
+  transition: baseTransition,
   ':focus': {
     borderColor: 'rgba(0, 0, 0, 0.5)',
   },
@@ -69,7 +70,7 @@ export const submitButton = style({
   color: 'white',
   border: 'none',
   borderRadius: '3px',
-  transition: '.1s',
+  transition: shortTransition,
   cursor: 'pointer',
   ':hover': {
     backgroundColor: 'white',

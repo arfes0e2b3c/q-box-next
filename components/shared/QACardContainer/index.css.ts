@@ -1,3 +1,4 @@
+import { baseTransition } from '@/consts'
 import { style } from '@vanilla-extract/css'
 
 export const qaCardContainer = style({
@@ -34,7 +35,7 @@ export const requirement = style({
 })
 
 export const cardButton = style({
-  transition: '0.3s',
+  transition: baseTransition,
   cursor: 'pointer',
   ':hover': {
     opacity: '0.7',
