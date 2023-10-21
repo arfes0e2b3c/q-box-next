@@ -32,6 +32,11 @@ export const linkToHome = style({
     backgroundColor: 'rgba(48, 48, 48, 1)',
     color: 'white',
   },
+  '@media': {
+    'screen and (max-width: 768px)': {
+      borderRight: '1px solid #ccc',
+    },
+  },
 })
 
 export const appTitleContainer = style({

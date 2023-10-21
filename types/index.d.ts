@@ -23,3 +23,9 @@ export type qA = MicroCMSTimes & {
   state: AnswerState
   replies: Reply[]
 }
+export type MicroCMSResponse = {
+  contents: qA[]
+  totalCount: number
+  offset: number
+  limit: number
+}
