@@ -1,4 +1,4 @@
-import { baseTransition } from '@/consts'
+import { baseTransition, pcHeaderHeight, spHeaderHeight } from '@/consts'
 import { style } from '@vanilla-extract/css'
 
 export const header = style({
@@ -8,13 +8,13 @@ export const header = style({
   display: 'grid',
   gridTemplateColumns: '20% 60% 20%',
   width: '100%',
-  height: '70px',
+  height: pcHeaderHeight,
   backgroundColor: 'white',
   boxShadow: '0 0 10px 5px rgba(0, 0, 0, 0.2)',
   '@media': {
     'screen and (max-width: 768px)': {
       gridTemplateColumns: '1fr 1fr',
-      height: '60px',
+      height: spHeaderHeight,
     },
   },
 })
