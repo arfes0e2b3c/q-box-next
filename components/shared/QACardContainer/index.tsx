@@ -23,10 +23,10 @@ export const QACardContainer = ({ qAData, isLink }: { qAData: qA; isLink: boolea
         </p>
         {isLink ? (
           <Link className={cardButton} href={qAData.id}>
-            <Card text={qAData.question} />
+            <Card text={qAData.question} mode={qAData.state} />
           </Link>
         ) : (
-          <Card text={qAData.question} />
+          <Card text={qAData.question} mode={qAData.state} />
         )}
 
         <p className={answer}>{qAData.answer}</p>
