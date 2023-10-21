@@ -23,9 +23,6 @@ export const PostForm = ({ mode }: { mode: PostMode }) => {
       <textarea
         className={[postBoxInput, baseFont.className].join(' ')}
         name='question'
-        id=''
-        cols={30}
-        rows={10}
         placeholder={formProps.placeholder}
       ></textarea>
       {isQuestion && (
