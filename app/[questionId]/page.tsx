@@ -23,7 +23,6 @@ export default async function IndividualPage({ params }: { params: { questionId:
     'https://q-box.microcms.io/api/v1/q_box_posts?filters=id[equals]' + params.questionId,
     {
       headers: { 'X-MICROCMS-API-KEY': process.env.NEXT_PUBLIC_MICROCMS_KEY || '' },
-      next: { revalidate: 3600 },
     }
   )
     .then((response) => response.json())
