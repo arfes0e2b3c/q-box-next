@@ -13,7 +13,7 @@ import {
 import Link from 'next/link'
 import { qA } from '@/types'
 
-export const QACardContainer = ({ qAData, isLink }: { qAData: qA; isLink: boolean }) => {
+export const QACardContainer = ({ qAData, isLink = false }: { qAData: qA; isLink?: boolean }) => {
   const answerState = qAData.state === 'answered' ? answered : requirement
   return (
     <section className={qaCardContainer}>
