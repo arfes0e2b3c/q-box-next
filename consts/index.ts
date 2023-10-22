@@ -6,6 +6,9 @@ export const shortTransition = '0.1s'
 export const pcHeaderHeight = '70px'
 export const spHeaderHeight = '60px'
 
+export const pcFooterHeight = '150px'
+export const spFooterHeight = '100px'
+
 export const mockQAResponse: MicroCMSResponse = {
   contents: [
     {
