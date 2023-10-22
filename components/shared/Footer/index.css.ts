@@ -1,8 +1,9 @@
+import { pcFooterHeight, spFooterHeight } from '@/consts'
 import { style } from '@vanilla-extract/css'
 
 export const footer = style({
   width: '100%',
-  height: '150px',
+  height: pcFooterHeight,
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -10,7 +11,7 @@ export const footer = style({
   borderTop: '1px solid rgba(0, 0, 0, 0.1)',
   '@media': {
     'screen and (max-width: 768px)': {
-      height: '100px',
+      height: spFooterHeight,
     },
   },
 })

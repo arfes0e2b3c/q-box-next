@@ -4,6 +4,7 @@ import { ShadowHeader } from '@/components/shared/ShadowHeader'
 import { baseFont } from '@/consts/fonts'
 import type { Metadata } from 'next'
 import 'sanitize.css'
+import { mainContainer } from './layout.css'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={baseFont.className}>
         <Header />
         <ShadowHeader />
-        {children}
+        <div className={mainContainer}>{children}</div>
         <Footer />
       </body>
     </html>
