@@ -29,3 +29,15 @@ export type MicroCMSResponse = {
   offset: number
   limit: number
 }
+
+export type MicroCMSQueries = {
+  draftKey?: string
+  limit?: number
+  offset?: number
+  orders?: string
+  fields?: string | string[]
+  q?: string
+  ids?: string | string[]
+  filters?: string
+  richEditorFormat?: 'html' | 'object'
+}
