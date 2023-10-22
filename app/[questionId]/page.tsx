@@ -3,6 +3,20 @@ import { MicroCMSResponse } from '@/types'
 import { QACardContainer } from '@/components/shared/QACardContainer'
 import { formContainer, individualPage, qAContainer } from './page.css'
 
+export async function generateStaticParams() {
+  const res: MicroCMSResponse = await fetch(
+    'https://q-box.microcms.io/api/v1/q_box_posts?fields=id&offset=0&limit=10',
+    {
+      headers: { 'X-MICROCMS-API-KEY': process.env.NEXT_PUBLIC_MICROCMS_KEY || '' },
+    }
+  ).then((response) => response.json())
+
+  const paths = await res.contents.map((content) => {
+    return { questionId: content.id }
+  })
+  return paths
+}
+
 export default async function IndividualPage({ params }: { params: { questionId: string } }) {
   let res: MicroCMSResponse = { contents: [], totalCount: 0, offset: 0, limit: 0 }
   await fetch(
