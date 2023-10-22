@@ -4,7 +4,7 @@ import { QACardContainer } from '@/components/shared/QACardContainer'
 import { formContainer, individualPage, qAContainer } from './page.css'
 
 export async function generateStaticParams() {
-  const res = await fetch('http://localhost:3000/api/ids', {
+  const res = await fetch('http://localhost:3000/api/all_ids', {
     headers: { 'Content-Type': 'application/json' },
   })
   const { data }: { data: qA[] } = await res.json()
