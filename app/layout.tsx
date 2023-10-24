@@ -5,6 +5,7 @@ import { baseFont } from '@/consts/fonts'
 import type { Metadata } from 'next'
 import 'sanitize.css'
 import { mainContainer } from './layout.css'
+import Providers from './providers'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,7 +18,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={baseFont.className}>
         <Header />
         <ShadowHeader />
-        <div className={mainContainer}>{children}</div>
+        <div className={mainContainer}>
+          <Providers>{children}</Providers>
+        </div>
         <Footer />
       </body>
     </html>
