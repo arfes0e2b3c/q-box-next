@@ -14,6 +14,7 @@ export default async function IndividualPage({ params }: { params: { questionId:
   )
     .then((response) => response.json())
     .then((data) => (res = data))
+
   return (
     <main className={individualPage}>
       <div className={qAContainer}>
