@@ -18,7 +18,7 @@ import { qA } from '@/types'
 export default function Home() {
   const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch } =
     useInfiniteQuery({
-      queryKey: ['labelQueryKey'],
+      queryKey: ['newPosts'],
       queryFn: ({ pageParam = 0 }) => fetchSlicePosts(pageParam),
       refetchOnWindowFocus: false,
       staleTime: Infinity,
