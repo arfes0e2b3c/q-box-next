@@ -1,9 +1,5 @@
 import { style } from '@vanilla-extract/css'
 
-export const mainContainer = style({
-  width: '100%',
-})
-
 export const qAListContainer = style({
   width: '100%',
   padding: '0',
@@ -11,17 +7,6 @@ export const qAListContainer = style({
   '@media': {
     'screen and (max-width: 768px)': {
       marginTop: '10px',
-    },
-  },
-})
-
-export const qAListTitle = style({
-  marginLeft: '20px',
-  fontSize: '2rem',
-  '@media': {
-    'screen and (max-width: 768px)': {
-      margin: '10px 20px',
-      fontSize: '1.5rem',
     },
   },
 })
