@@ -1,4 +1,4 @@
-import { spHeaderHeight, spFooterHeight, pcFooterHeight, pcHeaderHeight } from '@/consts'
+import { pcHeaderHeight, pcFooterHeight, spHeaderHeight, spFooterHeight } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const mainContainer = style({

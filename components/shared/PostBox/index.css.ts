@@ -1,4 +1,4 @@
-import { baseTransition, shortTransition } from '@/consts'
+import { baseTransition, shortTransition } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const postBox = style({

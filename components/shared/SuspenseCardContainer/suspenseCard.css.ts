@@ -1,4 +1,4 @@
-import { bgAnimation } from '@/consts'
+import { bgAnimation } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const suspenseCard = style({

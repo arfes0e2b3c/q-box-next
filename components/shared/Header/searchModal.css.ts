@@ -1,4 +1,4 @@
-import { baseTransition } from '@/consts'
+import { baseTransition } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const searchModal = style({
