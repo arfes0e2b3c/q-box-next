@@ -20,3 +20,18 @@ export const formContainer = style({
     },
   },
 })
+
+export const mainContainer = style({
+  width: '100%',
+})
+
+export const qAListTitle = style({
+  marginLeft: '20px',
+  fontSize: '2rem',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      margin: '10px 20px',
+      fontSize: '1.5rem',
+    },
+  },
+})
