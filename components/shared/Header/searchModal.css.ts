@@ -75,3 +75,12 @@ export const searchModalItem = style({
     },
   },
 })
+
+export const link = style({
+  display: 'grid',
+  placeItems: 'center',
+  width: '100%',
+  height: '100%',
+  textDecoration: 'none',
+  color: 'inherit',
+})
