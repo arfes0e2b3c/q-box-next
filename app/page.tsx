@@ -36,23 +36,23 @@ export default function Home() {
         <PostForm mode={'question'} />
       </div>
       <div className={mainContainer}>
-        <ul className={qAListContainer}>
-          <h2 className={qAListTitle}>最新の質問</h2>
-          {isLoading ? (
-            <>
-              {[...Array(3)].map((_, i) => (
-                <li className={qAListItem} key={i}>
-                  <SuspenseCardContainer />
-                </li>
-              ))}
-            </>
-          ) : (
-            <InfiniteScroll
-              loadMore={(page) => {
-                isFetching || fetchNextPage({ pageParam: page * 10 })
-              }}
-              hasMore={hasNextPage}
-            >
+        <h2 className={qAListTitle}>最新の質問</h2>
+        {isLoading ? (
+          <ul className={qAListContainer}>
+            {[...Array(3)].map((_, i) => (
+              <li className={qAListItem} key={i}>
+                <SuspenseCardContainer />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <InfiniteScroll
+            loadMore={(page) => {
+              isFetching || fetchNextPage({ pageParam: page * 10 })
+            }}
+            hasMore={hasNextPage}
+          >
+            <ul className={qAListContainer}>
               {data
                 ? data?.pages.map((page) => {
                     return page.contents.map((qAData: qA) => (
@@ -62,10 +62,10 @@ export default function Home() {
                     ))
                   })
                 : []}
-            </InfiniteScroll>
-          )}
-          {isFetching && <li>Loading...</li>}
-        </ul>
+            </ul>
+          </InfiniteScroll>
+        )}
+        {isFetching && <p>Loading...</p>}
       </div>
     </main>
   )
