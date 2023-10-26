@@ -14,11 +14,12 @@ import {
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { fetchSlicePosts } from './api/fetchSlicePosts'
 import { qA } from '@/types'
+import { SuspenseCardContainer } from '@/components/shared/SuspenseCardContainer'
 
 export default function Home() {
   const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch } =
     useInfiniteQuery({
-      queryKey: ['labelQueryKey'],
+      queryKey: ['newPosts'],
       queryFn: ({ pageParam = 0 }) => fetchSlicePosts(pageParam),
       refetchOnWindowFocus: false,
       staleTime: Infinity,
@@ -37,24 +38,37 @@ export default function Home() {
       <div className={mainContainer}>
         <ul className={qAListContainer}>
           <h2 className={qAListTitle}>最新の質問</h2>
-
-          <InfiniteScroll
-            loadMore={(page) => {
-              isFetching || fetchNextPage({ pageParam: page * 10 })
-            }}
-            hasMore={hasNextPage}
-          >
-            {data
-              ? data?.pages.map((page) => {
-                  return page.contents.map((qAData: qA) => (
-                    <li className={qAListItem} key={qAData.id}>
-                      <QACardContainer qAData={qAData} isLink />
-                    </li>
-                  ))
-                })
-              : []}
-          </InfiniteScroll>
-          {isFetching && <div className='loading'>Loading...</div>}
+          {isLoading ? (
+            <>
+              <li className={qAListItem}>
+                <SuspenseCardContainer />
+              </li>
+              <li className={qAListItem}>
+                <SuspenseCardContainer />
+              </li>
+              <li className={qAListItem}>
+                <SuspenseCardContainer />
+              </li>
+            </>
+          ) : (
+            <InfiniteScroll
+              loadMore={(page) => {
+                isFetching || fetchNextPage({ pageParam: page * 10 })
+              }}
+              hasMore={hasNextPage}
+            >
+              {data
+                ? data?.pages.map((page) => {
+                    return page.contents.map((qAData: qA) => (
+                      <li className={qAListItem} key={qAData.id}>
+                        <QACardContainer qAData={qAData} isLink />
+                      </li>
+                    ))
+                  })
+                : []}
+            </InfiniteScroll>
+          )}
+          {isFetching && <li>Loading...</li>}
         </ul>
       </div>
     </main>

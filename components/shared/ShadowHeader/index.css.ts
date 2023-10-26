@@ -1,4 +1,4 @@
-import { pcHeaderHeight, spHeaderHeight } from '@/consts'
+import { pcHeaderHeight, spHeaderHeight } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const shadowHeader = style({

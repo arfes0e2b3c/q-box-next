@@ -1,4 +1,4 @@
-import { pcFooterHeight, spFooterHeight } from '@/consts'
+import { pcFooterHeight, spFooterHeight } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const footer = style({
