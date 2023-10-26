@@ -40,15 +40,11 @@ export default function Home() {
           <h2 className={qAListTitle}>最新の質問</h2>
           {isLoading ? (
             <>
-              <li className={qAListItem}>
-                <SuspenseCardContainer />
-              </li>
-              <li className={qAListItem}>
-                <SuspenseCardContainer />
-              </li>
-              <li className={qAListItem}>
-                <SuspenseCardContainer />
-              </li>
+              {[...Array(3)].map((_, i) => (
+                <li className={qAListItem} key={i}>
+                  <SuspenseCardContainer />
+                </li>
+              ))}
             </>
           ) : (
             <InfiniteScroll
