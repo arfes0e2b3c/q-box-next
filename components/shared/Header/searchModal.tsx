@@ -22,7 +22,7 @@ export const SearchModal = ({ onBlur }: { onBlur: () => void }) => {
         <ul className={searchModalList}>
           {keywords.map((keyword) => (
             <li className={searchModalItem} key={keyword.id}>
-              <Link className={link} href={`search?q=${keyword.title}`}>
+              <Link className={link} href={`search?q=${keyword.title}`} onClick={() => onBlur()}>
                 {keyword.title}
               </Link>
             </li>
