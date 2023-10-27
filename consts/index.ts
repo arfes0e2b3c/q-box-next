@@ -1,4 +1,17 @@
-import { MicroCMSResponse } from '@/types'
+import { MicroCMSResponse, qA } from '@/types'
+
+export const noResultQAData: qA = {
+  id: '0',
+  createdAt: '2023-03-06T15:00:00.000Z',
+  updatedAt: '2023-03-06T15:00:00.000Z',
+  publishedAt: '2023-03-06T15:00:00.000Z',
+  revisedAt: '2023-03-06T15:00:00.000Z',
+  question: '検索結果が見つかりませんでした...',
+  answer: '他のキーワードで検索してみてください...!',
+  replyTweetId: '',
+  state: 'answered',
+  replies: [],
+}
 
 export const mockQAResponse: MicroCMSResponse = {
   contents: [

@@ -7,7 +7,6 @@ export const searchModal = style({
   left: '0',
   zIndex: 0,
   width: '100%',
-  height: '100vh',
 })
 
 export const searchModalInner = style({
@@ -74,4 +73,13 @@ export const searchModalItem = style({
       minWidth: '70px',
     },
   },
+})
+
+export const link = style({
+  display: 'grid',
+  placeItems: 'center',
+  width: '100%',
+  height: '100%',
+  textDecoration: 'none',
+  color: 'inherit',
 })

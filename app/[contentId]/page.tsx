@@ -4,6 +4,7 @@ import { formContainer, individualPage, qAContainer } from './page.css'
 
 import { fetchPostDetail } from '../api/fetchPostDetail'
 import { fetchAllPostIds } from '../api/fetchAllPostIds'
+import { BackButton } from '@/components/shared/BackButton'
 
 export async function generateStaticParams() {
   const data = await fetchAllPostIds()
@@ -18,6 +19,7 @@ export default async function IndividualPage({ params }: { params: { contentId: 
 
   return (
     <main className={individualPage}>
+      <BackButton />
       <div className={qAContainer}>
         <QACardContainer qAData={data} />
         <PostForm mode={'reply'} />

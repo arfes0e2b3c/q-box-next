@@ -1,34 +1,25 @@
 'use client'
-import InfiniteScroll from 'react-infinite-scroller'
-import { PostForm } from '@/components/shared/PostBox'
-import { QACardContainer } from '@/components/shared/QACardContainer'
 
-import {
-  formContainer,
-  mainContainer,
-  qAListContainer,
-  qAListItem,
-  qAListTitle,
-  topPage,
-} from './page.css'
+import { PostForm } from '@/components/shared/PostBox'
+import { formContainer, mainContainer, qAListTitle, topPage } from './page.css'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { fetchSlicePosts } from './api/fetchSlicePosts'
-import { qA } from '@/types'
-import { SuspenseCardContainer } from '@/components/shared/SuspenseCardContainer'
+import { QAListWrapper } from '@/components/shared/qAListWrapper'
 
 export default function Home() {
-  const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch } =
-    useInfiniteQuery({
-      queryKey: ['newPosts'],
-      queryFn: ({ pageParam = 0 }) => fetchSlicePosts(pageParam),
-      refetchOnWindowFocus: false,
-      staleTime: Infinity,
-      getNextPageParam: (lastPage) =>
-        lastPage?.offset < lastPage?.totalCount ? lastPage?.offset + 20 : false,
-      useErrorBoundary: (error: { response: { status: number } }) => {
-        return error.response?.status >= 500
-      },
-    })
+  const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage } = useInfiniteQuery({
+    queryKey: ['newPosts'],
+    queryFn: ({ pageParam = 0 }) => fetchSlicePosts(pageParam),
+    refetchOnWindowFocus: false,
+    staleTime: Infinity,
+    getNextPageParam: (lastPage) =>
+      lastPage?.offset < lastPage?.totalCount ? lastPage?.offset + 20 : false,
+    useErrorBoundary: (error: { response: { status: number } }) => {
+      return error.response?.status >= 500
+    },
+  })
+
+  const pagesData = data?.pages ?? []
 
   return (
     <main className={topPage}>
@@ -36,40 +27,14 @@ export default function Home() {
         <PostForm mode={'question'} />
       </div>
       <div className={mainContainer}>
-        <ul className={qAListContainer}>
-          <h2 className={qAListTitle}>最新の質問</h2>
-          {isLoading ? (
-            <>
-              <li className={qAListItem}>
-                <SuspenseCardContainer />
-              </li>
-              <li className={qAListItem}>
-                <SuspenseCardContainer />
-              </li>
-              <li className={qAListItem}>
-                <SuspenseCardContainer />
-              </li>
-            </>
-          ) : (
-            <InfiniteScroll
-              loadMore={(page) => {
-                isFetching || fetchNextPage({ pageParam: page * 10 })
-              }}
-              hasMore={hasNextPage}
-            >
-              {data
-                ? data?.pages.map((page) => {
-                    return page.contents.map((qAData: qA) => (
-                      <li className={qAListItem} key={qAData.id}>
-                        <QACardContainer qAData={qAData} isLink />
-                      </li>
-                    ))
-                  })
-                : []}
-            </InfiniteScroll>
-          )}
-          {isFetching && <li>Loading...</li>}
-        </ul>
+        <h2 className={qAListTitle}>最新の質問</h2>
+        <QAListWrapper
+          pagesData={pagesData}
+          isLoading={isLoading}
+          isFetching={isFetching}
+          fetchNextPage={fetchNextPage}
+          hasNextPage={hasNextPage ?? false}
+        />
       </div>
     </main>
   )

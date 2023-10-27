@@ -3,10 +3,10 @@ import { style } from '@vanilla-extract/css'
 export const individualPage = style({
   maxWidth: '1080px',
   margin: '0 auto',
-  paddingTop: '40px',
+  paddingTop: '30px',
   '@media': {
     'screen and (max-width: 768px)': {
-      padding: '0',
+      paddingTop: '0',
     },
   },
 })
