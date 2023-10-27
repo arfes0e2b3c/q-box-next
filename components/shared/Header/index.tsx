@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <header className={header}>
       <Link className={linkToHome} href='/'>
-        ホームへ
+        最新の質問へ
       </Link>
       <div className={appTitleContainer}>
         <h1 className={appTitle}>お手伝いサークル</h1>
