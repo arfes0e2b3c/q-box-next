@@ -12,6 +12,7 @@ export const searchInput = style({
   backgroundColor: 'rgba(0, 0, 0, 0.1)',
   fontSize: '1.2em',
   border: 'none',
+  borderRadius: '0',
   outline: 'none',
   transition: baseTransition,
   zIndex: 100,
