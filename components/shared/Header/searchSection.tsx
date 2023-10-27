@@ -15,6 +15,7 @@ export const SearchSection = () => {
       <input
         className={[searchInput, baseFont.className].join(' ')}
         type='text'
+        placeholder='キーワードで検索'
         onKeyUp={(event) => {
           if (isEnterKey(event.key) && event.currentTarget.value !== '') {
             router.push(`/search/?q=${event.currentTarget.value}`)
