@@ -11,9 +11,9 @@ import {
   requirement,
 } from './index.css'
 import Link from 'next/link'
-import { qA } from '@/types'
+import { QA } from '@/types'
 
-export const QACardContainer = ({ qAData, isLink = false }: { qAData: qA; isLink?: boolean }) => {
+export const QACardContainer = ({ qAData, isLink = false }: { qAData: QA; isLink?: boolean }) => {
   const answerState = qAData.state === 'answered' ? answered : requirement
   return (
     <section className={qaCardContainer}>

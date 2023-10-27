@@ -1,4 +1,4 @@
-import { MicroCMSResponse, qA } from '@/types'
+import { MicroCMSResponse } from '@/types'
 import { NextRequest, NextResponse } from 'next/server'
 import { fetchPosts } from '../microcms'
 import { filterPublicReplies } from '@/lib'

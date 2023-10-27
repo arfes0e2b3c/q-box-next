@@ -1,6 +1,6 @@
 'use client'
 
-import { MicroCMSResponse, qA } from '@/types'
+import { MicroCMSResponse, QA } from '@/types'
 import InfiniteScroll from 'react-infinite-scroller'
 import { QACardContainer } from '../QACardContainer'
 import { SuspenseCardContainer } from '../SuspenseCardContainer'
@@ -40,7 +40,7 @@ export const QAListWrapper = ({
             <ul className={qAListContainer}>
               {pagesData
                 ? pagesData.map((page) => {
-                    return page.contents.map((qAData: qA) => (
+                    return page.contents.map((qAData: QA) => (
                       <li className={qAListItem} key={qAData.id}>
                         <QACardContainer qAData={qAData} isLink />
                       </li>

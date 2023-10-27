@@ -1,11 +1,11 @@
-import { MicroCMSResponse, qA } from '@/types'
+import { MicroCMSResponse, QA } from '@/types'
 import { NextResponse } from 'next/server'
 import { fetchPosts } from '../microcms'
 
-export async function GET(): Promise<NextResponse<{ data: qA[] }>> {
+export async function GET(): Promise<NextResponse<{ data: QA[] }>> {
   let currentOffset = 0
   let totalPosts = 101
-  let contentsArray: qA[] = []
+  let contentsArray: QA[] = []
 
   while (currentOffset < totalPosts) {
     const res: MicroCMSResponse = await fetchPosts({

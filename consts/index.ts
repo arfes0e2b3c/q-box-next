@@ -1,6 +1,6 @@
-import { MicroCMSResponse, qA } from '@/types'
+import { MicroCMSResponse, QA } from '@/types'
 
-export const noResultQAData: qA = {
+export const noResultQAData: QA = {
   id: '0',
   createdAt: '2023-03-06T15:00:00.000Z',
   updatedAt: '2023-03-06T15:00:00.000Z',
