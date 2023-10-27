@@ -1,4 +1,3 @@
-import { fetchPost } from './microcms'
+import { GET } from './(detail)/(route)'
 
-export const fetchPostDetail = async (contentId: string) =>
-  await fetchPost({ contentId: contentId })
+export const fetchPostDetail = async (contentId: string) => await GET(contentId)
