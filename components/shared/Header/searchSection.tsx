@@ -12,18 +12,12 @@ export const SearchSection = () => {
   const isEnterKey = (key: string) => key === 'Enter'
 
   const searchSectionRef = useRef<HTMLDivElement>(null)
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      searchSectionRef.current &&
-      event.target instanceof Node &&
-      !(searchSectionRef.current as HTMLElement).contains(event.target)
-    ) {
-      console.log('click outside')
+  const isOutSide = (event: MouseEvent) =>
+    searchSectionRef.current &&
+    event.target instanceof Node &&
+    !(searchSectionRef.current as HTMLElement).contains(event.target)
 
-      setIsOpen(false)
-    }
-    console.log('click inside')
-  }
+  const handleClickOutside = (event: MouseEvent) => isOutSide(event) && setIsOpen(false)
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside)
