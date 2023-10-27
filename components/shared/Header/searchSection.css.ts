@@ -10,7 +10,8 @@ export const searchInput = style({
   height: '100%',
   paddingLeft: '10px',
   backgroundColor: 'rgba(0, 0, 0, 0.1)',
-  fontSize: '1.2em',
+  color: '#666',
+  fontSize: '1rem',
   border: 'none',
   borderRadius: '0',
   outline: 'none',
@@ -19,5 +20,10 @@ export const searchInput = style({
   ':focus': {
     backgroundColor: 'rgb(48, 48, 48)',
     color: 'white',
+  },
+  '@media': {
+    'screen and (max-width: 768px)': {
+      textAlign: 'center',
+    },
   },
 })
