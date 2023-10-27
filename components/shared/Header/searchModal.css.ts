@@ -7,7 +7,6 @@ export const searchModal = style({
   left: '0',
   zIndex: 0,
   width: '100%',
-  height: '100vh',
 })
 
 export const searchModalInner = style({

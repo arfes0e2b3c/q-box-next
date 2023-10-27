@@ -16,8 +16,8 @@ export const SearchModal = ({ onBlur }: { onBlur: () => void }) => {
     { id: 4, title: '成績' },
   ]
   return (
-    <div className={searchModal} onClick={() => onBlur()}>
-      <div className={searchModalInner} onClick={(event) => event.stopPropagation()}>
+    <div className={searchModal}>
+      <div className={searchModalInner}>
         <h2 className={searchModalTitle}>よく検索されるキーワード</h2>
         <ul className={searchModalList}>
           {keywords.map((keyword) => (
