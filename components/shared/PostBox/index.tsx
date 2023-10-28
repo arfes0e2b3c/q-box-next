@@ -10,13 +10,14 @@ import {
   submitButton,
 } from './index.css'
 import { PostMode } from '@/types'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useCreatePost } from '@/app/api/useCreatePost'
 import { Oval } from 'react-loader-spinner'
 import { useCreateReply } from '@/app/api/useCreateReply'
 
 export const PostForm = ({ mode, replyFor }: { mode: PostMode; replyFor?: string }) => {
   const [input, setInput] = useState('')
+  const textarefRef = useRef<HTMLTextAreaElement>(null)
 
   const isQuestion = mode === 'question'
 
@@ -61,6 +62,7 @@ export const PostForm = ({ mode, replyFor }: { mode: PostMode; replyFor?: string
       {isQuestion && <h3 className={postBoxTitle}>お手伝いサークルに質問する</h3>}
       <textarea
         className={[postBoxInput, baseFont.className].join(' ')}
+        ref={textarefRef}
         name='question'
         placeholder={formProps.placeholder}
         onChange={(e) => setInput(e.target.value)}
@@ -73,6 +75,8 @@ export const PostForm = ({ mode, replyFor }: { mode: PostMode; replyFor?: string
         onClick={(event) => {
           event.preventDefault()
           formProps.onSubmit()
+          setInput('')
+          textarefRef.current && (textarefRef.current.value = '')
         }}
         disabled={isLoading}
       >
