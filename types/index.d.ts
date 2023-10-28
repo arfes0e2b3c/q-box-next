@@ -15,7 +15,7 @@ export type Reply = MicroCMSTimes & {
     id: string
   }
 }
-export type qA = MicroCMSTimes & {
+export type QA = MicroCMSTimes & {
   id: string
   question: string
   answer: string
@@ -24,7 +24,7 @@ export type qA = MicroCMSTimes & {
   replies: Reply[]
 }
 export type MicroCMSResponse = {
-  contents: qA[]
+  contents: QA[]
   totalCount: number
   offset: number
   limit: number

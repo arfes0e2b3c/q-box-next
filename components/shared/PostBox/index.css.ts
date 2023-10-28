@@ -63,6 +63,8 @@ export const noticeMessage = style({
 })
 
 export const submitButton = style({
+  display: 'grid',
+  placeContent: 'center',
   width: '120px',
   height: '40px',
   marginTop: '20px',
@@ -72,11 +74,6 @@ export const submitButton = style({
   borderRadius: '3px',
   transition: shortTransition,
   cursor: 'pointer',
-  ':hover': {
-    backgroundColor: 'white',
-    color: '#333',
-    boxShadow: '0 0 5px 5px rgba(0, 0, 0, 0.1)',
-  },
   '@media': {
     'screen and (max-width: 768px)': {
       height: '35px',
@@ -84,4 +81,8 @@ export const submitButton = style({
       fontSize: '0.8rem',
     },
   },
+})
+
+export const disabled = style({
+  cursor: 'not-allowed',
 })

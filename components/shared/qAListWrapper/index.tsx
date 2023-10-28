@@ -1,10 +1,11 @@
 'use client'
 
-import { MicroCMSResponse, qA } from '@/types'
+import { MicroCMSResponse, QA } from '@/types'
 import InfiniteScroll from 'react-infinite-scroller'
 import { QACardContainer } from '../QACardContainer'
 import { SuspenseCardContainer } from '../SuspenseCardContainer'
-import { qAListContainer, qAListItem } from './index.css'
+import { loadingCircleContainer, qAListContainer, qAListItem } from './index.css'
+import { Oval } from 'react-loader-spinner'
 
 export const QAListWrapper = ({
   pagesData,
@@ -40,7 +41,7 @@ export const QAListWrapper = ({
             <ul className={qAListContainer}>
               {pagesData
                 ? pagesData.map((page) => {
-                    return page.contents.map((qAData: qA) => (
+                    return page.contents.map((qAData: QA) => (
                       <li className={qAListItem} key={qAData.id}>
                         <QACardContainer qAData={qAData} isLink />
                       </li>
@@ -49,7 +50,18 @@ export const QAListWrapper = ({
                 : []}
             </ul>
           </InfiniteScroll>
-          {isFetching && <p>Loading...</p>}
+          {isFetching && (
+            <div className={loadingCircleContainer}>
+              <Oval
+                strokeWidth={5}
+                width={60}
+                height={60}
+                color='#888'
+                secondaryColor='#ddd'
+                ariaLabel='loading'
+              />
+            </div>
+          )}
         </>
       )}
     </>

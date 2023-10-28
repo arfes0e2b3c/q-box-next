@@ -1,9 +1,9 @@
-import { qA } from '@/types'
+import { QA } from '@/types'
 import { fetchPost } from '../microcms'
 import { filterPublicReplies } from '@/lib'
 
-export async function GET(contentId: string): Promise<qA> {
-  const res: qA = await fetchPost({ contentId: contentId })
+export async function GET(contentId: string): Promise<QA> {
+  const res: QA = await fetchPost({ contentId: contentId })
 
   return filterPublicReplies(res)
 }

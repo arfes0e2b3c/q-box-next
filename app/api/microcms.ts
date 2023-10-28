@@ -1,5 +1,6 @@
-import { MicroCMSQueries, MicroCMSResponse, qA } from '@/types'
+import { MicroCMSQueries, MicroCMSResponse, QA } from '@/types'
 import { createClient } from 'microcms-js-sdk'
+
 const client = createClient({
   serviceDomain: 'q-box',
   apiKey: process.env.NEXT_PUBLIC_MICROCMS_KEY || '',
@@ -23,11 +24,32 @@ export const fetchPost = async ({
 }: {
   contentId: string
   queries?: MicroCMSQueries
-}): Promise<qA> => {
+}): Promise<QA> => {
   const res = await client.get({
     endpoint: 'q_box_posts',
     contentId,
     queries,
+  })
+  return res
+}
+
+export const createPost = async (question: string) => {
+  const res = await client.create({
+    endpoint: 'q_box_posts',
+    content: {
+      question,
+    },
+  })
+  return res
+}
+
+export const createReply = async (replySentence: string, replyFor: string) => {
+  const res = await client.create({
+    endpoint: 'q_box_replies',
+    content: {
+      replySentence,
+      replyFor,
+    },
   })
   return res
 }
