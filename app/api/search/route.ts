@@ -8,7 +8,7 @@ export async function GET(req: NextRequest): Promise<NextResponse<MicroCMSRespon
   const offset = searchParams.get('offset')
   const q = searchParams.get('q') || ''
 
-  const limitCount = 20
+  const limitCount = 10
   const res: MicroCMSResponse = await fetchPosts({
     queries: {
       filters: 'answer[exists]',

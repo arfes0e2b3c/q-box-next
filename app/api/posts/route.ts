@@ -7,7 +7,7 @@ export async function GET(req: NextRequest): Promise<NextResponse<MicroCMSRespon
   const { searchParams } = new URL(req.url)
   const offset = searchParams.get('offset')
 
-  const limitCount = 20
+  const limitCount = 10
   const res: MicroCMSResponse = await fetchPosts({
     queries: {
       filters: 'answer[exists]',
