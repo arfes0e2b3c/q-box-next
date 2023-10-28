@@ -3,10 +3,10 @@ import { style } from '@vanilla-extract/css'
 export const qAListContainer = style({
   width: '100%',
   padding: '0',
-  marginTop: '20px',
+  marginBlock: '20px 0',
   '@media': {
     'screen and (max-width: 768px)': {
-      marginTop: '10px',
+      marginBlock: '10px 0',
     },
   },
 })
@@ -24,4 +24,10 @@ export const qAListItem = style({
       boxShadow: '0 0 3px 1px rgba(0, 0, 0, 0.2)',
     },
   },
+})
+
+export const loadingCircleContainer = style({
+  display: 'flex',
+  justifyContent: 'center',
+  padding: '20px 0',
 })
