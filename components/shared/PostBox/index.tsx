@@ -28,8 +28,19 @@ export const PostForm = ({ mode }: { mode: PostMode }) => {
       {isQuestion && (
         <p className={noticeMessage}>正確な回答のため、学部と学年の併記をお願いします！</p>
       )}
-      <button className={[submitButton, baseFont.className].join(' ')} onClick={formProps.onSubmit}>
-        {formProps.buttonText}
+        {isLoading ? (
+          <Oval
+            strokeWidth={'5'}
+            height='25'
+            width='25'
+            ariaLabel='loading'
+            color='white'
+            secondaryColor='#333'
+            wrapperStyle={{ cursor: 'not-allowed' }}
+          />
+        ) : (
+          formProps.buttonText
+        )}
       </button>
     </form>
   )
