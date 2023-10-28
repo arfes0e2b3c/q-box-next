@@ -35,7 +35,8 @@ export default function Search() {
         <h2 className={qAListTitle}>
           「{q}」の検索結果：{pagesData[0]?.totalCount >= 0 ? pagesData[0]?.totalCount : '　'}件
         </h2>
-        {isLoading || pagesData[0]?.totalCount ? (
+        {isError && <div>エラーが発生しました</div>}
+        {isError || isLoading || pagesData[0]?.totalCount ? (
           <QAListWrapper
             pagesData={pagesData}
             isLoading={isLoading}

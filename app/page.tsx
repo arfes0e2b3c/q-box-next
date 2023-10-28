@@ -21,6 +21,10 @@ export default function Home() {
 
   const pagesData = data?.pages ?? []
 
+  if (isError) {
+    return <div>エラーが発生しました</div>
+  }
+
   return (
     <main className={topPage}>
       <div className={formContainer}>
@@ -28,13 +32,17 @@ export default function Home() {
       </div>
       <div className={mainContainer}>
         <h2 className={qAListTitle}>最新の質問</h2>
-        <QAListWrapper
-          pagesData={pagesData}
-          isLoading={isLoading}
-          isFetching={isFetching}
-          fetchNextPage={fetchNextPage}
-          hasNextPage={hasNextPage ?? false}
-        />
+        {isError ? (
+          <div>エラーが発生しました</div>
+        ) : (
+          <QAListWrapper
+            pagesData={pagesData}
+            isLoading={isLoading}
+            isFetching={isFetching}
+            fetchNextPage={fetchNextPage}
+            hasNextPage={hasNextPage ?? false}
+          />
+        )}
       </div>
     </main>
   )
