@@ -1,5 +1,6 @@
 import { MicroCMSQueries, MicroCMSResponse, QA } from '@/types'
 import { createClient } from 'microcms-js-sdk'
+
 const client = createClient({
   serviceDomain: 'q-box',
   apiKey: process.env.NEXT_PUBLIC_MICROCMS_KEY || '',
