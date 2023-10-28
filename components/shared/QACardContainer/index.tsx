@@ -19,7 +19,7 @@ export const QACardContainer = ({ qAData, isLink = false }: { qAData: QA; isLink
     <section className={qaCardContainer}>
       <div className={mainPost}>
         <p className={[createdAt, answerState].join(' ')}>
-          {dayjs(qAData.createdAt).format('MM/DD HH:mm')}
+          {dayjs(qAData.createdAt).format('YYYY/MM/DD')}
         </p>
         {isLink ? (
           <Link className={cardButton} href={qAData.id}>
