@@ -31,3 +31,13 @@ export const fetchPost = async ({
   })
   return res
 }
+
+export const createPost = async (question: string) => {
+  const res = await client.create({
+    endpoint: 'q_box_posts',
+    content: {
+      question,
+    },
+  })
+  return res
+}
