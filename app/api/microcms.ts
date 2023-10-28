@@ -41,3 +41,14 @@ export const createPost = async (question: string) => {
   })
   return res
 }
+
+export const createReply = async (replySentence: string, replyFor: string) => {
+  const res = await client.create({
+    endpoint: 'q_box_replies',
+    content: {
+      replySentence,
+      replyFor,
+    },
+  })
+  return res
+}

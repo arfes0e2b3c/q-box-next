@@ -22,7 +22,7 @@ export default async function IndividualPage({ params }: { params: { contentId: 
       <BackButton />
       <div className={qAContainer}>
         <QACardContainer qAData={data} />
-        <PostForm mode={'reply'} />
+        <PostForm mode={'reply'} replyFor={params.contentId} />
       </div>
       <div className={formContainer}>
         <PostForm mode={'question'} />

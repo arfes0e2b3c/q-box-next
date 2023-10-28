@@ -13,18 +13,23 @@ import { PostMode } from '@/types'
 import { useState } from 'react'
 import { useCreatePost } from '@/app/api/useCreatePost'
 import { Oval } from 'react-loader-spinner'
+import { useCreateReply } from '@/app/api/useCreateReply'
 
-export const PostForm = ({ mode }: { mode: PostMode }) => {
-  const [question, setQuestion] = useState('')
+export const PostForm = ({ mode, replyFor }: { mode: PostMode; replyFor?: string }) => {
+  const [input, setInput] = useState('')
+
   const isQuestion = mode === 'question'
+
   const createPost = useCreatePost()
-  const isLoading = createPost.isLoading
+  const createReply = useCreateReply()
+  const isLoading = createPost.isLoading || createReply.isLoading
+
   const formProps = isQuestion
     ? {
         buttonText: '質問する',
-        onSubmit: async (question: string) => {
+        onSubmit: () => {
           if (confirm('質問を投稿しますか？')) {
-            createPost.mutate(question, {
+            createPost.mutate(input, {
               onSuccess: () => alert('質問を投稿しました！'),
               onError: (error) => alert(error),
             })
@@ -34,9 +39,23 @@ export const PostForm = ({ mode }: { mode: PostMode }) => {
       }
     : {
         buttonText: '情報を提供する',
-        onSubmit: () => console.log('reply'),
+        onSubmit: () => {
+          if (
+            confirm('情報提供を投稿しますか？質問は質問用フォームから投稿をお願いします！') &&
+            replyFor
+          ) {
+            createReply.mutate(
+              { reply: input, replyFor },
+              {
+                onSuccess: () => alert('情報提供を投稿しました！'),
+                onError: (error) => alert(error),
+              }
+            )
+          }
+        },
         placeholder: 'この質問に関する情報提供をいただけますと幸いです！',
       }
+
   return (
     <form className={postBox}>
       {isQuestion && <h3 className={postBoxTitle}>お手伝いサークルに質問する</h3>}
@@ -44,7 +63,7 @@ export const PostForm = ({ mode }: { mode: PostMode }) => {
         className={[postBoxInput, baseFont.className].join(' ')}
         name='question'
         placeholder={formProps.placeholder}
-        onChange={(e) => setQuestion(e.target.value)}
+        onChange={(e) => setInput(e.target.value)}
       ></textarea>
       {isQuestion && (
         <p className={noticeMessage}>正確な回答のため、学部と学年の併記をお願いします！</p>
@@ -53,7 +72,7 @@ export const PostForm = ({ mode }: { mode: PostMode }) => {
         className={[submitButton, baseFont.className, isLoading && disabled].join(' ')}
         onClick={(event) => {
           event.preventDefault()
-          formProps.onSubmit(question)
+          formProps.onSubmit()
         }}
         disabled={isLoading}
       >
