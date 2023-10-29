@@ -17,7 +17,7 @@ export const createdAt = style({
   width: '120px',
   padding: '3px 10px',
   margin: '0',
-  marginLeft: '10px',
+  marginLeft: '3%',
   borderRadius: '5px',
   color: 'white',
   whiteSpace: 'nowrap',
@@ -44,7 +44,7 @@ export const requirement = style({
 export const old = style({
   backgroundColor: 'rgb(255, 141, 198)',
   border: '2px solid rgba(205, 91, 148, 0.7)',
-  color: '#333',
+  color: 'white',
 })
 
 export const noResult = style({
