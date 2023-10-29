@@ -2,8 +2,8 @@ import { PostForm } from '@/components/shared/PostBox'
 import { QACardContainer } from '@/components/shared/QACardContainer'
 import { formContainer, individualPage, qAContainer } from './page.css'
 
-import { fetchPostDetail } from '../../client/fetchPostDetail'
-import { fetchAllPostIds } from '../../client/fetchAllPostIds'
+import { fetchPostDetail } from '../../../client/fetchPostDetail'
+import { fetchAllPostIds } from '../../../client/fetchAllPostIds'
 import { BackButton } from '@/components/shared/BackButton'
 
 export async function generateStaticParams() {

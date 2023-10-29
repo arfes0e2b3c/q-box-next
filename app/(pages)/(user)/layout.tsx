@@ -5,7 +5,7 @@ import { baseFont } from '@/consts/fonts'
 import type { Metadata } from 'next'
 import 'sanitize.css'
 import { mainContainer } from './layout.css'
-import Providers from './providers'
+import Providers from '../../providers'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
