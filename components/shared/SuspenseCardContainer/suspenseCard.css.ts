@@ -1,13 +1,21 @@
 import { bgAnimation } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
-export const suspenseCard = style({
-  position: 'relative',
+export const suspenseCardWrapper = style({
+  // display: 'grid',
+  // placeContent: 'center',
   width: '100%',
   height: 'auto',
   aspectRatio: '40 / 21',
+})
+
+export const suspenseCard = style({
+  position: 'relative',
+  width: 'calc(100% / 1200 * 1160)',
+  height: 'calc(100% / 630 * 564)',
   background: '#ddd',
-  marginTop: '10px',
+  margin: '0 auto ',
+  marginTop: 'calc(100% / 1200 * 25)',
   borderRadius: '15px',
   overflow: 'hidden',
   ':after': {

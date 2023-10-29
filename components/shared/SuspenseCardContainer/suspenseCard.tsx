@@ -1,4 +1,8 @@
-import { suspenseCard } from './suspenseCard.css'
+import { suspenseCard, suspenseCardWrapper } from './suspenseCard.css'
 export const SuspenseCard = () => {
-  return <div className={suspenseCard} />
+  return (
+    <div className={suspenseCardWrapper}>
+      <div className={suspenseCard} />
+    </div>
+  )
 }

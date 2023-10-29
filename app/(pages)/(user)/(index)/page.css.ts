@@ -26,6 +26,7 @@ export const mainContainer = style({
 })
 
 export const qAListTitle = style({
+  margin: '0',
   marginLeft: '20px',
   fontSize: '2rem',
   '@media': {
