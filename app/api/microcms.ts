@@ -43,6 +43,17 @@ export const createPost = async (question: string) => {
   return res
 }
 
+export const patchPost = async (contentId: string, replyIds: string[]) => {
+  const res = await client.update({
+    endpoint: 'q_box_posts',
+    contentId,
+    content: {
+      replies: replyIds,
+    },
+  })
+  return res
+}
+
 export const createReply = async (replySentence: string, replyFor: string) => {
   const res = await client.create({
     endpoint: 'q_box_replies',
