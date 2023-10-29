@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: 'お手伝いサークル公式サイト',
   creator: 'お手伝いサークル',
   publisher: 'お手伝いサークル',
-  description: '横浜国立大学のお手伝いサークルが運営する公式サイトです。',
+  description: '横浜国立大学お手伝いサークルが運営する公式サイトです。',
   icons: {
     icon: '/favicon.ico',
   },
@@ -23,6 +23,17 @@ export const metadata: Metadata = {
         url: '/otecir-default.png',
         width: 1200,
         height: 630,
+        alt: 'お手伝いサークル公式サイト',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'お手伝いサークル公式サイト',
+    description: '横浜国立大学お手伝いサークルが運営する公式サイトです。',
+    images: [
+      {
+        url: '/otecir-default.png',
         alt: 'お手伝いサークル公式サイト',
       },
     ],
