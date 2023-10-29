@@ -19,7 +19,7 @@ export const createdAt = style({
   padding: '3px 10px',
   overflow: 'hidden',
   margin: '0',
-  marginLeft: '10px',
+  marginLeft: '3%',
   borderRadius: '5px',
   fontSize: '1rem',
   backgroundColor: '#ddd',
