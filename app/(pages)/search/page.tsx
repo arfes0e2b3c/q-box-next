@@ -5,7 +5,7 @@ import { formContainer, mainContainer, noResult, qAListTitle, topPage } from './
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { QAListWrapper } from '@/components/shared/qAListWrapper'
 import { useSearchParams } from 'next/navigation'
-import { fetchSliceSearchPosts } from '../api/fetchSliceSearchPosts'
+import { fetchSliceSearchPosts } from '../../client/fetchSliceSearchPosts'
 import { QACardContainer } from '@/components/shared/QACardContainer'
 import { noResultQAData } from '@/consts'
 

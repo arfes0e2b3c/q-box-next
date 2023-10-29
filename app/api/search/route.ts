@@ -12,6 +12,7 @@ export async function GET(req: NextRequest): Promise<NextResponse<MicroCMSRespon
   const res: MicroCMSResponse = await fetchPosts({
     queries: {
       filters: 'answer[exists]',
+      fields: 'id,createdAt,question,answer,state,replies',
       limit: limitCount,
       offset: offset ? Number(offset) : 0,
       q: q,

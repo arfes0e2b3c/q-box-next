@@ -2,11 +2,9 @@ import Image from 'next/image'
 import base64url from 'base64url'
 import { qACard } from './card.css'
 import { AnswerState } from '@/types'
+import { exchangeStateToUrl } from '@/lib'
 export const Card = ({ text, mode = 'answered' }: { text: string; mode?: AnswerState }) => {
-  const baseSrc =
-    mode === 'answered'
-      ? 'https://images.microcms-assets.io/assets/ca0c41f03efd472a910782fea07dff31/c9428b14ddd44f5485c2fc8ce7c2c61d/answered.png'
-      : 'https://images.microcms-assets.io/assets/ca0c41f03efd472a910782fea07dff31/f3e07d2865ab43a8a173e70d23d20638/requirement.png'
+  const baseSrc = exchangeStateToUrl(mode)
   return (
     <Image
       className={qACard}

@@ -3,7 +3,7 @@
 import { PostForm } from '@/components/shared/PostBox'
 import { formContainer, mainContainer, qAListTitle, topPage } from './page.css'
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { fetchSlicePosts } from './api/fetchSlicePosts'
+import { fetchSlicePosts } from '../../client/fetchSlicePosts'
 import { QAListWrapper } from '@/components/shared/qAListWrapper'
 
 export default function Home() {

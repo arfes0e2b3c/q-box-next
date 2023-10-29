@@ -13,13 +13,13 @@ export const qAListContainer = style({
 
 export const qAListItem = style({
   listStyle: 'none',
-  padding: '20px 10px',
+  padding: '20px 0',
   marginTop: '20px',
   boxShadow: '0 0 5px 2px rgba(0, 0, 0, 0.2)',
   borderRadius: '10px',
   '@media': {
     'screen and (max-width: 768px)': {
-      padding: '10px 5px',
+      padding: '10px 0',
       margin: '10px auto 0',
       boxShadow: '0 0 3px 1px rgba(0, 0, 0, 0.2)',
     },

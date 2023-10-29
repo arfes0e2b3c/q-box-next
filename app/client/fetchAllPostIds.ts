@@ -1,5 +1,5 @@
 import { QA } from '@/types'
-import { GET } from './all_ids/route'
+import { GET } from '../api/(all_ids)/route'
 
 export const fetchAllPostIds = async () => {
   const res = await GET()
