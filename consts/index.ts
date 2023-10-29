@@ -2,14 +2,11 @@ import { MicroCMSResponse, QA } from '@/types'
 
 export const noResultQAData: QA = {
   id: '0',
-  createdAt: '2023-03-06T15:00:00.000Z',
-  updatedAt: '2023-03-06T15:00:00.000Z',
-  publishedAt: '2023-03-06T15:00:00.000Z',
-  revisedAt: '2023-03-06T15:00:00.000Z',
-  question: '検索結果が見つかりませんでした...',
-  answer: '他のキーワードで検索してみてください...!',
+  createdAt: '1111-11-10T15:00:00.000Z',
+  question: '',
+  answer: '',
   replyTweetId: '',
-  state: 'answered',
+  state: 'noResult',
   replies: [],
 }
 

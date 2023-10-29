@@ -2,23 +2,22 @@ import { Card } from './card'
 import dayjs from 'dayjs'
 import {
   answer,
-  answered,
   cardButton,
   createdAt,
   mainPost,
   qaCardContainer,
   repliesContainer,
-  requirement,
 } from './index.css'
 import Link from 'next/link'
 import { QA } from '@/types'
+import { exchangeStateToStyle } from '@/lib'
 
 export const QACardContainer = ({ qAData, isLink = false }: { qAData: QA; isLink?: boolean }) => {
-  const answerState = qAData.state === 'answered' ? answered : requirement
+  const stateStytle = exchangeStateToStyle(qAData.state)
   return (
     <section className={qaCardContainer}>
       <div className={mainPost}>
-        <p className={[createdAt, answerState].join(' ')}>
+        <p className={[createdAt, stateStytle].join(' ')}>
           {dayjs(qAData.createdAt).format('YYYY/MM/DD')}
         </p>
         {isLink ? (

@@ -37,8 +37,20 @@ export const answered = style({
 
 export const requirement = style({
   backgroundColor: 'rgb(255, 222, 103)',
-  border: '2px solid rgba(0205, 172, 53, 0.7)',
+  border: '2px solid rgba(205, 172, 53, 0.7)',
   color: '#666',
+})
+
+export const old = style({
+  backgroundColor: 'rgb(255, 141, 198)',
+  border: '2px solid rgba(205, 91, 148, 0.7)',
+  color: '#333',
+})
+
+export const noResult = style({
+  backgroundColor: '#333',
+  border: '2px solid rgba(0, 0, 0, 1)',
+  color: 'white',
 })
 
 export const cardButton = style({

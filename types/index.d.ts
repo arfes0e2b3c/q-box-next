@@ -1,10 +1,10 @@
 export type PostMode = 'question' | 'reply'
-export type AnswerState = 'answered' | 'requirement' | 'old'
+export type AnswerState = 'answered' | 'requirement' | 'old' | 'noResult'
 export type MicroCMSTimes = {
   createdAt: string
-  updatedAt: string
-  publishedAt: string
-  revisedAt: string
+  updatedAt?: string
+  publishedAt?: string
+  revisedAt?: string
 }
 export type Reply = MicroCMSTimes & {
   id: string
