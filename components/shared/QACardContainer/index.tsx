@@ -13,12 +13,13 @@ import { QA } from '@/types'
 import { exchangeStateToStyle } from '@/lib'
 
 export const QACardContainer = ({ qAData, isLink = false }: { qAData: QA; isLink?: boolean }) => {
+  const formattedCreatedAt = dayjs(qAData.createdAt).format('YYYY/MM/DD')
   const stateStytle = exchangeStateToStyle(qAData.state)
   return (
     <section className={qaCardContainer}>
       <div className={mainPost}>
         <p className={[createdAt, stateStytle].join(' ')}>
-          {dayjs(qAData.createdAt).format('YYYY/MM/DD')}
+          {formattedCreatedAt === '2023/03/13' ? '過去の質問' : formattedCreatedAt}
         </p>
         {isLink ? (
           <Link className={cardButton} href={qAData.id}>
