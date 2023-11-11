@@ -1,10 +1,15 @@
+import { pcHeaderHeight, pcFooterHeight, spHeaderHeight, spFooterHeight } from '@/consts/styles.css'
 import { globalStyle, style } from '@vanilla-extract/css'
 
 export const loginContainer = style({
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  minHeight: 'calc(100vh - 221px)',
+  display: 'grid',
+  placeContent: 'center',
+  minHeight: `calc(100vh - ${pcHeaderHeight} - ${pcFooterHeight})`,
+  '@media': {
+    'screen and (max-width: 768px)': {
+      minHeight: `calc(100vh - ${spHeaderHeight} - ${spFooterHeight})`,
+    },
+  },
 })
 
 export const form = style({
@@ -14,8 +19,7 @@ export const form = style({
   boxShadow: '0 0 10px 10px rgba(0, 0, 0, 0.1)',
   '@media': {
     'screen and (max-width: 768px)': {
-      width: '100%',
-      height: '350px',
+      width: '100vw',
       boxShadow: '0 0 5px 5px rgba(0, 0, 0, 0.1)',
     },
   },
