@@ -1,14 +1,17 @@
 'use client'
 import { jwtDecode } from 'jwt-decode'
 import { usePathname, useRouter } from 'next/navigation'
-import { use, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { body, isLoginText } from './layout.css'
 import { Oval } from 'react-loader-spinner'
+import 'sanitize.css'
+
 import { isRightAccessUser } from '@/lib'
-import { Header } from '@/components/shared/Header'
 import { ShadowHeader } from '@/components/shared/ShadowHeader'
 import { AnswerHeader } from '@/components/shared/AnswerHeader'
+import { Footer } from '@/components/shared/Footer'
+import { baseFont } from '@/consts/fonts'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [cookies] = useCookies()
@@ -35,10 +38,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return isLogin ? (
     <html lang='ja'>
-      <body>
+      <body className={[body, baseFont.className].join(' ')}>
         <AnswerHeader path={path} />
         <ShadowHeader />
         {children}
+        <Footer />
       </body>
     </html>
   ) : (
