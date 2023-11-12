@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   try {
     const decodedAccessToken: { email: string; user_id: string } = jwtDecode(cookies.access_token)
-    if (decodedAccessToken.email !== '' && decodedAccessToken.user_id !== '') {
+    if (!decodedAccessToken.email || !decodedAccessToken.user_id) {
       throw new Error('ログイン情報が不正です')
     }
   } catch (error) {
