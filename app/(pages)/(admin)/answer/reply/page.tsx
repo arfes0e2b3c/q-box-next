@@ -16,6 +16,8 @@ import {
 } from './page.css'
 import { Metadata } from 'next'
 import { baseFont } from '@/consts/fonts'
+import { filterPosts } from '@/lib'
+import { MicroCMSResponse, QA } from '@/types'
 
 export const metadata: Metadata = {
   title: '管理者ページ',
@@ -23,8 +25,8 @@ export const metadata: Metadata = {
 }
 
 export default async function Answer() {
-  // const posts = await fetchSlicePosts(0)
-  const posts = {
+  // const res = await fetchSlicePosts(0)
+  const res: MicroCMSResponse = {
     contents: [
       {
         id: 'fznllcvay',
@@ -308,13 +310,14 @@ export default async function Answer() {
     offset: 0,
     limit: 10,
   }
+  const { contents: postList, totalCount } = filterPosts(res)
   return (
     <main className={page}>
-      <h2 className={title}>回答待ちの返信：未回答{posts.totalCount}件</h2>
+      <h2 className={title}>回答待ちの返信：未回答{totalCount}件</h2>
       <ul className={pageInner}>
-        {posts.contents.length ? (
+        {postList.length ? (
           <>
-            {posts.contents.map((post) => (
+            {postList.map((post) => (
               <li className={card} key={post.id}>
                 <h3 className={question}>{post.question}</h3>
                 <p className={answer}>{post.answer}</p>

@@ -1,5 +1,5 @@
 import { answered, requirement, old, noResult } from '@/components/shared/QACardContainer/index.css'
-import { AnswerState, QA } from '@/types'
+import { AnswerState, MicroCMSResponse, QA } from '@/types'
 
 export const filterPublicReplies = (post: QA) => {
   post.replies = post.replies.filter((reply) => {
@@ -40,3 +40,13 @@ export const exchangeStateToUrl = (state: AnswerState) => {
 
 export const isRightAccessUser = (email: string, uid: string): boolean =>
   email === process.env.NEXT_PUBLIC_OTECIR_EMAIL && uid === process.env.NEXT_PUBLIC_OTECIR_USER_ID
+
+export const filterPosts = (posts: MicroCMSResponse) => {
+  posts.contents = posts.contents.map((post) => {
+    post.replies = post.replies.filter((reply) => {
+      return !reply.isDeleted && !reply.replyAnswer
+    })
+    return post
+  })
+  return posts
+}
