@@ -25,18 +25,25 @@ export default async function Answer() {
     <main className={page}>
       <h2 className={title}>回答待ちの質問：未回答{posts.totalCount}件</h2>
       <ul className={pageInner}>
-        {/* <p v-show='!posts[0]'>質問はありません</p> */}
-        {posts.contents.map((post) => (
-          <li className={card} key={post.id}>
-            <p className={createdAt}>{dayjs(post.createdAt).format('MM/DD HH:mm')}</p>
-            <div className={box}>
-              <button className={[button, baseFont.className].join(' ')}>削除</button>
-              <h3 className={question}>{post.question}</h3>
-              <button className={[button, toggleButton, baseFont.className].join(' ')}>開閉</button>
-            </div>
-            {/* <SharedAnswerSendSentence className='send-sentence' /> */}
-          </li>
-        ))}
+        {posts.contents.length ? (
+          <>
+            {posts.contents.map((post) => (
+              <li className={card} key={post.id}>
+                <p className={createdAt}>{dayjs(post.createdAt).format('MM/DD HH:mm')}</p>
+                <div className={box}>
+                  <button className={[button, baseFont.className].join(' ')}>削除</button>
+                  <h3 className={question}>{post.question}</h3>
+                  <button className={[button, toggleButton, baseFont.className].join(' ')}>
+                    開閉
+                  </button>
+                </div>
+                {/* <SharedAnswerSendSentence className='send-sentence' /> */}
+              </li>
+            ))}
+          </>
+        ) : (
+          <p>質問はありません</p>
+        )}
       </ul>
     </main>
   )
