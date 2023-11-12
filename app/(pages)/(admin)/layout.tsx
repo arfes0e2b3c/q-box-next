@@ -1,6 +1,6 @@
 'use client'
 import { jwtDecode } from 'jwt-decode'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { use, useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { body, isLoginText } from './layout.css'
@@ -8,10 +8,12 @@ import { Oval } from 'react-loader-spinner'
 import { isRightAccessUser } from '@/lib'
 import { Header } from '@/components/shared/Header'
 import { ShadowHeader } from '@/components/shared/ShadowHeader'
+import { AnswerHeader } from '@/components/shared/AnswerHeader'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [cookies] = useCookies()
   const router = useRouter()
+  const path = usePathname()
   const [isLogin, setIsLogin] = useState(false)
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return isLogin ? (
     <html lang='ja'>
       <body>
-        <Header />
+        <AnswerHeader path={path} />
         <ShadowHeader />
         {children}
       </body>
