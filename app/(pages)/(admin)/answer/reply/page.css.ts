@@ -11,6 +11,8 @@ export const page = style({
 })
 
 export const title = style({
+  margin: '20px 0 0',
+  textAlign: 'center',
   fontSize: '2.2rem',
   '@media': {
     'screen and (max-width: 768px)': {
@@ -24,7 +26,7 @@ export const pageInner = style({
   display: 'flex',
   flexDirection: 'column',
   padding: '0',
-  margin: '20px 0',
+  margin: '10px 0 20px',
   '@media': {
     'screen and (max-width: 768px)': {
       width: '100%',
@@ -81,7 +83,7 @@ export const replyContainer = style({
   alignItems: 'center',
   width: '90%',
   padding: '10px',
-  margin: '10px 0 0',
+  margin: '10px 0',
   boxShadow: '0 0 5px 5px rgba(0, 0, 0, 0.1)',
   '@media': {
     'screen and (max-width: 768px)': {
