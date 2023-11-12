@@ -17,20 +17,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const [isLogin, setIsLogin] = useState(false)
 
   useEffect(() => {
-    ;(async () => {
+    try {
       if (!cookies.access_token || typeof cookies.access_token !== 'string') {
-        router.push('/login')
+        throw new Error('不正なアクセスです')
       }
 
-      const { email, user_id }: { email: string; user_id: string } = await jwtDecode(
-        cookies.access_token
-      )
+      const { email, user_id }: { email: string; user_id: string } = jwtDecode(cookies.access_token)
       if (isRightAccessUser(email, user_id)) {
         setIsLogin(true)
       } else {
-        router.push('/login')
+        throw new Error('不正なアクセスです')
       }
-    })()
+    } catch (e) {
+      router.push('/login')
+    }
   }, [cookies])
 
   return isLogin ? (
