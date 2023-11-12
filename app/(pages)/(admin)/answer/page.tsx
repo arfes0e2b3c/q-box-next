@@ -12,6 +12,7 @@ import {
   toggleButton,
 } from './page.css'
 import { Metadata } from 'next'
+import { baseFont } from '@/consts/fonts'
 
 export const metadata: Metadata = {
   title: '管理者ページ',
@@ -31,9 +32,9 @@ export default async function Answer() {
           <li className={card} key={post.id}>
             <p className={createdAt}>{dayjs(post.createdAt).format('MM/DD HH:mm')}</p>
             <div className={box}>
-              <button className={button}>削除</button>
+              <button className={[button, baseFont.className].join(' ')}>削除</button>
               <h3 className={question}>{post.question}</h3>
-              <button className={[button, toggleButton].join(' ')}>開閉</button>
+              <button className={[button, toggleButton, baseFont.className].join(' ')}>開閉</button>
             </div>
             {/* <SharedAnswerSendSentence className='send-sentence' /> */}
           </li>
