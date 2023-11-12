@@ -41,12 +41,14 @@ export const exchangeStateToUrl = (state: AnswerState) => {
 export const isRightAccessUser = (email: string, uid: string): boolean =>
   email === process.env.NEXT_PUBLIC_OTECIR_EMAIL && uid === process.env.NEXT_PUBLIC_OTECIR_USER_ID
 
-export const filterPosts = (posts: MicroCMSResponse) => {
-  posts.contents = posts.contents.map((post) => {
-    post.replies = post.replies.filter((reply) => {
-      return !reply.isDeleted && !reply.replyAnswer
-    })
-    return post
-  })
-  return posts
+export const filterPosts = (posts: MicroCMSResponse): MicroCMSResponse => {
+  const filteredContents = posts.contents.map(filterReplies).filter(postHasReplies)
+  return { ...posts, contents: filteredContents }
 }
+
+const filterReplies = (post: QA) => {
+  const filteredReplies = post.replies.filter((reply) => !reply.isDeleted && !reply.replyAnswer)
+  return { ...post, replies: filteredReplies }
+}
+
+const postHasReplies = (post: QA) => post.replies.length > 0
