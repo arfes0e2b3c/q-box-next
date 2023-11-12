@@ -23,10 +23,8 @@ export default async function Answer() {
   const posts = await fetchSlicePosts(0)
   return (
     <main className={page}>
+      <h2 className={title}>回答待ちの質問：未回答{posts.totalCount}件</h2>
       <ul className={pageInner}>
-        <div>
-          <h2 className={title}>回答待ちの質問：未回答{posts.totalCount}件</h2>
-        </div>
         {/* <p v-show='!posts[0]'>質問はありません</p> */}
         {posts.contents.map((post) => (
           <li className={card} key={post.id}>
