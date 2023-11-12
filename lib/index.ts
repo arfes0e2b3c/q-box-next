@@ -37,3 +37,6 @@ export const exchangeStateToUrl = (state: AnswerState) => {
       return 'https://images.microcms-assets.io/assets/ca0c41f03efd472a910782fea07dff31/690434409f8a4b2f9e53fe9f8dd23102/answered-right.png'
   }
 }
+
+export const isRightAccessUser = (email: string, uid: string): boolean =>
+  email === process.env.NEXT_PUBLIC_OTECIR_EMAIL && uid === process.env.NEXT_PUBLIC_OTECIR_USER_ID
