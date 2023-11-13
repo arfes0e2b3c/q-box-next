@@ -13,6 +13,7 @@
   "dependencies": {
     "@tanstack/react-query": "^4.35.7",
     "@vanilla-extract/css": "^1.13.0",
+    "@vanilla-extract/dynamic": "^2.1.0",
     "base64url": "^3.0.1",
     "dayjs": "^1.11.10",
     "firebase": "^10.5.2",

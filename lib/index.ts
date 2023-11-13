@@ -52,3 +52,13 @@ const filterReplies = (post: QA) => {
 }
 
 const postHasReplies = (post: QA) => post.replies.length > 0
+
+export const isDisplayedRed = (count: number): boolean => {
+  while (count > twitterMaxLength * 2) count -= twitterMaxLength * 2
+  return count > twitterMaxLength
+}
+
+export const displayCount = (count: number): number => {
+  while (count > twitterMaxLength) count -= twitterMaxLength
+  return count / 2
+}

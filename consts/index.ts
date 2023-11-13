@@ -10,6 +10,8 @@ export const noResultQAData: QA = {
   replies: [],
 }
 
+export const twitterMaxLength = 280
+
 export const mockQAResponse: MicroCMSResponse = {
   contents: [
     {
