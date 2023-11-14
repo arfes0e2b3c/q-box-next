@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next build && next start",
     "lint": "next lint",
     "lint:fix": "yarn lint --fix",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'"
@@ -13,6 +13,7 @@
   "dependencies": {
     "@tanstack/react-query": "^4.35.7",
     "@vanilla-extract/css": "^1.13.0",
+    "@vanilla-extract/dynamic": "^2.1.0",
     "base64url": "^3.0.1",
     "dayjs": "^1.11.10",
     "firebase": "^10.5.2",
@@ -26,13 +27,17 @@
     "react-infinite-scroller": "^1.2.6",
     "react-loader-spinner": "^5.4.5",
     "react-router-dom": "^6.18.0",
-    "sanitize.css": "^13.0.0"
+    "react-transition-group": "^4.4.5",
+    "sanitize.css": "^13.0.0",
+    "twitter-text": "^3.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-infinite-scroller": "^1.2.4",
+    "@types/react-transition-group": "^4.4.9",
+    "@types/twitter-text": "^3.1.8",
     "@vanilla-extract/next-plugin": "^2.3.1",
     "eslint": "^8",
     "eslint-config-next": "^13.5.6",
