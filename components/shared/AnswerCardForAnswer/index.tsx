@@ -18,7 +18,7 @@ export const AnswerCardForAnswer = (props: { post: QA }) => {
   const isLoading = deletePost.isLoading
 
   return (
-    <li className={answerCard} key={post.id}>
+    <li className={answerCard}>
       <p className={createdAt}>{dayjs(post.createdAt).format('MM/DD HH:mm')}</p>
       <div className={box}>
         <button
