@@ -16,8 +16,7 @@ export const title = style({
   fontSize: '2.2rem',
   '@media': {
     'screen and (max-width: 768px)': {
-      fontSize: '1.6rem',
-      marginLeft: '10px',
+      fontSize: '1.4rem',
     },
   },
 })
