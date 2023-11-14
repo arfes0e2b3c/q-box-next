@@ -43,6 +43,14 @@ export const createPost = async (question: string) => {
   return res
 }
 
+export const deletePost = async (contentId: string) => {
+  const res = await client.delete({
+    endpoint: 'q_box_posts',
+    contentId,
+  })
+  return res
+}
+
 export const patchPost = async (contentId: string, replyIds: string[]) => {
   const res = await client.update({
     endpoint: 'q_box_posts',
