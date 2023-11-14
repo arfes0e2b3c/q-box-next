@@ -25,9 +25,3 @@ export const qAListItem = style({
     },
   },
 })
-
-export const loadingCircleContainer = style({
-  display: 'flex',
-  justifyContent: 'center',
-  padding: '20px 0',
-})
