@@ -2,8 +2,7 @@ import { useMutation } from '@tanstack/react-query'
 
 export const useDeletePost = () =>
   useMutation(async (contentId: string) => {
-    const res = await deletePost(contentId)
-    return res
+    await deletePost(contentId)
   })
 
 const deletePost = async (contentId: string) => {
@@ -14,7 +13,5 @@ const deletePost = async (contentId: string) => {
     },
     body: JSON.stringify({ contentId }),
   })
-  const data: { id: string; error: string } = await res.json()
-  if (res.status !== 200) throw new Error(data.error)
-  return data
+  if (res.status !== 200) throw new Error('削除に失敗しました')
 }

@@ -30,8 +30,8 @@ export async function POST(req: NextRequest) {
   return NextResponse.json(res, { status: 200 })
 }
 
-export async function DELETE(req: NextRequest): Promise<NextResponse<void>> {
+export async function DELETE(req: NextRequest): Promise<NextResponse<{ status: number }>> {
   const props = await req.json()
-  const res = await deletePost(props.postId)
-  return NextResponse.json(res, { status: 200 })
+  await deletePost(props.contentId)
+  return NextResponse.json({ status: 200 })
 }
