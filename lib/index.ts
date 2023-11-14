@@ -1,5 +1,7 @@
 import { answered, requirement, old, noResult } from '@/components/shared/QACardContainer/index.css'
+import { twitterMaxLength } from '@/consts'
 import { AnswerState, MicroCMSResponse, QA } from '@/types'
+import twitterText from 'twitter-text'
 
 export const filterPublicReplies = (post: QA) => {
   post.replies = post.replies.filter((reply) => {
@@ -52,6 +54,20 @@ const filterReplies = (post: QA) => {
 }
 
 const postHasReplies = (post: QA) => post.replies.length > 0
+
+export const countTweetLength = (text: string): number => {
+  let twitterMaxLength = 280
+  const continueText = '(続く)'
+  let tmpCount = twitterText.getTweetLength(text)
+
+  let loopCount = 1
+  while (tmpCount > twitterMaxLength * loopCount) {
+    tmpCount += twitterText.getTweetLength(continueText)
+    loopCount++
+  }
+
+  return tmpCount
+}
 
 export const isDisplayedRed = (count: number): boolean => {
   while (count > twitterMaxLength * 2) count -= twitterMaxLength * 2
