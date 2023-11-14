@@ -8,7 +8,7 @@ import { answerCard, createdAt, box, question, toggleButton, button } from './in
 import { useDeletePost } from '@/app/client/useDeletePost'
 import { Oval } from 'react-loader-spinner'
 
-export const AnswerCardForAnswer = (props: { post: QA }) => {
+export const AnswerCardForAnswer = (props: { post: QA; refetch: () => void }) => {
   const post = props.post
 
   const [isOpened, setIsOpened] = useState(false)
@@ -26,7 +26,10 @@ export const AnswerCardForAnswer = (props: { post: QA }) => {
           onClick={() => {
             if (confirm('質問を削除しますか？')) {
               deletePost.mutate(post.id, {
-                onSuccess: () => alert('質問を削除しました'),
+                onSuccess: () => {
+                  alert('質問を削除しました')
+                  props.refetch()
+                },
                 onError: (error) => alert(error),
               })
             }
