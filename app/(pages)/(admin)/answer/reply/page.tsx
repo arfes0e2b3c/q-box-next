@@ -1,23 +1,9 @@
 import { fetchSlicePosts } from '@/app/client/fetchSlicePosts'
-import dayjs from 'dayjs'
-import {
-  answer,
-  box,
-  button,
-  card,
-  createdAt,
-  page,
-  pageInner,
-  question,
-  replyContainer,
-  replySentence,
-  title,
-  toggleButton,
-} from './page.css'
+import { page, pageInner, title } from './page.css'
 import { Metadata } from 'next'
-import { baseFont } from '@/consts/fonts'
 import { filterPosts } from '@/lib'
-import { MicroCMSResponse, QA } from '@/types'
+import { MicroCMSResponse } from '@/types'
+import { AnswerCardForReply } from '@/components/shared/AnswerCardForReply'
 
 export const metadata: Metadata = {
   title: '管理者ページ',
@@ -318,23 +304,7 @@ export default async function Answer() {
         {postList.length ? (
           <>
             {postList.map((post) => (
-              <li className={card} key={post.id}>
-                <h3 className={question}>{post.question}</h3>
-                <p className={answer}>{post.answer}</p>
-                {post.replies.map((reply) => (
-                  <div className={replyContainer} key={reply.id}>
-                    <p className={createdAt}>{dayjs(post.createdAt).format('MM/DD HH:mm')}</p>
-                    <div className={box}>
-                      <button className={[button, baseFont.className].join(' ')}>削除</button>
-                      <p className={replySentence}>{reply.replySentence}</p>
-                      <button className={[button, toggleButton, baseFont.className].join(' ')}>
-                        開閉
-                      </button>
-                    </div>
-                  </div>
-                ))}
-                {/* <SharedAnswerSendSentence className='send-sentence' /> */}
-              </li>
+              <AnswerCardForReply key={post.id} post={post} />
             ))}
           </>
         ) : (
