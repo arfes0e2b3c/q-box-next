@@ -299,7 +299,7 @@ export default async function Answer() {
   const { contents: postList, totalCount } = filterPosts(res)
   return (
     <main className={page}>
-      <h2 className={title}>回答待ちの返信：未回答{totalCount}件</h2>
+      <h2 className={title}>未回答の情報提供：{totalCount}件</h2>
       <ul className={pageInner}>
         {postList.length ? (
           <>

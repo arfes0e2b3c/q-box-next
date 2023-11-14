@@ -13,7 +13,7 @@ export default async function Answer() {
 
   return (
     <main className={page}>
-      <h2 className={title}>回答待ちの質問：未回答{posts.totalCount}件</h2>
+      <h2 className={title}>未回答の質問：{posts.totalCount}件</h2>
       <ul className={pageInner}>
         {posts.contents.length ? (
           <>
