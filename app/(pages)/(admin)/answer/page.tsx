@@ -3,7 +3,6 @@ import { noMoreResult, page, pageInner, title } from './page.css'
 import { AnswerCardForAnswer } from '@/components/shared/AnswerCardForAnswer'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { fetchSliceUnansweredPosts } from '@/app/client/fetchSliceUnansweredPosts'
-import { fetchSlicePosts } from '@/app/client/fetchSlicePosts'
 import InfiniteScroll from 'react-infinite-scroller'
 import { LoadingCircle } from '@/components/shared/LoadingCircle'
 
