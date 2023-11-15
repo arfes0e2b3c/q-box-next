@@ -8,17 +8,18 @@ import InfiniteScroll from 'react-infinite-scroller'
 import { LoadingCircle } from '@/components/shared/LoadingCircle'
 
 export default function Answer() {
-  const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ['unanswered'],
-    queryFn: ({ pageParam = 0 }) => fetchSliceUnansweredPosts(pageParam),
-    refetchOnWindowFocus: false,
-    staleTime: Infinity,
-    getNextPageParam: (lastPage) =>
-      lastPage?.offset < lastPage?.totalCount ? lastPage?.offset + 20 : false,
-    useErrorBoundary: (error: { response: { status: number } }) => {
-      return error.response?.status >= 500
-    },
-  })
+  const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch } =
+    useInfiniteQuery({
+      queryKey: ['unanswered'],
+      queryFn: ({ pageParam = 0 }) => fetchSliceUnansweredPosts(pageParam),
+      refetchOnWindowFocus: false,
+      staleTime: Infinity,
+      getNextPageParam: (lastPage) =>
+        lastPage?.offset < lastPage?.totalCount ? lastPage?.offset + 20 : false,
+      useErrorBoundary: (error: { response: { status: number } }) => {
+        return error.response?.status >= 500
+      },
+    })
 
   const pagesData = data?.pages ?? []
 
@@ -42,7 +43,9 @@ export default function Answer() {
         <ul className={pageInner}>
           {pagesData && pagesData[0].contents.length ? (
             pagesData.map((page) =>
-              page.contents.map((post) => <AnswerCardForAnswer key={post.id} post={post} />)
+              page.contents.map((post) => (
+                <AnswerCardForAnswer key={post.id} post={post} refetch={refetch} />
+              ))
             )
           ) : (
             <p>質問はありません</p>
