@@ -50,13 +50,11 @@ export const deletePost = async (contentId: string): Promise<void> => {
   })
 }
 
-export const patchPost = async (contentId: string, replyIds: string[]) => {
+export const patchPost = async (contentId: string, content: Partial<QA>) => {
   const res = await client.update({
     endpoint: 'q_box_posts',
     contentId,
-    content: {
-      replies: replyIds,
-    },
+    content,
   })
   return res
 }
