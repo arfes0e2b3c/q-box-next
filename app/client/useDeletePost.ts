@@ -1,9 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 
 export const useDeletePost = () =>
-  useMutation(async (contentId: string) => {
-    await deletePost(contentId)
-  })
+  useMutation(async (contentId: string) => await deletePost(contentId))
 
 const deletePost = async (contentId: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`, {
