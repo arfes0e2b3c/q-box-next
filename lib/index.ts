@@ -43,17 +43,12 @@ export const exchangeStateToUrl = (state: AnswerState): string => {
   return baseUrl + path
 }
 
-export const filterPosts = (posts: MicroCMSResponse): MicroCMSResponse => {
-  const filteredContents = posts.contents.map(filterReplies).filter(postHasReplies)
-  return { ...posts, contents: filteredContents }
-}
+export const filterPostsHasOpenReply = (posts: QA[]): QA[] => posts.map(filterReplies)
 
 const filterReplies = (post: QA): QA => {
   const filteredReplies = post.replies.filter((reply) => !reply.isDeleted && !reply.replyAnswer)
   return { ...post, replies: filteredReplies }
 }
-
-const postHasReplies = (post: QA): boolean => post.replies.length > 0
 
 export const countTweetLength = (text: string): number => {
   let tmpCount = twitterText.getTweetLength(text)
