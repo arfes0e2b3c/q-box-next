@@ -1,4 +1,3 @@
-import { fetchSlicePosts } from '@/app/client/fetchSlicePosts'
 import { page, pageInner, title } from './page.css'
 import { Metadata } from 'next'
 import { filterPosts } from '@/lib'
