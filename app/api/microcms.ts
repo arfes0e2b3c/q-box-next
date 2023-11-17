@@ -59,6 +59,14 @@ export const patchPost = async (contentId: string, content: Partial<QA>) => {
   return res
 }
 
+export const fetchReplies = async (queries?: MicroCMSQueries) => {
+  const res = await client.get({
+    endpoint: 'q_box_replies',
+    queries,
+  })
+  return res
+}
+
 export const createReply = async (replySentence: string, replyFor: string) => {
   const res = await client.create({
     endpoint: 'q_box_replies',

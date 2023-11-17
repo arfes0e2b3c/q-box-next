@@ -2,8 +2,8 @@ import { useMutation } from '@tanstack/react-query'
 
 export const useCreateReply = () =>
   useMutation(async ({ reply, replyFor }: { reply: string; replyFor: string }) => {
-    const createReplyRes = await createReply(reply, replyFor)
-    const patchReplyIdRes = await patchReplyId(replyFor, createReplyRes.id)
+    await createReply(reply, replyFor)
+    const patchReplyIdRes = await patchReplyId(replyFor)
     return patchReplyIdRes
   })
 
@@ -20,9 +20,9 @@ const createReply = async (reply: string, replyFor: string) => {
   return data
 }
 
-const patchReplyId = async (replyFor: string, replyId: string) => {
-  const postRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/detail/${replyFor}`)
-  const currentReplyIds: string[] = (await postRes.json()).replies.map(
+const patchReplyId = async (replyFor: string) => {
+  const postRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/replies/${replyFor}`)
+  const currentReplyIds: string[] = (await postRes.json()).contents.map(
     (reply: { id: string }) => reply.id
   )
 
@@ -33,7 +33,7 @@ const patchReplyId = async (replyFor: string, replyId: string) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ replyIds: [...currentReplyIds, replyId] }),
+      body: JSON.stringify({ replyIds: currentReplyIds }),
     }
   )
   const data: { id: string; error: string } = await replyIdres.json()
