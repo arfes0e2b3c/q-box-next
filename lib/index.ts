@@ -86,13 +86,10 @@ export const splitTweet = (text: string) => {
     let char = text.charAt(i)
     let testTweet = currentTweet + char
 
-    console.log(countTweetLength(text), twitterMaxLength)
     const continueTextLength =
       countTweetLength(text) > twitterMaxLength ? countTweetLength(continueText) : 0
     const MAX_LENGTH =
       twitterMaxLength - (tweets[0] == null ? countTweetLength(baseText) : 0) - continueTextLength
-
-    console.log({ cont: continueTextLength, max: MAX_LENGTH })
 
     let isInsideLink = links.some((link) => i >= link.start && i < link.end)
     let willSplitLink = links.some(
