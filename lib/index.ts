@@ -3,14 +3,14 @@ import { continueText, twitterMaxLength } from '@/consts'
 import { AnswerState, MicroCMSResponse, QA } from '@/types'
 import twitterText from 'twitter-text'
 
-export const filterPublicReplies = (post: QA) => {
+export const filterPublicReplies = (post: QA): QA => {
   post.replies = post.replies.filter((reply) => {
     return reply.replyAnswer !== undefined && reply.isDeleted === false
   })
   return post
 }
 
-export const exchangeStateToStyle = (state: string) => {
+export const exchangeStateToStyle = (state: string): string => {
   switch (state) {
     case 'answered':
       return answered
@@ -21,11 +21,11 @@ export const exchangeStateToStyle = (state: string) => {
     case 'noResult':
       return noResult
     default:
-      return ''
+      return answered
   }
 }
 
-export const exchangeStateToUrl = (state: AnswerState) => {
+export const exchangeStateToUrl = (state: AnswerState): string => {
   const baseUrl = 'https://images.microcms-assets.io/assets/ca0c41f03efd472a910782fea07dff31'
   let path: string
   switch (state) {
@@ -48,12 +48,12 @@ export const filterPosts = (posts: MicroCMSResponse): MicroCMSResponse => {
   return { ...posts, contents: filteredContents }
 }
 
-const filterReplies = (post: QA) => {
+const filterReplies = (post: QA): QA => {
   const filteredReplies = post.replies.filter((reply) => !reply.isDeleted && !reply.replyAnswer)
   return { ...post, replies: filteredReplies }
 }
 
-const postHasReplies = (post: QA) => post.replies.length > 0
+const postHasReplies = (post: QA): boolean => post.replies.length > 0
 
 export const countTweetLength = (text: string): number => {
   let tmpCount = twitterText.getTweetLength(text)

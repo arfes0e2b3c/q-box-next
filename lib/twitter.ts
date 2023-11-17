@@ -1,7 +1,8 @@
 import { twitterMaxLength, continueText, baseText } from '@/consts'
 import { countTweetLength } from '.'
+import { LinkInfoList } from '@/types'
 
-export const splitTweet = (text: string) => {
+export const splitTweet = (text: string): string[] => {
   let currentTweet = ''
   let tweets = []
   const links = findLinks(text)
@@ -43,7 +44,7 @@ export const splitTweet = (text: string) => {
   return tweets
 }
 
-const findLinks = (text: string) => {
+const findLinks = (text: string): LinkInfoList => {
   const urlRegex = /https?:\/\/[^\s]+/g
   let links = []
   let match
@@ -55,14 +56,14 @@ const findLinks = (text: string) => {
   return links
 }
 
-export const addBaseText = (tweets: string[], contentId: string) => {
+export const addBaseText = (tweets: string[], contentId: string): string[] => {
   const detailPageLink = baseText + '/' + contentId
   return tweets.map((tweet, index) => {
     if (index === 0) return tweet + detailPageLink
     else return tweet
   })
 }
-export const addContinueText = (tweets: string[]) => {
+export const addContinueText = (tweets: string[]): string[] => {
   if (tweets.length === 1) return tweets
   return tweets.map((tweet, index) => {
     if (!isLastTweet(index, tweets.length)) return tweet + continueText
@@ -70,4 +71,4 @@ export const addContinueText = (tweets: string[]) => {
   })
 }
 
-const isLastTweet = (index: number, tweetLength: number) => index === tweetLength - 1
+const isLastTweet = (index: number, tweetLength: number): boolean => index === tweetLength - 1
