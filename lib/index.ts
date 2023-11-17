@@ -26,18 +26,21 @@ export const exchangeStateToStyle = (state: string) => {
 }
 
 export const exchangeStateToUrl = (state: AnswerState) => {
+  const baseUrl = 'https://images.microcms-assets.io/assets/ca0c41f03efd472a910782fea07dff31'
+  let path: string
   switch (state) {
     case 'answered':
-      return 'https://images.microcms-assets.io/assets/ca0c41f03efd472a910782fea07dff31/690434409f8a4b2f9e53fe9f8dd23102/answered-right.png'
+      path = '/690434409f8a4b2f9e53fe9f8dd23102/answered-right.png'
     case 'requirement':
-      return 'https://images.microcms-assets.io/assets/ca0c41f03efd472a910782fea07dff31/c7e76a06b7434a1e93686f5ebf958ed2/requirement-right.png'
+      path = '/c7e76a06b7434a1e93686f5ebf958ed2/requirement-right.png'
     case 'old':
-      return 'https://images.microcms-assets.io/assets/ca0c41f03efd472a910782fea07dff31/588cf35b643248f48322b2ea43cf55e5/old-right.png'
+      path = '/588cf35b643248f48322b2ea43cf55e5/old-right.png'
     case 'noResult':
-      return 'https://images.microcms-assets.io/assets/ca0c41f03efd472a910782fea07dff31/b2c61a4fc9d747b7bb3da95d8b30886a/no-result-right.png'
+      path = '/b2c61a4fc9d747b7bb3da95d8b30886a/no-result-right.png'
     default:
-      return 'https://images.microcms-assets.io/assets/ca0c41f03efd472a910782fea07dff31/690434409f8a4b2f9e53fe9f8dd23102/answered-right.png'
+      path = '/690434409f8a4b2f9e53fe9f8dd23102/answered-right.png'
   }
+  return baseUrl + path
 }
 
 export const filterPosts = (posts: MicroCMSResponse): MicroCMSResponse => {
