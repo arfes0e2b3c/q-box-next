@@ -7,4 +7,16 @@ const twitterClient = new TwitterApi({
   accessSecret: process.env.NEXT_PUBLIC_TWITTER_ACCESS_SECRET || '',
 })
 
-export const tweet = async (text: string) => await twitterClient.v2.tweet(text)
+export const postTweet = async (text: string) => {
+  const res = await twitterClient.v2.tweet(text)
+  return res.data.id
+}
+
+export const postReply = async (text: string, ReplyTweetId: string): Promise<string> => {
+  const res = await twitterClient.v2.tweet(text, {
+    reply: {
+      in_reply_to_tweet_id: ReplyTweetId,
+    },
+  })
+  return res.data.id
+}

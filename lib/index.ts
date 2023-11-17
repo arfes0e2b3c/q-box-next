@@ -133,3 +133,19 @@ const findLinks = (text: string) => {
 
   return links
 }
+
+export const addBaseText = (tweets: string[]) => {
+  return tweets.map((tweet, index) => {
+    if (index === 0) return tweet + baseText
+    else return tweet
+  })
+}
+export const addContinueText = (tweets: string[]) => {
+  if (tweets.length === 1) return tweets
+  return tweets.map((tweet, index) => {
+    if (!isLastTweet(index, tweets.length)) return tweet + continueText
+    else return tweet
+  })
+}
+
+const isLastTweet = (index: number, tweetLength: number) => index === tweetLength - 1
