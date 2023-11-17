@@ -4,8 +4,8 @@ import { MicroCMSResponse, QA } from '@/types'
 import InfiniteScroll from 'react-infinite-scroller'
 import { QACardContainer } from '../QACardContainer'
 import { SuspenseCardContainer } from '../SuspenseCardContainer'
-import { loadingCircleContainer, qAListContainer, qAListItem } from './index.css'
-import { Oval } from 'react-loader-spinner'
+import { qAListContainer, qAListItem } from './index.css'
+import { LoadingCircle } from '../LoadingCircle'
 
 export const QAListWrapper = ({
   pagesData,
@@ -50,18 +50,7 @@ export const QAListWrapper = ({
                 : []}
             </ul>
           </InfiniteScroll>
-          {isFetching && (
-            <div className={loadingCircleContainer}>
-              <Oval
-                strokeWidth={5}
-                width={60}
-                height={60}
-                color='#888'
-                secondaryColor='#ddd'
-                ariaLabel='loading'
-              />
-            </div>
-          )}
+          {isFetching && <LoadingCircle />}
         </>
       )}
     </>

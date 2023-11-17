@@ -41,3 +41,10 @@ export type MicroCMSQueries = {
   filters?: string
   richEditorFormat?: 'html' | 'object'
 }
+
+export type LinkInfo = {
+  start: number
+  end: number
+}
+
+export type LinkInfoList = LinkInfo[]

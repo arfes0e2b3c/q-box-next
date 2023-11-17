@@ -2,7 +2,7 @@ import { MicroCMSQueries, MicroCMSResponse, QA } from '@/types'
 import { createClient } from 'microcms-js-sdk'
 
 const client = createClient({
-  serviceDomain: 'q-box',
+  serviceDomain: process.env.NEXT_PUBLIC_MICROCMS_DOMAIN || '',
   apiKey: process.env.NEXT_PUBLIC_MICROCMS_KEY || '',
 })
 
@@ -43,13 +43,18 @@ export const createPost = async (question: string) => {
   return res
 }
 
-export const patchPost = async (contentId: string, replyIds: string[]) => {
+export const deletePost = async (contentId: string): Promise<void> => {
+  await client.delete({
+    endpoint: 'q_box_posts',
+    contentId,
+  })
+}
+
+export const patchPost = async (contentId: string, content: Partial<QA>) => {
   const res = await client.update({
     endpoint: 'q_box_posts',
     contentId,
-    content: {
-      replies: replyIds,
-    },
+    content,
   })
   return res
 }

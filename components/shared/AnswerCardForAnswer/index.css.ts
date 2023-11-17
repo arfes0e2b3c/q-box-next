@@ -46,6 +46,8 @@ export const box = style({
 })
 
 export const button = style({
+  display: 'grid',
+  placeContent: 'center',
   width: '100px',
   height: '60px',
   border: '1px solid rgba(0, 0, 0, 0.3)',

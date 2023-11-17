@@ -52,7 +52,7 @@ export const textInput = style({
   },
 })
 
-export const alert = style({
+export const alertText = style({
   color: 'red',
   fontSize: '1rem',
   margin: '5px 0',
@@ -76,6 +76,8 @@ export const buttonContainer = style({
 })
 
 export const button = style({
+  display: 'grid',
+  placeContent: 'center',
   width: '180px',
   height: '40px',
   border: 'none',

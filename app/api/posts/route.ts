@@ -1,6 +1,6 @@
 import { MicroCMSResponse } from '@/types'
 import { NextRequest, NextResponse } from 'next/server'
-import { createPost, fetchPosts } from '../microcms'
+import { createPost, deletePost, fetchPosts } from '../microcms'
 import { filterPublicReplies } from '@/lib'
 
 export async function GET(req: NextRequest): Promise<NextResponse<MicroCMSResponse>> {
@@ -28,4 +28,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: '質問を入力してください' }, { status: 400 })
   const res = await createPost(props.question)
   return NextResponse.json(res, { status: 200 })
+}
+
+export async function DELETE(req: NextRequest): Promise<NextResponse<{ status: number }>> {
+  const props = await req.json()
+  await deletePost(props.contentId)
+  return NextResponse.json({ status: 200 })
 }

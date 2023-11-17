@@ -32,3 +32,7 @@ export const pageInner = style({
     },
   },
 })
+
+export const noMoreResult = style({
+  textAlign: 'center',
+})
