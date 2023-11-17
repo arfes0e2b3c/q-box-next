@@ -131,9 +131,10 @@ const findLinks = (text: string) => {
   return links
 }
 
-export const addBaseText = (tweets: string[]) => {
+export const addBaseText = (tweets: string[], contentId: string) => {
+  const detailPageLink = baseText + '/' + contentId
   return tweets.map((tweet, index) => {
-    if (index === 0) return tweet + baseText
+    if (index === 0) return tweet + detailPageLink
     else return tweet
   })
 }

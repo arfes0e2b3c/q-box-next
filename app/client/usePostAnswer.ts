@@ -1,3 +1,4 @@
+import { answer } from '@/components/shared/QACardContainer/index.css'
 import { addBaseText, addContinueText, splitTweet } from '@/lib'
 import { useMutation } from '@tanstack/react-query'
 
@@ -5,7 +6,7 @@ export const usePostAnswer = () =>
   useMutation(async ({ answer, contentId }: { answer: string; contentId: string }) => {
     const patchAnswerRes = await patchAnswer(answer, contentId)
     if (patchAnswerRes.error) throw new Error(patchAnswerRes.error)
-    const tweetId = await postTweetThread(answer)
+    const tweetId = await postTweetThread(answer, contentId)
     await patchTweetId(contentId, tweetId)
   })
 
@@ -22,10 +23,10 @@ const patchAnswer = async (answer: string, contentId: string) => {
   return data
 }
 
-const postTweetThread = async (answer: string) => {
+const postTweetThread = async (answer: string, contentId: string) => {
   let tweets = splitTweet(answer)
   tweets = addContinueText(tweets)
-  tweets = addBaseText(tweets)
+  tweets = addBaseText(tweets, contentId)
 
   try {
     const tweetReplyId: string = await postTweet(tweets[0])
