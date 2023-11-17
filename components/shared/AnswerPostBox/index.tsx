@@ -11,7 +11,7 @@ import {
 } from './index.css'
 import { countTweetLength } from '@/lib'
 import { TweetLengthGauge } from './tweetLengthGauge'
-import { twitterMaxLength } from '@/consts'
+import { baseText, twitterMaxLength } from '@/consts'
 import { CSSTransition } from 'react-transition-group'
 import { baseFont } from '@/consts/fonts'
 import { usePostAnswer } from '@/app/client/usePostAnswer'
@@ -31,7 +31,6 @@ export const AnswerPostBox = (props: {
   const postAnswer = usePostAnswer()
   const isLoading = postAnswer.isLoading
 
-  const baseText = `\n#お手伝いサークル${process.env.NEXT_PUBLIC_BASE_URL}`
   return (
     <CSSTransition in={props.isOpened} timeout={0} classNames='fade'>
       <div className={answerPostBox}>
@@ -50,6 +49,7 @@ export const AnswerPostBox = (props: {
           </button>
           <button
             className={[button, answered, baseFont.className].join(' ')}
+            disabled={isLoading}
             onClick={() => {
               if (confirm('回答を投稿しますか？')) {
                 postAnswer.mutate(

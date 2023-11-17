@@ -11,6 +11,8 @@ export const noResultQAData: QA = {
 }
 
 export const twitterMaxLength = 280
+export const baseText = `\n#お手伝いサークル https://q-box-next.vercel.app`
+export const continueText = '(続く)'
 
 export const mockQAResponse: MicroCMSResponse = {
   contents: [

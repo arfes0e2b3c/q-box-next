@@ -1,5 +1,5 @@
 import { answered, requirement, old, noResult } from '@/components/shared/QACardContainer/index.css'
-import { twitterMaxLength } from '@/consts'
+import { baseText, continueText, twitterMaxLength } from '@/consts'
 import { AnswerState, MicroCMSResponse, QA } from '@/types'
 import twitterText from 'twitter-text'
 
@@ -56,8 +56,6 @@ const filterReplies = (post: QA) => {
 const postHasReplies = (post: QA) => post.replies.length > 0
 
 export const countTweetLength = (text: string): number => {
-  let twitterMaxLength = 280
-  const continueText = '(続く)'
   let tmpCount = twitterText.getTweetLength(text)
 
   let loopCount = 1
@@ -77,4 +75,61 @@ export const isDisplayedRed = (count: number): boolean => {
 export const displayCount = (count: number): number => {
   while (count > twitterMaxLength) count -= twitterMaxLength
   return count / 2
+}
+
+export const splitTweet = (text: string) => {
+  let currentTweet = ''
+  let tweets = []
+  const links = findLinks(text)
+
+  for (let i = 0; i < text.length; i++) {
+    let char = text.charAt(i)
+    let testTweet = currentTweet + char
+
+    console.log(countTweetLength(text), twitterMaxLength)
+    const continueTextLength =
+      countTweetLength(text) > twitterMaxLength ? countTweetLength(continueText) : 0
+    const MAX_LENGTH =
+      twitterMaxLength - (tweets[0] == null ? countTweetLength(baseText) : 0) - continueTextLength
+
+    console.log({ cont: continueTextLength, max: MAX_LENGTH })
+
+    let isInsideLink = links.some((link) => i >= link.start && i < link.end)
+    let willSplitLink = links.some(
+      (link) => i >= link.start && i < link.end && countTweetLength(testTweet) > MAX_LENGTH
+    )
+
+    if (countTweetLength(testTweet) <= MAX_LENGTH && !willSplitLink) {
+      currentTweet += char
+    } else {
+      if (isInsideLink && willSplitLink) {
+        let link = links.find((link) => i >= link.start && i < link.end) as {
+          start: number
+          end: number
+        }
+        currentTweet += text.slice(i, link.end)
+        i = link.end - 1
+      }
+      tweets.push(currentTweet)
+      currentTweet = char
+    }
+  }
+
+  if (currentTweet) {
+    tweets.push(currentTweet)
+  }
+
+  return tweets
+}
+
+const findLinks = (text: string) => {
+  const urlRegex = /https?:\/\/[^\s]+/g
+  let links = []
+  let match
+
+  while ((match = urlRegex.exec(text)) !== null) {
+    links.push({ start: match.index, end: match.index + match[0].length })
+  }
+
+  return links
 }
