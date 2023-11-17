@@ -4,7 +4,6 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { body, isLoginText } from './layout.css'
-import { Oval } from 'react-loader-spinner'
 import 'sanitize.css'
 
 import { isRightAccessUser } from '@/lib'

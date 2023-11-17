@@ -1,4 +1,3 @@
-import { answer } from '@/components/shared/QACardContainer/index.css'
 import { addBaseText, addContinueText, splitTweet } from '@/lib'
 import { useMutation } from '@tanstack/react-query'
 

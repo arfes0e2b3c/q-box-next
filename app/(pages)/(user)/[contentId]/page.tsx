@@ -7,7 +7,6 @@ import { fetchAllPostIds } from '../../../client/fetchAllPostIds'
 import { BackButton } from '@/components/shared/BackButton'
 import { exchangeStateToUrl } from '@/lib'
 import base64url from 'base64url'
-import { text } from 'stream/consumers'
 
 export async function generateStaticParams() {
   const data = await fetchAllPostIds()
