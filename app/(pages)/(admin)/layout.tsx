@@ -5,13 +5,12 @@ import { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { body, isLoginText } from './layout.css'
 import 'sanitize.css'
-
-import { isRightAccessUser } from '@/lib'
 import { ShadowHeader } from '@/components/shared/ShadowHeader'
 import { AnswerHeader } from '@/components/shared/AnswerHeader'
 import { Footer } from '@/components/shared/Footer'
 import { baseFont } from '@/consts/fonts'
 import Providers from '@/app/providers'
+import { isRightAccessUser } from '@/lib/firebase'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [cookies] = useCookies()

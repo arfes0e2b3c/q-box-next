@@ -1,4 +1,4 @@
-import { addBaseText, addContinueText, splitTweet } from '@/lib'
+import { splitTweet, addContinueText, addBaseText } from '@/lib/twitter'
 import { useMutation } from '@tanstack/react-query'
 
 export const usePostAnswer = () =>
