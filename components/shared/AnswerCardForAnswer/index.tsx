@@ -23,6 +23,7 @@ export const AnswerCardForAnswer = (props: { post: QA; refetch: () => void }) =>
       <div className={box}>
         <button
           className={[button, baseFont.className].join(' ')}
+          disabled={isLoading}
           onClick={() => {
             if (confirm('質問を削除しますか？')) {
               deletePost.mutate(post.id, {
