@@ -18,7 +18,11 @@ import { usePostAnswer } from '@/app/client/usePostAnswer'
 import { Oval } from 'react-loader-spinner'
 import { useAnswerPageStore } from '@/store/answerPageStore'
 
-export const AnswerPostBox = (props: { isOpened: boolean; contentId: string }) => {
+export const AnswerPostBox = (props: {
+  isOpened: boolean
+  contentId: string
+  question: string
+}) => {
   const [input, setInput] = useState('')
   const [count, setCount] = useState(0)
   useEffect(() => {
@@ -49,7 +53,12 @@ export const AnswerPostBox = (props: { isOpened: boolean; contentId: string }) =
             onClick={() => {
               if (confirm('情報募集中として回答を投稿しますか？')) {
                 postAnswer.mutate(
-                  { answer: input, contentId: props.contentId, state: 'requirement' },
+                  {
+                    answer: input,
+                    contentId: props.contentId,
+                    state: 'requirement',
+                    question: props.question,
+                  },
                   {
                     onSuccess: () => {
                       alert('回答を投稿しました')
@@ -81,7 +90,12 @@ export const AnswerPostBox = (props: { isOpened: boolean; contentId: string }) =
             onClick={() => {
               if (confirm('回答を投稿しますか？')) {
                 postAnswer.mutate(
-                  { answer: input, contentId: props.contentId, state: 'answered' },
+                  {
+                    answer: input,
+                    contentId: props.contentId,
+                    state: 'answered',
+                    question: props.question,
+                  },
                   {
                     onSuccess: () => {
                       alert('回答を投稿しました')

@@ -58,7 +58,7 @@ export const AnswerCardForAnswer = (props: { post: QA; refetch: () => void }) =>
           開閉
         </button>
       </div>
-      <AnswerPostBox isOpened={isOpened} contentId={post.id} />
+      <AnswerPostBox isOpened={isOpened} contentId={post.id} question={post.question} />
     </li>
   )
 }

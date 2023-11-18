@@ -5,6 +5,7 @@ import { postTweetReplies } from './postTweetReplies'
 import { postTweet } from './postTweet'
 import { patchAnswer } from './patchAnswer'
 import { AnswerState } from '@/types'
+import { postS3Image } from './postS3Image'
 
 export const usePostAnswer = () =>
   useMutation(
@@ -12,13 +13,16 @@ export const usePostAnswer = () =>
       answer,
       contentId,
       state,
+      question,
     }: {
       answer: string
       contentId: string
       state: AnswerState
+      question: string
     }) => {
       const patchAnswerRes = await patchAnswer(answer, contentId, state)
       if (patchAnswerRes.error) throw new Error(patchAnswerRes.error)
+      await postS3Image(contentId, question, state)
       const tweetId = await postTweetThread(answer, contentId)
       await patchTweetId(contentId, tweetId)
     }
