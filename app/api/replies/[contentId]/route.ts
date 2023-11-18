@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { fetchReplies } from '../../microcms'
+import { fetchReplies, patchReply } from '../../microcms'
 
 export async function GET(req: NextRequest, { params }: { params: { contentId: string } }) {
   const res = await fetchReplies({
@@ -7,5 +7,10 @@ export async function GET(req: NextRequest, { params }: { params: { contentId: s
     fields: 'id',
     limit: 100,
   })
+  return NextResponse.json(res, { status: 200 })
+}
+
+export async function PATCH(req: NextRequest, { params }: { params: { contentId: string } }) {
+  const res = await patchReply(params.contentId, { isDeleted: true })
   return NextResponse.json(res, { status: 200 })
 }
