@@ -2,6 +2,7 @@ import { splitTweet, addContinueText, addBaseText } from '@/lib/twitter'
 import { useMutation } from '@tanstack/react-query'
 import { patchTweetId } from './patchTweetId'
 import { postTweetReplies } from './postTweetReplies'
+import { postTweet } from './postTweet'
 
 export const usePostAnswer = () =>
   useMutation(async ({ answer, contentId }: { answer: string; contentId: string }) => {
@@ -41,17 +42,4 @@ const postTweetThread = async (answer: string, contentId: string) => {
   } catch {
     throw new Error('ツイートに失敗しました')
   }
-}
-
-const postTweet = async (answer: string) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/tweet`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ text: answer }),
-  })
-  const tweetReplyId: string = await res.json()
-  if (res.status !== 200) throw new Error('ツイートに失敗しました')
-  return tweetReplyId
 }
