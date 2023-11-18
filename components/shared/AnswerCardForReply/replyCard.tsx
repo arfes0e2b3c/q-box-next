@@ -13,11 +13,15 @@ import {
 import { useDeleteReply } from '@/app/client/useDeleteReply'
 import { useReplyPageStore } from '@/store/replyPageStore'
 import { Oval } from 'react-loader-spinner'
+import { usePostReply } from '@/app/client/usePostReply'
 
-export const ReplyCard = (props: { reply: Reply }) => {
+export const ReplyCard = (props: { reply: Reply; replyTweetId: string; postId: string }) => {
   const reply = props.reply
+  const replyTweetId = props.replyTweetId
+  const postId = props.postId
 
   const deleteReply = useDeleteReply()
+  const postReply = usePostReply()
   const isLoading = deleteReply.isLoading
 
   const refetch = useReplyPageStore((state) => state.refetch)
@@ -58,8 +62,42 @@ export const ReplyCard = (props: { reply: Reply }) => {
         <p className={replySentence}>{reply.replySentence}</p>
         <button className={[button, baseFont.className].join(' ')}>質問へ移動</button>
       </div>
-      <button className={[registerButton, answered, baseFont.className].join(' ')}>
-        情報提供を公開
+      <button
+        className={[registerButton, answered, baseFont.className].join(' ')}
+        disabled={isLoading}
+        onClick={() => {
+          if (confirm('情報提供を公開しますか？')) {
+            postReply.mutate(
+              {
+                postId,
+                contentId: reply.id,
+                replySentence: reply.replySentence,
+                replyTweetId: replyTweetId,
+              },
+              {
+                onSuccess: () => {
+                  alert('情報提供を公開しました')
+                  refetch()
+                },
+                onError: (error) => alert(error),
+              }
+            )
+          }
+        }}
+      >
+        {isLoading ? (
+          <Oval
+            strokeWidth={'5'}
+            height='25'
+            width='25'
+            ariaLabel='loading'
+            color='white'
+            secondaryColor='#333'
+            wrapperStyle={{ cursor: 'not-allowed' }}
+          />
+        ) : (
+          '情報提供を公開'
+        )}
       </button>
     </div>
   )

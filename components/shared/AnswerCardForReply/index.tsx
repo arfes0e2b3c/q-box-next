@@ -11,7 +11,7 @@ export const AnswerCardForReply = (props: { post: QA }) => {
       <h3 className={question}>{post.question}</h3>
       <p className={answer}>{post.answer}</p>
       {post.replies.map((reply) => (
-        <ReplyCard key={reply.id} reply={reply} />
+        <ReplyCard key={reply.id} reply={reply} replyTweetId={post.replyTweetId} postId={post.id} />
       ))}
     </li>
   )

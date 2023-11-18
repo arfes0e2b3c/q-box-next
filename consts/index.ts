@@ -11,7 +11,7 @@ export const noResultQAData: QA = {
 }
 
 export const twitterMaxLength = 280
-export const baseText = `\n#お手伝いサークル ${process.env.NEXT_PUBLIC_BASE_URL}`
+export const replyBaseText = `【提供していただいた情報】\n\n`
 export const continueText = '(続く)'
 
 export const mockQAResponse: MicroCMSResponse = {
