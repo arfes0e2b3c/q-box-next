@@ -4,6 +4,7 @@ import { patchTweetId } from './patchTweetId'
 import { postTweetReplies } from './postTweetReplies'
 import { postReply } from './postReply'
 import { patchReplyAnswer } from './patchReplyAnswer'
+import { postS3Image } from './postS3Image'
 
 export const usePostReply = () =>
   useMutation(
@@ -19,6 +20,7 @@ export const usePostReply = () =>
       replyTweetId: string
     }) => {
       await patchReplyAnswer(contentId)
+      await postS3Image(contentId, replySentence, 'answered')
       const tweetId = await postReplyThread(replyTweetId, replySentence)
       await patchTweetId(postId, tweetId)
     }
