@@ -11,7 +11,7 @@ import {
 } from './index.css'
 import { countTweetLength } from '@/lib'
 import { TweetLengthGauge } from './tweetLengthGauge'
-import { baseText, twitterMaxLength } from '@/consts'
+import { tweetBaseText, twitterMaxLength } from '@/consts'
 import { CSSTransition } from 'react-transition-group'
 import { baseFont } from '@/consts/fonts'
 import { usePostAnswer } from '@/app/client/usePostAnswer'
@@ -22,7 +22,7 @@ export const AnswerPostBox = (props: { isOpened: boolean; contentId: string }) =
   const [input, setInput] = useState('')
   const [count, setCount] = useState(0)
   useEffect(() => {
-    setCount(countTweetLength(input + baseText))
+    setCount(countTweetLength(input + tweetBaseText))
   }, [input])
 
   const postAnswer = usePostAnswer()
