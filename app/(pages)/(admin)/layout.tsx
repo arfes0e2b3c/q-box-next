@@ -9,7 +9,7 @@ import { ShadowHeader } from '@/components/shared/ShadowHeader'
 import { AnswerHeader } from '@/components/shared/AnswerHeader'
 import { Footer } from '@/components/shared/Footer'
 import { baseFont } from '@/consts/fonts'
-import Providers from '@/app/providers'
+import Providers from '@/app/(pages)/providers'
 import { isRightAccessUser } from '@/lib/firebase'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
