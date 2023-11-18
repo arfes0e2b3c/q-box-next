@@ -1,9 +1,13 @@
-import { twitterMaxLength, continueText, tweetBaseText } from '@/consts'
+import { twitterMaxLength, continueText, tweetBaseText, replyBaseText } from '@/consts'
 import { countTweetLength } from '.'
 import { LinkInfoList } from '@/types'
 
-const calculateMaxLength = (tweets: string[], continueTextLength: number): number =>
-  twitterMaxLength - (tweets[0] == null ? countTweetLength(tweetBaseText) : 0) - continueTextLength
+const calculateMaxLength = (
+  tweets: string[],
+  continueTextLength: number,
+  baseText: string
+): number =>
+  twitterMaxLength - (tweets[0] == null ? countTweetLength(baseText) : 0) - continueTextLength
 
 export const splitTweet = (text: string): string[] => {
   let currentTweet = ''
@@ -15,7 +19,7 @@ export const splitTweet = (text: string): string[] => {
   for (let i = 0; i < text.length; i++) {
     let char = text.charAt(i)
     let testTweet = currentTweet + char
-    let MAX_LENGTH = calculateMaxLength(tweets, continueTextLength)
+    let MAX_LENGTH = calculateMaxLength(tweets, continueTextLength, tweetBaseText)
 
     let isInsideLink = links.some((link) => i >= link.start && i < link.end)
     let willSplitLink = links.some(
@@ -55,6 +59,45 @@ const findLinks = (text: string): LinkInfoList => {
   }
 
   return links
+}
+
+export const splitReply = (replySentence: string): string[] => {
+  let currentReply = ''
+  let replies = []
+  const links = findLinks(replySentence)
+  const continueTextLength =
+    countTweetLength(replySentence) > twitterMaxLength ? countTweetLength(continueText) : 0
+  for (let i = 0; i < replySentence.length; i++) {
+    let char = replySentence.charAt(i)
+    let testReply = currentReply + char
+    let MAX_LENGTH = calculateMaxLength(replies, continueTextLength, replyBaseText)
+
+    let isInsideLink = links.some((link) => i >= link.start && i < link.end)
+    let willSplitLink = links.some(
+      (link) => i >= link.start && i < link.end && countTweetLength(testReply) > MAX_LENGTH
+    )
+
+    if (countTweetLength(testReply) <= MAX_LENGTH && !willSplitLink) {
+      currentReply += char
+    } else {
+      if (isInsideLink && willSplitLink) {
+        let link = links.find((link) => i >= link.start && i < link.end) as {
+          start: number
+          end: number
+        }
+        currentReply += replySentence.slice(i, link.end)
+        i = link.end - 1
+      }
+      replies.push(currentReply)
+      currentReply = char
+    }
+  }
+
+  if (currentReply) {
+    replies.push(currentReply)
+  }
+
+  return replies
 }
 
 export const addBaseText = (tweets: string[], contentId: string): string[] => {
