@@ -1,5 +1,6 @@
 import { splitTweet, addContinueText, addBaseText } from '@/lib/twitter'
 import { useMutation } from '@tanstack/react-query'
+import { patchTweetId } from './patchTweetId'
 
 export const usePostAnswer = () =>
   useMutation(async ({ answer, contentId }: { answer: string; contentId: string }) => {
@@ -65,16 +66,4 @@ export const postTweetReplies = async (firstReplyId: string, replies: string[]) 
   const data: { id: string; error: string } = await res.json()
   if (res.status !== 200) throw new Error(data.error)
   return data.id
-}
-
-export const patchTweetId = async (contentId: string, tweetId: string) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/tweet_id/${contentId}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ tweetId }),
-  })
-  const data: { id: string; error: string } = await res.json()
-  if (res.status !== 200) throw new Error(data.error)
 }

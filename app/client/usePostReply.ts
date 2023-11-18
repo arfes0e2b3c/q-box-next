@@ -1,9 +1,10 @@
 import { useMutation } from '@tanstack/react-query'
-import { patchTweetId, postTweetReplies } from './usePostAnswer'
+import { postTweetReplies } from './usePostAnswer'
 import { addContinueText } from '@/lib/twitter'
 import { LinkInfoList } from '@/types'
 import { twitterMaxLength, continueText, replyBaseText } from '@/consts'
 import { countTweetLength } from '@/lib'
+import { patchTweetId } from './patchTweetId'
 
 export const usePostReply = () =>
   useMutation(
