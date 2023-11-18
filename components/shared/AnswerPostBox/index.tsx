@@ -11,25 +11,24 @@ import {
 } from './index.css'
 import { countTweetLength } from '@/lib'
 import { TweetLengthGauge } from './tweetLengthGauge'
-import { baseText, twitterMaxLength } from '@/consts'
+import { tweetBaseText, twitterMaxLength } from '@/consts'
 import { CSSTransition } from 'react-transition-group'
 import { baseFont } from '@/consts/fonts'
 import { usePostAnswer } from '@/app/client/usePostAnswer'
 import { Oval } from 'react-loader-spinner'
+import { useAnswerPageStore } from '@/store/answerPageStore'
 
-export const AnswerPostBox = (props: {
-  isOpened: boolean
-  contentId: string
-  refetch: () => void
-}) => {
+export const AnswerPostBox = (props: { isOpened: boolean; contentId: string }) => {
   const [input, setInput] = useState('')
   const [count, setCount] = useState(0)
   useEffect(() => {
-    setCount(countTweetLength(input + baseText))
+    setCount(countTweetLength(input + tweetBaseText))
   }, [input])
 
   const postAnswer = usePostAnswer()
   const isLoading = postAnswer.isLoading
+
+  const refetch = useAnswerPageStore((state) => state.refetch)
 
   return (
     <CSSTransition in={props.isOpened} timeout={0} classNames='fade'>
@@ -44,20 +43,17 @@ export const AnswerPostBox = (props: {
         </p>
         <div className={buttonContainer}>
           <TweetLengthGauge count={count} />
-          <button className={[button, requirement, baseFont.className].join(' ')}>
-            情報募集中として回答
-          </button>
           <button
-            className={[button, answered, baseFont.className].join(' ')}
+            className={[button, requirement, baseFont.className].join(' ')}
             disabled={isLoading}
             onClick={() => {
-              if (confirm('回答を投稿しますか？')) {
+              if (confirm('情報募集中として回答を投稿しますか？')) {
                 postAnswer.mutate(
-                  { answer: input, contentId: props.contentId },
+                  { answer: input, contentId: props.contentId, state: 'requirement' },
                   {
                     onSuccess: () => {
                       alert('回答を投稿しました')
-                      props.refetch()
+                      refetch()
                     },
                     onError: (error) => alert(error),
                   }
@@ -76,7 +72,39 @@ export const AnswerPostBox = (props: {
                 wrapperStyle={{ cursor: 'not-allowed' }}
               />
             ) : (
-              '回答する'
+              '情報募集中として回答'
+            )}
+          </button>
+          <button
+            className={[button, answered, baseFont.className].join(' ')}
+            disabled={isLoading}
+            onClick={() => {
+              if (confirm('回答を投稿しますか？')) {
+                postAnswer.mutate(
+                  { answer: input, contentId: props.contentId, state: 'answered' },
+                  {
+                    onSuccess: () => {
+                      alert('回答を投稿しました')
+                      refetch()
+                    },
+                    onError: (error) => alert(error),
+                  }
+                )
+              }
+            }}
+          >
+            {isLoading ? (
+              <Oval
+                strokeWidth={'5'}
+                height='25'
+                width='25'
+                ariaLabel='loading'
+                color='white'
+                secondaryColor='#333'
+                wrapperStyle={{ cursor: 'not-allowed' }}
+              />
+            ) : (
+              '回答'
             )}
           </button>
         </div>

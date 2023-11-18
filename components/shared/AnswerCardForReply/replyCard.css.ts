@@ -5,12 +5,13 @@ export const replyContainer = style({
   flexDirection: 'column',
   alignItems: 'center',
   width: '90%',
-  padding: '10px',
+  padding: '20px',
   margin: '10px 0',
   boxShadow: '0 0 5px 5px rgba(0, 0, 0, 0.1)',
   '@media': {
     'screen and (max-width: 768px)': {
       width: '100%',
+      padding: '10px',
       boxShadow: '0 0 3px 3px rgba(0, 0, 0, 0.1)',
     },
   },
@@ -44,6 +45,8 @@ export const box = style({
 })
 
 export const button = style({
+  display: 'grid',
+  placeContent: 'center',
   width: '100px',
   height: '30px',
   margin: '0 auto',
@@ -59,7 +62,7 @@ export const button = style({
   },
   '@media': {
     'screen and (max-width: 768px)': {
-      width: '50px',
+      width: '100%',
       height: '70px',
       margin: '5px auto',
     },

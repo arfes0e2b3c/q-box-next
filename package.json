@@ -30,7 +30,8 @@
     "react-transition-group": "^4.4.5",
     "sanitize.css": "^13.0.0",
     "twitter-api-v2": "^1.15.2",
-    "twitter-text": "^3.1.0"
+    "twitter-text": "^3.1.0",
+    "zustand": "^4.4.6"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -2,6 +2,7 @@ import { style } from '@vanilla-extract/css'
 
 export const page = style({
   width: '80%',
+  paddingTop: '20px',
   margin: '0 auto',
   '@media': {
     'screen and (max-width: 768px)': {

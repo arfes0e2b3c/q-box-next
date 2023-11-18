@@ -1,4 +1,4 @@
-import { MicroCMSQueries, MicroCMSResponse, QA } from '@/types'
+import { MicroCMSQueries, MicroCMSResponse, QA, Reply } from '@/types'
 import { createClient } from 'microcms-js-sdk'
 
 const client = createClient({
@@ -59,6 +59,14 @@ export const patchPost = async (contentId: string, content: Partial<QA>) => {
   return res
 }
 
+export const fetchReplies = async (queries?: MicroCMSQueries) => {
+  const res = await client.get({
+    endpoint: 'q_box_replies',
+    queries,
+  })
+  return res
+}
+
 export const createReply = async (replySentence: string, replyFor: string) => {
   const res = await client.create({
     endpoint: 'q_box_replies',
@@ -66,6 +74,15 @@ export const createReply = async (replySentence: string, replyFor: string) => {
       replySentence,
       replyFor,
     },
+  })
+  return res
+}
+
+export const patchReply = async (contentId: string, content: Partial<Reply>) => {
+  const res = await client.update({
+    endpoint: 'q_box_replies',
+    contentId,
+    content,
   })
   return res
 }
