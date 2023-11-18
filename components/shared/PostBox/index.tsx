@@ -31,7 +31,11 @@ export const PostForm = ({ mode, replyFor }: { mode: PostMode; replyFor?: string
         onSubmit: () => {
           if (confirm('質問を投稿しますか？')) {
             createPost.mutate(input, {
-              onSuccess: () => alert('質問を投稿しました！'),
+              onSuccess: () => {
+                alert('質問を投稿しました！')
+                setInput('')
+                textarefRef.current && (textarefRef.current.value = '')
+              },
               onError: (error) => alert(error),
             })
           }
@@ -75,8 +79,6 @@ export const PostForm = ({ mode, replyFor }: { mode: PostMode; replyFor?: string
         onClick={(event) => {
           event.preventDefault()
           formProps.onSubmit()
-          setInput('')
-          textarefRef.current && (textarefRef.current.value = '')
         }}
         disabled={isLoading}
       >
