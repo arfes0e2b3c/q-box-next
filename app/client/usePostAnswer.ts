@@ -4,14 +4,25 @@ import { patchTweetId } from './patchTweetId'
 import { postTweetReplies } from './postTweetReplies'
 import { postTweet } from './postTweet'
 import { patchAnswer } from './patchAnswer'
+import { AnswerState } from '@/types'
 
 export const usePostAnswer = () =>
-  useMutation(async ({ answer, contentId }: { answer: string; contentId: string }) => {
-    const patchAnswerRes = await patchAnswer(answer, contentId)
-    if (patchAnswerRes.error) throw new Error(patchAnswerRes.error)
-    const tweetId = await postTweetThread(answer, contentId)
-    await patchTweetId(contentId, tweetId)
-  })
+  useMutation(
+    async ({
+      answer,
+      contentId,
+      state,
+    }: {
+      answer: string
+      contentId: string
+      state: AnswerState
+    }) => {
+      const patchAnswerRes = await patchAnswer(answer, contentId, state)
+      if (patchAnswerRes.error) throw new Error(patchAnswerRes.error)
+      const tweetId = await postTweetThread(answer, contentId)
+      await patchTweetId(contentId, tweetId)
+    }
+  )
 
 const postTweetThread = async (answer: string, contentId: string) => {
   let tweets = splitTweet(answer)

@@ -43,16 +43,13 @@ export const AnswerPostBox = (props: { isOpened: boolean; contentId: string }) =
         </p>
         <div className={buttonContainer}>
           <TweetLengthGauge count={count} />
-          <button className={[button, requirement, baseFont.className].join(' ')}>
-            情報募集中として回答
-          </button>
           <button
-            className={[button, answered, baseFont.className].join(' ')}
+            className={[button, requirement, baseFont.className].join(' ')}
             disabled={isLoading}
             onClick={() => {
-              if (confirm('回答を投稿しますか？')) {
+              if (confirm('情報募集中として回答を投稿しますか？')) {
                 postAnswer.mutate(
-                  { answer: input, contentId: props.contentId },
+                  { answer: input, contentId: props.contentId, state: 'requirement' },
                   {
                     onSuccess: () => {
                       alert('回答を投稿しました')
@@ -75,7 +72,39 @@ export const AnswerPostBox = (props: { isOpened: boolean; contentId: string }) =
                 wrapperStyle={{ cursor: 'not-allowed' }}
               />
             ) : (
-              '回答する'
+              '情報募集中として回答'
+            )}
+          </button>
+          <button
+            className={[button, answered, baseFont.className].join(' ')}
+            disabled={isLoading}
+            onClick={() => {
+              if (confirm('回答を投稿しますか？')) {
+                postAnswer.mutate(
+                  { answer: input, contentId: props.contentId, state: 'answered' },
+                  {
+                    onSuccess: () => {
+                      alert('回答を投稿しました')
+                      refetch()
+                    },
+                    onError: (error) => alert(error),
+                  }
+                )
+              }
+            }}
+          >
+            {isLoading ? (
+              <Oval
+                strokeWidth={'5'}
+                height='25'
+                width='25'
+                ariaLabel='loading'
+                color='white'
+                secondaryColor='#333'
+                wrapperStyle={{ cursor: 'not-allowed' }}
+              />
+            ) : (
+              '回答'
             )}
           </button>
         </div>
