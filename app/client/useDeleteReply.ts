@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query'
 export const useDeleteReply = () =>
   useMutation(async (contentId: string) => await deleteReply(contentId))
 
-const deleteReply = async (contentId: string) => {
+export const deleteReply = async (contentId: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/replies/${contentId}`, {
     method: 'PATCH',
     headers: {
