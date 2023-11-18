@@ -8,6 +8,7 @@ import { fetchSliceUnansweredReplies } from '@/app/client/fetchSliceUnansweredRe
 import { LoadingCircle } from '@/components/shared/LoadingCircle'
 import InfiniteScroll from 'react-infinite-scroller'
 import { noMoreResult } from '../page.css'
+import { useReplyPageStore } from '@/store/replyPageStore'
 
 // export const metadata: Metadata = {
 //   title: '管理者ページ',
@@ -27,6 +28,9 @@ export default function Answer() {
         return error.response?.status >= 500
       },
     })
+
+  const setRefetch = useReplyPageStore((state) => state.setRefetch)
+  setRefetch(refetch)
 
   const pagesData = data?.pages ?? []
 

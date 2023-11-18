@@ -5,6 +5,7 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import { fetchSliceUnansweredPosts } from '@/app/client/fetchSliceUnansweredPosts'
 import InfiniteScroll from 'react-infinite-scroller'
 import { LoadingCircle } from '@/components/shared/LoadingCircle'
+import { useAnswerPageStore } from '@/store/answerPageStore'
 
 export default function Answer() {
   const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch } =
@@ -19,6 +20,9 @@ export default function Answer() {
         return error.response?.status >= 500
       },
     })
+
+  const setRefetch = useAnswerPageStore((state) => state.setRefetch)
+  setRefetch(refetch)
 
   const pagesData = data?.pages ?? []
 
