@@ -23,17 +23,17 @@ export const QACardContainer = ({ qAData, isLink = false }: { qAData: QA; isLink
         </p>
         {isLink ? (
           <Link className={cardButton} href={qAData.id}>
-            <Card text={qAData.question} mode={qAData.state} />
+            <Card text={qAData.question} mode={qAData.state} contentId={qAData.id} />
           </Link>
         ) : (
-          <Card text={qAData.question} mode={qAData.state} />
+          <Card text={qAData.question} mode={qAData.state} contentId={qAData.id} />
         )}
 
         <p className={answer}>{qAData.answer}</p>
       </div>
       <div className={repliesContainer}>
         {qAData.replies.map((reply) => (
-          <Card key={reply.id} text={reply.replySentence} />
+          <Card key={reply.id} text={reply.replySentence} contentId={reply.id} />
         ))}
       </div>
     </section>
