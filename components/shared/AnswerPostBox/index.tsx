@@ -16,7 +16,7 @@ import { CSSTransition } from 'react-transition-group'
 import { baseFont } from '@/consts/fonts'
 import { usePostAnswer } from '@/app/client/usePostAnswer'
 import { Oval } from 'react-loader-spinner'
-import { useReplyPageStore } from '@/store/replyPageStore'
+import { useAnswerPageStore } from '@/store/answerPageStore'
 
 export const AnswerPostBox = (props: { isOpened: boolean; contentId: string }) => {
   const [input, setInput] = useState('')
@@ -28,7 +28,7 @@ export const AnswerPostBox = (props: { isOpened: boolean; contentId: string }) =
   const postAnswer = usePostAnswer()
   const isLoading = postAnswer.isLoading
 
-  const refetch = useReplyPageStore((state) => state.refetch)
+  const refetch = useAnswerPageStore((state) => state.refetch)
 
   return (
     <CSSTransition in={props.isOpened} timeout={0} classNames='fade'>
