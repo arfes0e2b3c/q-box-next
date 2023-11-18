@@ -6,6 +6,7 @@ import { countTweetLength } from '@/lib'
 import { patchTweetId } from './patchTweetId'
 import { postTweetReplies } from './postTweetReplies'
 import { postReply } from './postReply'
+import { patchReplyAnswer } from './patchReplyAnswer'
 
 export const usePostReply = () =>
   useMutation(
@@ -25,19 +26,6 @@ export const usePostReply = () =>
       await patchTweetId(postId, tweetId)
     }
   )
-
-const patchReplyAnswer = async (contentId: string) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/replies/${contentId}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ replyAnswer: 'replyAnswer' }),
-  })
-  const data: { id: string; error: string } = await res.json()
-  if (res.status !== 200) throw new Error(data.error)
-  return data
-}
 
 export const postReplyThread = async (
   replyTweetId: string,
