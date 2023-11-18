@@ -3,7 +3,7 @@ import { jwtDecode } from 'jwt-decode'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
-import { body, isLoginText } from './layout.css'
+import { isLoginText, loadingBody, mainContainer } from './layout.css'
 import 'sanitize.css'
 import { ShadowHeader } from '@/components/shared/ShadowHeader'
 import { AnswerHeader } from '@/components/shared/AnswerHeader'
@@ -37,16 +37,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return isLogin ? (
     <html lang='ja'>
-      <body className={[body, baseFont.className].join(' ')}>
+      <body className={[baseFont.className].join(' ')}>
         <AnswerHeader path={path} />
         <ShadowHeader />
-        <Providers>{children}</Providers>
+        <Providers>
+          <div className={mainContainer}>{children}</div>
+        </Providers>
         <Footer />
       </body>
     </html>
   ) : (
     <html lang='ja'>
-      <body className={body}>
+      <body className={loadingBody}>
         {/* <Oval
           strokeWidth={5}
           width={80}
