@@ -17,7 +17,6 @@ export async function GET(req: NextRequest): Promise<NextResponse<MicroCMSRespon
       offset: offset ? Number(offset) : 0,
     },
   })
-  console.log(res)
   res.contents = filterPostsHasOpenReply(res.contents)
   return NextResponse.json(res)
 }
