@@ -1,20 +1,21 @@
-import { twitterMaxLength, continueText, baseText } from '@/consts'
+import { twitterMaxLength, continueText, tweetBaseText } from '@/consts'
 import { countTweetLength } from '.'
 import { LinkInfoList } from '@/types'
+
+const calculateMaxLength = (tweets: string[], continueTextLength: number): number =>
+  twitterMaxLength - (tweets[0] == null ? countTweetLength(tweetBaseText) : 0) - continueTextLength
 
 export const splitTweet = (text: string): string[] => {
   let currentTweet = ''
   let tweets = []
   const links = findLinks(text)
+  const continueTextLength =
+    countTweetLength(text) > twitterMaxLength ? countTweetLength(continueText) : 0
 
   for (let i = 0; i < text.length; i++) {
     let char = text.charAt(i)
     let testTweet = currentTweet + char
-
-    const continueTextLength =
-      countTweetLength(text) > twitterMaxLength ? countTweetLength(continueText) : 0
-    const MAX_LENGTH =
-      twitterMaxLength - (tweets[0] == null ? countTweetLength(baseText) : 0) - continueTextLength
+    let MAX_LENGTH = calculateMaxLength(tweets, continueTextLength)
 
     let isInsideLink = links.some((link) => i >= link.start && i < link.end)
     let willSplitLink = links.some(
@@ -57,7 +58,7 @@ const findLinks = (text: string): LinkInfoList => {
 }
 
 export const addBaseText = (tweets: string[], contentId: string): string[] => {
-  const detailPageLink = baseText + '/' + contentId
+  const detailPageLink = tweetBaseText + '/' + contentId
   return tweets.map((tweet, index) => {
     if (index === 0) return tweet + detailPageLink
     else return tweet
