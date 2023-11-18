@@ -54,7 +54,7 @@ const postTweet = async (answer: string) => {
   return tweetReplyId
 }
 
-const postTweetReplies = async (firstReplyId: string, replies: string[]) => {
+export const postTweetReplies = async (firstReplyId: string, replies: string[]) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/tweet/reply`, {
     method: 'POST',
     headers: {
@@ -67,7 +67,7 @@ const postTweetReplies = async (firstReplyId: string, replies: string[]) => {
   return data.id
 }
 
-const patchTweetId = async (contentId: string, tweetId: string) => {
+export const patchTweetId = async (contentId: string, tweetId: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/tweet_id/${contentId}`, {
     method: 'PATCH',
     headers: {
