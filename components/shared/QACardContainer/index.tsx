@@ -23,10 +23,10 @@ export const QACardContainer = ({ qAData, isLink = false }: { qAData: QA; isLink
         </p>
         {isLink ? (
           <Link className={cardButton} href={qAData.id}>
-            <Card text={qAData.question} mode={qAData.state} contentId={qAData.id} />
+            <Card text={qAData.question} contentId={qAData.id} />
           </Link>
         ) : (
-          <Card text={qAData.question} mode={qAData.state} contentId={qAData.id} />
+          <Card text={qAData.question} contentId={qAData.id} />
         )}
 
         <p className={answer}>{qAData.answer}</p>

@@ -1,12 +1,12 @@
 export type PostMode = 'question' | 'reply'
 export type AnswerState = 'answered' | 'requirement' | 'old' | 'noResult'
-export type MicroCMSTimes = {
+export interface MicroCMSTimes {
   createdAt: string
   updatedAt?: string
   publishedAt?: string
   revisedAt?: string
 }
-export type Reply = MicroCMSTimes & {
+export interface Reply extends MicroCMSTimes {
   id: string
   replySentence: string
   replyAnswer?: string
@@ -15,7 +15,7 @@ export type Reply = MicroCMSTimes & {
     id: string
   }
 }
-export type QA = MicroCMSTimes & {
+export interface QA extends MicroCMSTimes {
   id: string
   question: string
   answer: string
@@ -23,14 +23,14 @@ export type QA = MicroCMSTimes & {
   state: AnswerState
   replies: Reply[]
 }
-export type MicroCMSResponse = {
+export interface MicroCMSResponse {
   contents: QA[]
   totalCount: number
   offset: number
   limit: number
 }
 
-export type MicroCMSQueries = {
+export interface MicroCMSQueries {
   draftKey?: string
   limit?: number
   offset?: number
@@ -42,7 +42,7 @@ export type MicroCMSQueries = {
   richEditorFormat?: 'html' | 'object'
 }
 
-export type LinkInfo = {
+export interface LinkInfo {
   start: number
   end: number
 }
