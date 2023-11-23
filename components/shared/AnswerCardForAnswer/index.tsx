@@ -6,7 +6,7 @@ import { QA } from '@/types'
 import { useState } from 'react'
 import { answerCard, createdAt, box, question, toggleButton, button } from './index.css'
 import { useDeletePost } from '@/hooks/useDeletePost'
-import { Oval } from 'react-loader-spinner'
+import { LoadingButton } from '../LoadingButton'
 
 export const AnswerCardForAnswer = (props: { post: QA; refetch: () => void }) => {
   const post = props.post
@@ -17,39 +17,25 @@ export const AnswerCardForAnswer = (props: { post: QA; refetch: () => void }) =>
   const deletePost = useDeletePost()
   const isLoading = deletePost.isLoading
 
+  const clickHandler = () => {
+    if (confirm('質問を削除しますか？')) {
+      deletePost.mutate(post.id, {
+        onSuccess: () => {
+          alert('質問を削除しました')
+          props.refetch()
+        },
+        onError: (error) => alert(error),
+      })
+    }
+  }
+
   return (
     <li className={answerCard}>
       <p className={createdAt}>{dayjs(post.createdAt).format('MM/DD HH:mm')}</p>
       <div className={box}>
-        <button
-          className={[button, baseFont.className].join(' ')}
-          disabled={isLoading}
-          onClick={() => {
-            if (confirm('質問を削除しますか？')) {
-              deletePost.mutate(post.id, {
-                onSuccess: () => {
-                  alert('質問を削除しました')
-                  props.refetch()
-                },
-                onError: (error) => alert(error),
-              })
-            }
-          }}
-        >
-          {isLoading ? (
-            <Oval
-              strokeWidth={'5'}
-              height='25'
-              width='25'
-              ariaLabel='loading'
-              color='white'
-              secondaryColor='#333'
-              wrapperStyle={{ cursor: 'not-allowed' }}
-            />
-          ) : (
-            '削除'
-          )}
-        </button>
+        <LoadingButton isLoading={isLoading} onClick={clickHandler} style={button}>
+          削除
+        </LoadingButton>
         <h3 className={question}>{post.question}</h3>
         <button
           className={[button, toggleButton, baseFont.className].join(' ')}

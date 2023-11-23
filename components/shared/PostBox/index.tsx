@@ -1,19 +1,13 @@
 'use client'
 
 import { baseFont } from '@/consts/fonts'
-import {
-  disabled,
-  noticeMessage,
-  postBox,
-  postBoxInput,
-  postBoxTitle,
-  submitButton,
-} from './index.css'
+import { noticeMessage, postBox, postBoxInput, postBoxTitle } from './index.css'
 import { PostMode } from '@/types'
 import { useRef, useState } from 'react'
 import { useCreatePost } from '@/hooks/useCreatePost'
-import { Oval } from 'react-loader-spinner'
 import { useCreateReply } from '@/hooks/useCreateReply'
+import { button } from '../AnswerCardForAnswer/index.css'
+import { LoadingButton } from '../LoadingButton'
 
 export const PostForm = ({ mode, replyFor }: { mode: PostMode; replyFor?: string }) => {
   const [input, setInput] = useState('')
@@ -60,6 +54,10 @@ export const PostForm = ({ mode, replyFor }: { mode: PostMode; replyFor?: string
         },
         placeholder: 'この質問に関する情報提供をいただけますと幸いです！',
       }
+  const submitButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    event.preventDefault()
+    formProps.onSubmit()
+  }
 
   return (
     <form className={postBox}>
@@ -74,28 +72,13 @@ export const PostForm = ({ mode, replyFor }: { mode: PostMode; replyFor?: string
       {isQuestion && (
         <p className={noticeMessage}>正確な回答のため、学部と学年の併記をお願いします！</p>
       )}
-      <button
-        className={[submitButton, baseFont.className, isLoading && disabled].join(' ')}
-        onClick={(event) => {
-          event.preventDefault()
-          formProps.onSubmit()
-        }}
-        disabled={isLoading}
+      <LoadingButton
+        isLoading={isLoading}
+        onClick={(event) => event && submitButtonClickHandler(event)}
+        style={button}
       >
-        {isLoading ? (
-          <Oval
-            strokeWidth={'5'}
-            height='25'
-            width='25'
-            ariaLabel='loading'
-            color='white'
-            secondaryColor='#333'
-            wrapperStyle={{ cursor: 'not-allowed' }}
-          />
-        ) : (
-          formProps.buttonText
-        )}
-      </button>
+        {formProps.buttonText}
+      </LoadingButton>
     </form>
   )
 }
