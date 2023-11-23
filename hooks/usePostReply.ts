@@ -1,10 +1,10 @@
 import { useMutation } from '@tanstack/react-query'
 import { addContinueText, splitReply } from '@/lib/twitter'
-import { patchTweetId } from '../app/client/patchTweetId'
-import { createTweetReplies } from '../app/client/createTweetReplies'
-import { patchReplyAnswer } from '../app/client/patchReplyAnswer'
-import { createS3Image } from '../app/client/createS3Image'
-import { createTweetReply } from '../app/client/createTweetReply'
+import { patchTweetId } from '../app/client/microcms/post/patchTweetId'
+import { createTweetReplies } from '../app/client/twitter/createTweetReplies'
+import { patchReplyAnswer } from '../app/client/microcms/post/patchReplyAnswer'
+import { createS3Image } from '../app/client/s3/createS3Image'
+import { createReply } from '../app/client/twitter/createReply'
 
 export const usePostReply = () =>
   useMutation(
@@ -33,7 +33,7 @@ export const postReplyThread = async (
   let replies = splitReply(replySentence)
   replies = addContinueText(replies)
   try {
-    let replyId: string = await createTweetReply(replies[0], replyTweetId)
+    let replyId: string = await createReply(replies[0], replyTweetId)
 
     if (replies.length > 1) {
       replyId = await createTweetReplies(replyId, replies.slice(1))

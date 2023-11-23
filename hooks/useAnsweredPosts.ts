@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { fetchSlicePosts } from '../app/client/fetchSlicePosts'
+import { fetchSlicePosts } from '../app/client/microcms/post/fetchSlicePosts'
 
 export const useAnsweredPosts = () =>
   useInfiniteQuery({

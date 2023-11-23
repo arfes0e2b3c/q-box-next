@@ -10,7 +10,7 @@ import { AnswerHeader } from '@/components/shared/AnswerHeader'
 import { Footer } from '@/components/shared/Footer'
 import { baseFont } from '@/consts/fonts'
 import Providers from '@/app/(pages)/providers'
-import { fetchIsLoggedIn } from '@/app/client/fetchIsLoggedIn'
+import { fetchIsLoggedIn } from '@/app/client/firebase/fetchIsLoggedIn'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [cookies] = useCookies()

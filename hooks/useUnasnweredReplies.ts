@@ -1,5 +1,5 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { fetchSliceUnansweredReplies } from '../app/client/fetchSliceUnansweredReplies'
+import { fetchSliceUnansweredReplies } from '../app/client/microcms/reply/fetchSliceUnansweredReplies'
 
 export const useUnansweredReplies = () =>
   useInfiniteQuery({

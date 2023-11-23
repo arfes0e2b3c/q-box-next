@@ -1,6 +1,6 @@
 import { replyBaseText } from '@/consts'
 
-export const createTweetReply = async (replySentence: string, replyTweetId: string) => {
+export const createReply = async (replySentence: string, replyTweetId: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/tweet/reply`, {
     method: 'POST',
     headers: {
