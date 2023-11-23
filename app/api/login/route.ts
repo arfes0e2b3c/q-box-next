@@ -1,6 +1,6 @@
-import { auth } from '@/lib/firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { NextRequest, NextResponse } from 'next/server'
+import { auth } from '../firebase'
 
 export async function POST(req: NextRequest) {
   const props = await req.json()

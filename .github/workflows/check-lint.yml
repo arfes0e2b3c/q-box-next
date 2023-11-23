@@ -31,7 +31,7 @@ jobs:
         env:
           MICROCMS_DOMAIN: ${{ secrets.MICROCMS_DOMAIN }}
           MICROCMS_KEY: ${{ secrets.MICROCMS_KEY }}
-          NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY }}
+          FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
           NEXT_PUBLIC_TWITTER_APP_KEY: ${{ secrets.NEXT_PUBLIC_TWITTER_APP_KEY }}
           NEXT_PUBLIC_TWITTER_APP_SECRET: ${{ secrets.NEXT_PUBLIC_TWITTER_APP_SECRET }}
         run: yarn build
