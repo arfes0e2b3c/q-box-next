@@ -1,4 +1,4 @@
-export const postTweet = async (answer: string) => {
+export const createTweet = async (answer: string) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/tweet`, {
     method: 'POST',
     headers: {

@@ -1,11 +1,11 @@
 import { splitTweet, addContinueText, addBaseText } from '@/lib/twitter'
 import { useMutation } from '@tanstack/react-query'
 import { patchTweetId } from './patchTweetId'
-import { postTweetReplies } from './postTweetReplies'
-import { postTweet } from './postTweet'
+import { createTweetReplies } from './createTweetReplies'
+import { createTweet } from './createTweet'
 import { patchAnswer } from './patchAnswer'
 import { AnswerState } from '@/types'
-import { postS3Image } from './postS3Image'
+import { createS3Image } from './createS3Image'
 
 export const usePostAnswer = () =>
   useMutation(
@@ -22,7 +22,7 @@ export const usePostAnswer = () =>
     }) => {
       const patchAnswerRes = await patchAnswer(answer, contentId, state)
       if (patchAnswerRes.error) throw new Error(patchAnswerRes.error)
-      await postS3Image(contentId, question, state)
+      await createS3Image(contentId, question, state)
       const tweetId = await postTweetThread(answer, contentId)
       await patchTweetId(contentId, tweetId)
     }
@@ -34,10 +34,10 @@ const postTweetThread = async (answer: string, contentId: string) => {
   tweets = addBaseText(tweets, contentId)
 
   try {
-    const tweetReplyId: string = await postTweet(tweets[0])
+    const tweetReplyId: string = await createTweet(tweets[0])
 
     if (tweets.length > 1) {
-      const replyId = await postTweetReplies(tweetReplyId, tweets.slice(1))
+      const replyId = await createTweetReplies(tweetReplyId, tweets.slice(1))
       return replyId
     } else {
       return tweetReplyId

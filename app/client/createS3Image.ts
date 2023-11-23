@@ -1,6 +1,6 @@
 import { AnswerState } from '@/types'
 
-export const postS3Image = async (contentId: string, question: string, state: AnswerState) => {
+export const createS3Image = async (contentId: string, question: string, state: AnswerState) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/s3`, {
     method: 'POST',
     headers: {
