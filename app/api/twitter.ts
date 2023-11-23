@@ -1,10 +1,10 @@
 import { TwitterApi } from 'twitter-api-v2'
 
 const twitterClient = new TwitterApi({
-  appKey: process.env.NEXT_PUBLIC_TWITTER_APP_KEY || '',
-  appSecret: process.env.NEXT_PUBLIC_TWITTER_APP_SECRET || '',
-  accessToken: process.env.NEXT_PUBLIC_TWITTER_ACCESS_TOKEN || '',
-  accessSecret: process.env.NEXT_PUBLIC_TWITTER_ACCESS_SECRET || '',
+  appKey: process.env.TWITTER_APP_KEY || '',
+  appSecret: process.env.TWITTER_APP_SECRET || '',
+  accessToken: process.env.TWITTER_ACCESS_TOKEN || '',
+  accessSecret: process.env.TWITTER_ACCESS_SECRET || '',
 })
 
 export const postTweet = async (text: string) => {
