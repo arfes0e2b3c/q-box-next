@@ -43,8 +43,10 @@ export const exchangeStateToUrl = (state: AnswerState): string => {
   return baseUrl + path
 }
 
-export const filterPostsHasOpenReply = (posts: QA[]): QA[] =>
-  posts.map(filterReplies).filter(postHasReplies)
+export const filterPostsHasOpenReply = (data: MicroCMSResponse): MicroCMSResponse => {
+  const contents = data.contents.map(filterReplies).filter(postHasReplies)
+  return { ...data, contents: contents, totalCount: contents.length }
+}
 
 const filterReplies = (post: QA): QA => {
   const filteredReplies = post.replies.filter((reply) => !reply.isDeleted && !reply.replyAnswer)
