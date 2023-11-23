@@ -2,22 +2,11 @@
 
 import { PostForm } from '@/components/shared/PostBox'
 import { formContainer, mainContainer, qAListTitle, topPage } from './page.css'
-import { useInfiniteQuery } from '@tanstack/react-query'
-import { fetchSlicePosts } from '../../../client/fetchSlicePosts'
 import { QAListWrapper } from '@/components/shared/qAListWrapper'
+import { useAnsweredPosts } from '@/app/client/useAnsweredPosts'
 
 export default function Home() {
-  const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ['newPosts'],
-    queryFn: ({ pageParam = 0 }) => fetchSlicePosts(pageParam),
-    refetchOnWindowFocus: false,
-    staleTime: Infinity,
-    getNextPageParam: (lastPage) =>
-      lastPage?.offset < lastPage?.totalCount ? lastPage?.offset + 20 : false,
-    useErrorBoundary: (error: { response: { status: number } }) => {
-      return error.response?.status >= 500
-    },
-  })
+  const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage } = useAnsweredPosts()
 
   const pagesData = data?.pages ?? []
 

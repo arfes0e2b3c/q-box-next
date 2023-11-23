@@ -2,27 +2,16 @@
 
 import { PostForm } from '@/components/shared/PostBox'
 import { formContainer, mainContainer, noResult, qAListTitle, topPage } from './page.css'
-import { useInfiniteQuery } from '@tanstack/react-query'
 import { QAListWrapper } from '@/components/shared/qAListWrapper'
 import { useSearchParams } from 'next/navigation'
-import { fetchSliceSearchPosts } from '../../../client/fetchSliceSearchPosts'
 import { QACardContainer } from '@/components/shared/QACardContainer'
 import { noResultQAData } from '@/consts'
+import { useSearchPosts } from '@/app/client/useSearchPosts'
 
 export default function Search() {
   const searchParams = useSearchParams()
   const q = searchParams.get('q') || ''
-  const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ['searchPosts', q],
-    queryFn: ({ pageParam = 0 }) => fetchSliceSearchPosts(pageParam, q),
-    refetchOnWindowFocus: false,
-    staleTime: Infinity,
-    getNextPageParam: (lastPage) =>
-      lastPage?.offset < lastPage?.totalCount ? lastPage?.offset + 20 : false,
-    useErrorBoundary: (error: { response: { status: number } }) => {
-      return error.response?.status >= 500
-    },
-  })
+  const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage } = useSearchPosts(q)
 
   const pagesData = data?.pages ?? []
 
