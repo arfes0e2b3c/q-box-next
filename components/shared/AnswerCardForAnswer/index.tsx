@@ -5,7 +5,7 @@ import { AnswerPostBox } from '../AnswerPostBox'
 import { QA } from '@/types'
 import { useState } from 'react'
 import { answerCard, createdAt, box, question, toggleButton, button } from './index.css'
-import { useDeletePost } from '@/app/client/useDeletePost'
+import { useDeletePost } from '@/hooks/useDeletePost'
 import { Oval } from 'react-loader-spinner'
 
 export const AnswerCardForAnswer = (props: { post: QA; refetch: () => void }) => {

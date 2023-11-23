@@ -14,7 +14,7 @@ import { TweetLengthGauge } from './tweetLengthGauge'
 import { tweetBaseText, twitterMaxLength } from '@/consts'
 import { CSSTransition } from 'react-transition-group'
 import { baseFont } from '@/consts/fonts'
-import { usePostAnswer } from '@/app/client/usePostAnswer'
+import { usePostAnswer } from '@/hooks/usePostAnswer'
 import { Oval } from 'react-loader-spinner'
 import { useAnswerPageStore } from '@/store/answerPageStore'
 

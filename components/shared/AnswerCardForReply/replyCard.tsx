@@ -10,11 +10,11 @@ import {
   answered,
   registerButton,
 } from './replyCard.css'
-import { useDeleteReply } from '@/app/client/useDeleteReply'
+import { useDeleteReply } from '@/hooks/useDeleteReply'
 import { useReplyPageStore } from '@/store/replyPageStore'
 import { Oval } from 'react-loader-spinner'
-import { usePostReply } from '@/app/client/usePostReply'
-import { useMoveToAnswer } from '@/app/client/useMoveToAnswer'
+import { usePostReply } from '@/hooks/usePostReply'
+import { useMoveToAnswer } from '@/hooks/useMoveToAnswer'
 
 export const ReplyCard = (props: { reply: Reply; replyTweetId: string; postId: string }) => {
   const reply = props.reply

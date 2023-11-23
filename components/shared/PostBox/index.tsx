@@ -11,9 +11,9 @@ import {
 } from './index.css'
 import { PostMode } from '@/types'
 import { useRef, useState } from 'react'
-import { useCreatePost } from '@/app/client/useCreatePost'
+import { useCreatePost } from '@/hooks/useCreatePost'
 import { Oval } from 'react-loader-spinner'
-import { useCreateReply } from '@/app/client/useCreateReply'
+import { useCreateReply } from '@/hooks/useCreateReply'
 
 export const PostForm = ({ mode, replyFor }: { mode: PostMode; replyFor?: string }) => {
   const [input, setInput] = useState('')

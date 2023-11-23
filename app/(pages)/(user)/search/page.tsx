@@ -6,7 +6,7 @@ import { QAListWrapper } from '@/components/shared/qAListWrapper'
 import { useSearchParams } from 'next/navigation'
 import { QACardContainer } from '@/components/shared/QACardContainer'
 import { noResultQAData } from '@/consts'
-import { useSearchPosts } from '@/app/client/useSearchPosts'
+import { useSearchPosts } from '@/hooks/useSearchPosts'
 
 export default function Search() {
   const searchParams = useSearchParams()

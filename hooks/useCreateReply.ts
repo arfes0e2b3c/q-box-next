@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
-import { createReply } from './createReply'
-import { patchReplyId } from './patchReplyId'
+import { createReply } from '../app/client/createReply'
+import { patchReplyId } from '../app/client/patchReplyId'
 
 export const useCreateReply = () =>
   useMutation(async ({ reply, replyFor }: { reply: string; replyFor: string }) => {

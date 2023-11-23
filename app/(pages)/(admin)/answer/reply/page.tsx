@@ -6,7 +6,7 @@ import { LoadingCircle } from '@/components/shared/LoadingCircle'
 import InfiniteScroll from 'react-infinite-scroller'
 import { noMoreResult } from '../page.css'
 import { useReplyPageStore } from '@/store/replyPageStore'
-import { useUnansweredReplies } from '@/app/client/useUnasnweredReplies'
+import { useUnansweredReplies } from '@/hooks/useUnasnweredReplies'
 
 // export const metadata: Metadata = {
 //   title: '管理者ページ',

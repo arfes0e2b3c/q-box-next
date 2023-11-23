@@ -1,10 +1,10 @@
 import { useMutation } from '@tanstack/react-query'
 import { addContinueText, splitReply } from '@/lib/twitter'
-import { patchTweetId } from './patchTweetId'
-import { createTweetReplies } from './createTweetReplies'
-import { patchReplyAnswer } from './patchReplyAnswer'
-import { createS3Image } from './createS3Image'
-import { createTweetReply } from './createTweetReply'
+import { patchTweetId } from '../app/client/patchTweetId'
+import { createTweetReplies } from '../app/client/createTweetReplies'
+import { patchReplyAnswer } from '../app/client/patchReplyAnswer'
+import { createS3Image } from '../app/client/createS3Image'
+import { createTweetReply } from '../app/client/createTweetReply'
 
 export const usePostReply = () =>
   useMutation(

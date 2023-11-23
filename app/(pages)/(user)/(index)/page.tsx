@@ -3,7 +3,7 @@
 import { PostForm } from '@/components/shared/PostBox'
 import { formContainer, mainContainer, qAListTitle, topPage } from './page.css'
 import { QAListWrapper } from '@/components/shared/qAListWrapper'
-import { useAnsweredPosts } from '@/app/client/useAnsweredPosts'
+import { useAnsweredPosts } from '@/hooks/useAnsweredPosts'
 
 export default function Home() {
   const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage } = useAnsweredPosts()

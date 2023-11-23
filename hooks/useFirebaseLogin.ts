@@ -1,5 +1,5 @@
 import { useCookies } from 'react-cookie'
-import { loginFirebase } from './loginFirebase'
+import { loginFirebase } from '../app/client/loginFirebase'
 
 export const useFirebaseLogin = () => {
   const [_, setCookie] = useCookies(['access_token'])

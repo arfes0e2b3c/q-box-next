@@ -1,11 +1,11 @@
 import { splitTweet, addContinueText, addBaseText } from '@/lib/twitter'
 import { useMutation } from '@tanstack/react-query'
-import { patchTweetId } from './patchTweetId'
-import { createTweetReplies } from './createTweetReplies'
-import { createTweet } from './createTweet'
-import { patchAnswer } from './patchAnswer'
+import { patchTweetId } from '../app/client/patchTweetId'
+import { createTweetReplies } from '../app/client/createTweetReplies'
+import { createTweet } from '../app/client/createTweet'
+import { patchAnswer } from '../app/client/patchAnswer'
 import { AnswerState } from '@/types'
-import { createS3Image } from './createS3Image'
+import { createS3Image } from '../app/client/createS3Image'
 
 export const usePostAnswer = () =>
   useMutation(

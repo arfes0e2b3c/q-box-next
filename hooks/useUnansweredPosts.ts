@@ -1,10 +1,10 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { fetchSliceSearchPosts } from './fetchSliceSearchPosts'
+import { fetchSliceUnansweredPosts } from '../app/client/fetchSliceUnansweredPosts'
 
-export const useSearchPosts = (q: string) =>
+export const useUnansweredPosts = () =>
   useInfiniteQuery({
-    queryKey: ['searchPosts', q],
-    queryFn: ({ pageParam = 0 }) => fetchSliceSearchPosts(pageParam, q),
+    queryKey: ['unanswered'],
+    queryFn: ({ pageParam = 0 }) => fetchSliceUnansweredPosts(pageParam),
     refetchOnWindowFocus: false,
     staleTime: Infinity,
     getNextPageParam: (lastPage) =>

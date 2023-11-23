@@ -4,7 +4,7 @@ import { AnswerCardForAnswer } from '@/components/shared/AnswerCardForAnswer'
 import InfiniteScroll from 'react-infinite-scroller'
 import { LoadingCircle } from '@/components/shared/LoadingCircle'
 import { useAnswerPageStore } from '@/store/answerPageStore'
-import { useUnansweredPosts } from '@/app/client/useUnansweredPosts'
+import { useUnansweredPosts } from '@/hooks/useUnansweredPosts'
 
 export default function Answer() {
   const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch } =
