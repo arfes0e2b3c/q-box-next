@@ -1,4 +1,4 @@
-name: Vercel Preview URL Lighthouse Audit.
+name: Vercel Preview URL Lighthouse Audit
 
 on:
   issue_comment:
@@ -13,7 +13,7 @@ jobs:
         id: loading_comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
         with:
-          GITHUBACTIONS_SECRET: ${{ secrets.GITHUBACTIONS_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.GITHUBACTIONS_SECRET }}
           number: ${{ github.event.issue.number }}
           header: lighthouse
           message: |
@@ -22,7 +22,7 @@ jobs:
         id: vercel_preview_url
         uses: aaron-binary/vercel-preview-url-action@v0.0.3
         with:
-          GITHUBACTIONS_SECRET: ${{ secrets.GITHUBACTIONS_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.GITHUBACTIONS_SECRET }}
       - uses: actions/checkout@v2
       - name: Audit preview URL with Lighthouse
         id: lighthouse_audit
@@ -60,7 +60,7 @@ jobs:
         id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v1
         with:
-          GITHUBACTIONS_SECRET: ${{ secrets.GITHUBACTIONS_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.GITHUBACTIONS_SECRET }}
           number: ${{ github.event.issue.number }}
           header: lighthouse
           message: |
