@@ -1,0 +1,13 @@
+{
+  "budgets": [
+    {
+      "path": "/*",
+      "timings": [
+        {
+          "metric": "performance",
+          "budget": 90
+        }
+      ]
+    }
+  ]
+}
