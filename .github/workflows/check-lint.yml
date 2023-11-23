@@ -29,8 +29,8 @@ jobs:
         run: yarn lint
       - name: build check
         env:
-          NEXT_PUBLIC_MICROCMS_DOMAIN: ${{ secrets.NEXT_PUBLIC_MICROCMS_DOMAIN }}
-          NEXT_PUBLIC_MICROCMS_KEY: ${{ secrets.NEXT_PUBLIC_MICROCMS_KEY }}
+          MICROCMS_DOMAIN: ${{ secrets.MICROCMS_DOMAIN }}
+          MICROCMS_KEY: ${{ secrets.MICROCMS_KEY }}
           NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY }}
           NEXT_PUBLIC_TWITTER_APP_KEY: ${{ secrets.NEXT_PUBLIC_TWITTER_APP_KEY }}
           NEXT_PUBLIC_TWITTER_APP_SECRET: ${{ secrets.NEXT_PUBLIC_TWITTER_APP_SECRET }}

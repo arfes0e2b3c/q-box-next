@@ -2,8 +2,8 @@ import { MicroCMSQueries, MicroCMSResponse, QA, Reply } from '@/types'
 import { createClient } from 'microcms-js-sdk'
 
 const client = createClient({
-  serviceDomain: process.env.NEXT_PUBLIC_MICROCMS_DOMAIN || '',
-  apiKey: process.env.NEXT_PUBLIC_MICROCMS_KEY || '',
+  serviceDomain: process.env.MICROCMS_DOMAIN || '',
+  apiKey: process.env.MICROCMS_KEY || '',
 })
 
 export const fetchPosts = async ({
