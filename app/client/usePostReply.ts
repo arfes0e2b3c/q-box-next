@@ -2,9 +2,9 @@ import { useMutation } from '@tanstack/react-query'
 import { addContinueText, splitReply } from '@/lib/twitter'
 import { patchTweetId } from './patchTweetId'
 import { createTweetReplies } from './createTweetReplies'
-import { createReply } from './createReply'
 import { patchReplyAnswer } from './patchReplyAnswer'
 import { createS3Image } from './createS3Image'
+import { createTweetReply } from './createTweetReply'
 
 export const usePostReply = () =>
   useMutation(
@@ -33,7 +33,7 @@ export const postReplyThread = async (
   let replies = splitReply(replySentence)
   replies = addContinueText(replies)
   try {
-    let replyId: string = await createReply(replies[0], replyTweetId)
+    let replyId: string = await createTweetReply(replies[0], replyTweetId)
 
     if (replies.length > 1) {
       replyId = await createTweetReplies(replyId, replies.slice(1))
