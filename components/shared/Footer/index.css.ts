@@ -1,4 +1,4 @@
-import { pcFooterHeight, spFooterHeight } from '@/consts/styles.css'
+import { lightGray, pcFooterHeight, spFooterHeight } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const footer = style({
@@ -8,7 +8,7 @@ export const footer = style({
   justifyContent: 'center',
   alignItems: 'center',
   gap: '20px',
-  borderTop: '1px solid rgba(0, 0, 0, 0.1)',
+  borderTop: `1px solid ${lightGray}`,
   '@media': {
     'screen and (max-width: 768px)': {
       height: spFooterHeight,

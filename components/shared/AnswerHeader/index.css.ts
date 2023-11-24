@@ -1,4 +1,11 @@
-import { pcHeaderHeight, spHeaderHeight, baseTransition } from '@/consts/styles.css'
+import {
+  pcHeaderHeight,
+  spHeaderHeight,
+  baseTransition,
+  lightGray,
+  gray,
+  baseColor,
+} from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const header = style({
@@ -10,7 +17,7 @@ export const header = style({
   width: '100%',
   height: pcHeaderHeight,
   backgroundColor: 'white',
-  boxShadow: '0 0 10px 5px rgba(0, 0, 0, 0.2)',
+  boxShadow: `0 0 10px 5px ${gray}`,
   '@media': {
     'screen and (max-width: 768px)': {
       gridTemplateColumns: '1fr 1fr',
@@ -23,13 +30,13 @@ export const linkToHome = style({
   display: 'grid',
   placeContent: 'center',
   width: '100%',
-  backgroundColor: 'rgba(0, 0, 0, 0.1)',
-  color: '#333',
+  backgroundColor: lightGray,
+  color: baseColor,
   textDecoration: 'none',
   userSelect: 'none',
   transition: baseTransition,
   ':hover': {
-    backgroundColor: 'rgba(48, 48, 48, 1)',
+    backgroundColor: baseColor,
     color: 'white',
   },
   '@media': {

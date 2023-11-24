@@ -1,3 +1,4 @@
+import { gray } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const individualPage = style({
@@ -15,7 +16,7 @@ export const qAContainer = style({
   width: '100%',
   margin: '0 auto',
   padding: '30px',
-  boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+  boxShadow: `0 0 10px ${gray}`,
   borderRadius: '10px',
   '@media': {
     'screen and (max-width: 768px)': {

@@ -1,4 +1,12 @@
-import { pcHeaderHeight, pcFooterHeight, spHeaderHeight, spFooterHeight } from '@/consts/styles.css'
+import {
+  pcHeaderHeight,
+  pcFooterHeight,
+  spHeaderHeight,
+  spFooterHeight,
+  lightGray,
+  baseColor,
+  gray,
+} from '@/consts/styles.css'
 import { globalStyle, style } from '@vanilla-extract/css'
 
 export const loginContainer = style({
@@ -16,11 +24,11 @@ export const form = style({
   width: '700px',
   height: '400px',
   margin: '0 auto',
-  boxShadow: '0 0 10px 10px rgba(0, 0, 0, 0.1)',
+  boxShadow: `0 0 10px 10px ${lightGray}`,
   '@media': {
     'screen and (max-width: 768px)': {
       width: '100vw',
-      boxShadow: '0 0 5px 5px rgba(0, 0, 0, 0.1)',
+      boxShadow: `0 0 5px 5px ${lightGray}`,
     },
   },
 })
@@ -53,9 +61,9 @@ export const formInput = style({
   padding: '10px',
   margin: '20px 0',
   boxSizing: 'border-box',
-  color: '#333',
+  color: baseColor,
   border: 'none',
-  borderBottom: '2px solid rgba(0, 0, 0, 0.15)',
+  borderBottom: `2px solid ${gray}`,
   borderRadius: '0',
   transition: '0.2s',
   outline: 'none',
@@ -71,7 +79,7 @@ export const submitButton = style({
   width: '200px',
   height: '60px',
   marginTop: '20px',
-  backgroundColor: '#333',
+  backgroundColor: baseColor,
   color: 'white',
   border: 'none',
   borderRadius: '1px',

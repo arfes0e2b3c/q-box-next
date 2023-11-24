@@ -1,3 +1,4 @@
+import { gray } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const qAListContainer = style({
@@ -15,13 +16,13 @@ export const qAListItem = style({
   listStyle: 'none',
   padding: '20px 10px',
   marginTop: '20px',
-  boxShadow: '0 0 5px 2px rgba(0, 0, 0, 0.2)',
+  boxShadow: `0 0 5px 2px ${gray}`,
   borderRadius: '10px',
   '@media': {
     'screen and (max-width: 768px)': {
       padding: '10px 5px',
       margin: '10px auto 0',
-      boxShadow: '0 0 3px 1px rgba(0, 0, 0, 0.2)',
+      boxShadow: `0 0 3px 1px ${gray}`,
     },
   },
 })

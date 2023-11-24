@@ -1,4 +1,4 @@
-import { bgAnimation } from '@/consts/styles.css'
+import { baseColorLight, bgAnimation } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const suspenseCardContainer = style({
@@ -22,8 +22,8 @@ export const createdAt = style({
   marginLeft: '3%',
   borderRadius: '5px',
   fontSize: '1rem',
-  backgroundColor: '#ddd',
-  border: '2px solid #ddd',
+  backgroundColor: baseColorLight,
+  border: `2px solid ${baseColorLight}`,
   ':after': {
     content: '""',
     position: 'absolute',
@@ -56,7 +56,7 @@ export const suspenseSentence = style({
   width: '100%',
   height: '16px',
   marginTop: '8px',
-  backgroundColor: '#ddd',
+  backgroundColor: baseColorLight,
   borderRadius: '8px',
   ':after': {
     content: '""',

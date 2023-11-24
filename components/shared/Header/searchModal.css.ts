@@ -1,4 +1,4 @@
-import { baseTransition } from '@/consts/styles.css'
+import { baseColor, baseTransition, gray } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const searchModal = style({
@@ -14,7 +14,7 @@ export const searchModalInner = style({
   padding: '20px',
   backgroundColor: 'rgba(0, 0, 0, 0.8)',
   overflow: 'scroll',
-  boxShadow: '0px 10px 10px 1px rgba(0, 0, 0, 0.2)',
+  boxShadow: `0px 10px 10px 1px ${gray}`,
   transformOrigin: 'center center',
   color: 'white',
   '@media': {
@@ -65,7 +65,7 @@ export const searchModalItem = style({
   overflow: 'hidden',
   ':hover': {
     backgroundColor: 'white',
-    color: '#333',
+    color: baseColor,
   },
   '@media': {
     'screen and (max-width: 768px)': {

@@ -1,4 +1,4 @@
-import { baseTransition } from '@/consts/styles.css'
+import { baseColor, baseTransition } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const qaCardContainer = style({
@@ -48,8 +48,8 @@ export const old = style({
 })
 
 export const noResult = style({
-  backgroundColor: '#333',
-  border: '2px solid rgba(0, 0, 0, 1)',
+  backgroundColor: baseColor,
+  border: '2px solid #333',
   color: 'white',
 })
 

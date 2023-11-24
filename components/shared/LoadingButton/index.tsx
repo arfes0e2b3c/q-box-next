@@ -1,4 +1,5 @@
 import { baseFont } from '@/consts/fonts'
+import { baseColor } from '@/consts/styles.css'
 import { Oval } from 'react-loader-spinner'
 
 export const LoadingButton = ({
@@ -25,7 +26,7 @@ export const LoadingButton = ({
           width='25'
           ariaLabel='loading'
           color='white'
-          secondaryColor='#333'
+          secondaryColor={baseColor}
           wrapperStyle={{ cursor: 'not-allowed' }}
         />
       ) : (

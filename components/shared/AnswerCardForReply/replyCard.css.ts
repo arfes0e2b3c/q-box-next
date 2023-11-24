@@ -1,3 +1,4 @@
+import { baseColor, gray, lightGray } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const replyContainer = style({
@@ -7,12 +8,12 @@ export const replyContainer = style({
   width: '90%',
   padding: '20px',
   margin: '10px 0',
-  boxShadow: '0 0 5px 5px rgba(0, 0, 0, 0.1)',
+  boxShadow: `0 0 5px 5px ${lightGray}`,
   '@media': {
     'screen and (max-width: 768px)': {
       width: '100%',
       padding: '10px',
-      boxShadow: '0 0 3px 3px rgba(0, 0, 0, 0.1)',
+      boxShadow: `0 0 3px 3px ${lightGray}`,
     },
   },
 })
@@ -23,8 +24,8 @@ export const createdAt = style({
   margin: '0',
   borderRadius: '5px',
   color: 'white',
-  backgroundColor: '#333',
-  border: '2px solid rgba(0, 0, 0, 1)',
+  backgroundColor: baseColor,
+  border: '2px solid #000',
   whiteSpace: 'nowrap',
   fontSize: '1rem',
   textAlign: 'center',
@@ -50,7 +51,7 @@ export const button = style({
   width: '100px',
   height: '30px',
   margin: '0 auto',
-  border: '1px solid rgba(0, 0, 0, 0.3)',
+  border: `1px solid ${gray}`,
   borderRadius: '5px',
   background: 'none',
   transition: '0.5s',

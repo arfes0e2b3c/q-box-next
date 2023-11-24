@@ -1,4 +1,4 @@
-import { bgAnimation } from '@/consts/styles.css'
+import { baseColorLight, bgAnimation } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const suspenseCardWrapper = style({
@@ -11,7 +11,7 @@ export const suspenseCard = style({
   position: 'relative',
   width: 'calc(100% / 1200 * 1160)',
   height: 'calc(100% / 630 * 564)',
-  background: '#ddd',
+  background: baseColorLight,
   margin: '0 auto ',
   marginTop: 'calc(100% / 1200 * 25)',
   borderRadius: '15px',

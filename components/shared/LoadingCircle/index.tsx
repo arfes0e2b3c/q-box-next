@@ -1,5 +1,6 @@
 import { Oval } from 'react-loader-spinner'
 import { loadingCircleContainer } from './index.css'
+import { baseColorLight } from '@/consts/styles.css'
 
 export const LoadingCircle = () => {
   return (
@@ -9,7 +10,7 @@ export const LoadingCircle = () => {
         width={60}
         height={60}
         color='#888'
-        secondaryColor='#ddd'
+        secondaryColor={baseColorLight}
         ariaLabel='loading'
       />
     </div>

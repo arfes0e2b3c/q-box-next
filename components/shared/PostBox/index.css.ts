@@ -1,4 +1,4 @@
-import { baseTransition, shortTransition } from '@/consts/styles.css'
+import { baseColor, baseTransition, gray, shortTransition } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const postBox = style({
@@ -33,8 +33,8 @@ export const postBoxInput = style({
   padding: '20px',
   outline: 'none',
   border: 'none',
-  borderBottom: '2px solid #333',
-  borderColor: 'rgba(0, 0, 0, 0.15)',
+  borderBottom: `2px solid ${baseColor}`,
+  borderColor: gray,
   borderWidth: '2px',
   borderRadius: '0',
   fontSize: '1rem',
@@ -68,7 +68,7 @@ export const submitButton = style({
   width: '120px',
   height: '40px',
   marginTop: '20px',
-  backgroundColor: '#333',
+  backgroundColor: baseColor,
   color: 'white',
   border: 'none',
   borderRadius: '3px',

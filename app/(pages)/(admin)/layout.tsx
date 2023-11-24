@@ -61,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           width={80}
           height={80}
           color='#888'
-          secondaryColor='#ddd'
+          secondaryColor='baseColorLight'
           ariaLabel='loading'
         /> */}
         <p className={isLoginText}>ログイン中です...</p>

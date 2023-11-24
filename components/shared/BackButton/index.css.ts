@@ -1,4 +1,4 @@
-import { baseTransition } from '@/consts/styles.css'
+import { baseColor, baseTransition, gray } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const backButtonWrapper = style({
@@ -17,20 +17,20 @@ export const backButton = style({
   width: '100%',
   height: '100%',
   padding: '8px',
-  color: '#333',
+  color: baseColor,
   borderRadius: '5px',
   textDecoration: 'none',
-  boxShadow: '0 0 5px 2px rgba(0, 0, 0, 0.2)',
+  boxShadow: `0 0 5px 2px ${gray}`,
   transition: baseTransition,
   ':hover': {
-    backgroundColor: 'rgba(48, 48, 48, 1)',
+    backgroundColor: baseColor,
     color: 'white',
   },
   '@media': {
     'screen and (max-width: 768px)': {
       ':hover': {
         backgroundColor: 'transparent',
-        color: '#333',
+        color: baseColor,
       },
     },
   },

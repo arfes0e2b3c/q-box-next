@@ -1,3 +1,4 @@
+import { gray, lightGray } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const answerCardForReply = style({
@@ -7,14 +8,14 @@ export const answerCardForReply = style({
   listStyle: 'none',
   padding: '20px',
   margin: '10px 0',
-  boxShadow: '0 0 5px 5px rgba(0, 0, 0, 0.1)',
+  boxShadow: `0 0 5px 5px ${lightGray}`,
   overflowWrap: 'break-word',
   textAlign: 'center',
   '@media': {
     'screen and (max-width: 768px)': {
       padding: '10px',
       margin: '10px 0',
-      boxShadow: '0 0 3px 3px rgba(0, 0, 0, 0.1)',
+      boxShadow: `0 0 3px 3px ${lightGray}`,
     },
   },
 })
@@ -25,7 +26,7 @@ export const question = style({
   textAlign: 'center',
   whiteSpace: 'pre-wrap',
   fontSize: '1rem',
-  borderBottom: '3px dashed rgba(0, 0, 0, 0.2)',
+  borderBottom: `3px dashed ${gray}`,
   '@media': {
     'screen and (max-width: 768px)': {
       width: '90%',

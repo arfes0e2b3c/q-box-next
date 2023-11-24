@@ -14,3 +14,9 @@ export const bgAnimation = keyframes({
   '50%': { left: '100%' },
   '100%': { left: '100%' },
 })
+
+export const lightGray = 'rgba(0, 0, 0, 0.1)'
+export const gray = 'rgba(0, 0, 0, 0.2)'
+
+export const baseColor = '#333'
+export const baseColorLight = '#ddd'

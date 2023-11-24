@@ -1,3 +1,4 @@
+import { baseColor, baseColorLight } from '@/consts/styles.css'
 import { createVar, style } from '@vanilla-extract/css'
 export const strokePercent = createVar()
 export const strokePercentWithPx = createVar()
@@ -9,7 +10,7 @@ export const gauge = style({
   width: `calc(40px + ${stroke * 2}px)`,
   height: `calc(40px + ${stroke * 2}px)`,
   borderRadius: '50%',
-  color: '#333',
+  color: baseColor,
   transition: '.3s',
 })
 
@@ -29,7 +30,7 @@ export const circleBg = style({
   width: '100%',
   height: '100%',
   fill: 'none',
-  stroke: '#ddd',
+  stroke: baseColorLight,
   strokeWidth: `calc(${stroke}px * 2)`,
   transformOrigin: 'center',
   transform: `translate(${stroke}px, -${stroke}px) rotateZ(-90deg)`,
@@ -49,7 +50,7 @@ export const circleMain = style({
   transform: `translate(${stroke}px, -${stroke}px) rotateZ(-90deg)`,
   strokeDasharray: `calc(40 * ${Math.PI})`,
   strokeDashoffset: `calc(40 * ${Math.PI} * (100 - ${strokePercent}) / 100)`,
-  stroke: '#333',
+  stroke: baseColor,
   transition: '.3s',
   '@media': {
     'screen and (max-width: 768px)': {

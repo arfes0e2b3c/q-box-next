@@ -1,3 +1,4 @@
+import { baseColor, lightGray } from '@/consts/styles.css'
 import { globalStyle, style } from '@vanilla-extract/css'
 
 export const answerPostBox = style({
@@ -42,7 +43,7 @@ export const textInput = style({
   height: '70px',
   padding: '10px',
   outline: 'none',
-  borderColor: 'rgba(0, 0, 0, 0.15)',
+  borderColor: lightGray,
   borderWidth: '2px',
   borderRadius: '10px',
   '@media': {
@@ -100,7 +101,7 @@ export const answered = style({
 })
 
 export const requirement = style({
-  color: '#333',
+  color: baseColor,
   backgroundColor: 'rgba(255, 222, 103, 1)',
   ':hover': {
     backgroundColor: 'rgba(255, 222, 103, 0.8)',
