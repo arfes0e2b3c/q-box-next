@@ -1,4 +1,4 @@
-import { baseColorLight, bgAnimation } from '@/consts/styles.css'
+import { baseColorLight, bgAnimation, fontMd, fontSm, fontXs } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const suspenseCardContainer = style({
@@ -21,7 +21,7 @@ export const createdAt = style({
   margin: '0',
   marginLeft: '3%',
   borderRadius: '5px',
-  fontSize: '1rem',
+  fontSize: fontSm,
   backgroundColor: baseColorLight,
   border: `2px solid ${baseColorLight}`,
   ':after': {
@@ -39,7 +39,7 @@ export const createdAt = style({
   '@media': {
     'screen and (max-width: 768px)': {
       width: '100px',
-      fontSize: '0.8rem',
+      fontSize: fontXs,
     },
   },
 })
@@ -47,7 +47,7 @@ export const createdAt = style({
 export const suspenseSentenceContainer = style({
   width: '90%',
   margin: '10px auto',
-  fontSize: '1.2rem',
+  fontSize: fontMd,
 })
 
 export const suspenseSentence = style({

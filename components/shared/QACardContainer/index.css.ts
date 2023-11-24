@@ -1,4 +1,4 @@
-import { baseColor, baseTransition } from '@/consts/styles.css'
+import { baseColor, baseTransition, fontMd, fontSm, fontXs } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const qaCardContainer = style({
@@ -21,11 +21,11 @@ export const createdAt = style({
   borderRadius: '5px',
   color: 'white',
   whiteSpace: 'nowrap',
-  fontSize: '1rem',
+  fontSize: fontSm,
   '@media': {
     'screen and (max-width: 768px)': {
       width: '100px',
-      fontSize: '0.8rem',
+      fontSize: fontXs,
     },
   },
 })
@@ -64,10 +64,10 @@ export const cardButton = style({
 export const answer = style({
   width: '90%',
   margin: '0 auto',
-  fontSize: '1.2rem',
+  fontSize: fontMd,
   '@media': {
     'screen and (max-width: 768px)': {
-      fontSize: '0.8rem',
+      fontSize: fontXs,
     },
   },
 })

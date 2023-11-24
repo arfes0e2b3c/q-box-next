@@ -1,4 +1,10 @@
-import { pcHeaderHeight, pcFooterHeight, spHeaderHeight, spFooterHeight } from '@/consts/styles.css'
+import {
+  pcHeaderHeight,
+  pcFooterHeight,
+  spHeaderHeight,
+  spFooterHeight,
+  fontLg,
+} from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const mainContainer = style({
@@ -24,6 +30,6 @@ export const loadingBody = style({
 })
 
 export const isLoginText = style({
-  fontSize: '1.5rem',
+  fontSize: fontLg,
   margin: '10px 0',
 })

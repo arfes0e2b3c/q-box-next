@@ -1,4 +1,4 @@
-import { gray } from '@/consts/styles.css'
+import { fontLg, fontXl, gray } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const topPage = style({
@@ -28,11 +28,11 @@ export const mainContainer = style({
 
 export const qAListTitle = style({
   marginLeft: '20px',
-  fontSize: '2rem',
+  fontSize: fontXl,
   '@media': {
     'screen and (max-width: 768px)': {
       margin: '10px 20px',
-      fontSize: '1.5rem',
+      fontSize: fontLg,
     },
   },
 })

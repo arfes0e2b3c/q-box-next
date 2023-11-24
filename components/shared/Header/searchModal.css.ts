@@ -1,4 +1,4 @@
-import { baseColor, baseTransition, gray } from '@/consts/styles.css'
+import { baseColor, baseTransition, fontLg, fontMd, gray } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const searchModal = style({
@@ -26,10 +26,10 @@ export const searchModalInner = style({
 
 export const searchModalTitle = style({
   margin: '0',
-  fontSize: '1.4rem',
+  fontSize: fontLg,
   '@media': {
     'screen and (max-width: 768px)': {
-      fontSize: '1.2rem',
+      fontSize: fontMd,
     },
   },
 })

@@ -1,4 +1,4 @@
-import { baseColor, lightGray } from '@/consts/styles.css'
+import { baseColor, fontSm, fontXs, lightGray } from '@/consts/styles.css'
 import { globalStyle, style } from '@vanilla-extract/css'
 
 export const answerPostBox = style({
@@ -55,11 +55,11 @@ export const textInput = style({
 
 export const alertText = style({
   color: 'red',
-  fontSize: '1rem',
+  fontSize: fontSm,
   margin: '5px 0',
   '@media': {
     'screen and (max-width: 768px)': {
-      fontSize: '0.8rem',
+      fontSize: fontXs,
     },
   },
 })
@@ -88,7 +88,7 @@ export const button = style({
   '@media': {
     'screen and (max-width: 768px)': {
       width: '100%',
-      fontSize: '0.8rem',
+      fontSize: fontXs,
     },
   },
 })

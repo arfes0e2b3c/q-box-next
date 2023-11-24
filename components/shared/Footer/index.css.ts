@@ -1,4 +1,12 @@
-import { lightGray, pcFooterHeight, spFooterHeight } from '@/consts/styles.css'
+import {
+  fontLg,
+  fontMd,
+  fontSm,
+  fontXs,
+  lightGray,
+  pcFooterHeight,
+  spFooterHeight,
+} from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const footer = style({
@@ -39,20 +47,20 @@ export const footerTextSection = style({
 
 export const footerTitle = style({
   margin: '0',
-  fontSize: '1.5rem',
+  fontSize: fontLg,
   '@media': {
     'screen and (max-width: 768px)': {
-      fontSize: '1.2rem',
+      fontSize: fontMd,
     },
   },
 })
 
 export const footerRightsText = style({
   margin: '0',
-  fontSize: '1rem',
+  fontSize: fontSm,
   '@media': {
     'screen and (max-width: 768px)': {
-      fontSize: '0.8rem',
+      fontSize: fontXs,
     },
   },
 })

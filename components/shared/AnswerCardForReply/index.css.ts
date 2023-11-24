@@ -1,4 +1,4 @@
-import { gray, lightGray } from '@/consts/styles.css'
+import { fontSm, gray, lightGray } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const answerCardForReply = style({
@@ -25,13 +25,13 @@ export const question = style({
   paddingBottom: '16px',
   textAlign: 'center',
   whiteSpace: 'pre-wrap',
-  fontSize: '1rem',
+  fontSize: fontSm,
   borderBottom: `3px dashed ${gray}`,
   '@media': {
     'screen and (max-width: 768px)': {
       width: '90%',
       margin: '5px 0 0',
-      fontSize: '1rem',
+      fontSize: fontSm,
     },
   },
 })

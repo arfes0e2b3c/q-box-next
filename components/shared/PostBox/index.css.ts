@@ -1,4 +1,13 @@
-import { baseColor, baseTransition, gray, shortTransition } from '@/consts/styles.css'
+import {
+  baseColor,
+  baseTransition,
+  fontLg,
+  fontMd,
+  fontSm,
+  fontXs,
+  gray,
+  shortTransition,
+} from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const postBox = style({
@@ -18,10 +27,10 @@ export const postBox = style({
 
 export const postBoxTitle = style({
   margin: '0px auto',
-  fontSize: '1.4rem',
+  fontSize: fontLg,
   '@media': {
     'screen and (max-width: 768px)': {
-      fontSize: '1.2rem',
+      fontSize: fontMd,
     },
   },
 })
@@ -37,7 +46,7 @@ export const postBoxInput = style({
   borderColor: gray,
   borderWidth: '2px',
   borderRadius: '0',
-  fontSize: '1rem',
+  fontSize: fontSm,
   transition: baseTransition,
   ':focus': {
     borderColor: 'rgba(0, 0, 0, 0.5)',
@@ -46,7 +55,7 @@ export const postBoxInput = style({
     'screen and (max-width: 768px)': {
       height: '60px',
       padding: '10px 20px',
-      fontSize: '0.8rem',
+      fontSize: fontXs,
     },
   },
 })
@@ -54,10 +63,10 @@ export const postBoxInput = style({
 export const noticeMessage = style({
   margin: '0',
   marginTop: '10px',
-  fontSize: '1rem',
+  fontSize: fontSm,
   '@media': {
     'screen and (max-width: 768px)': {
-      fontSize: '0.8rem',
+      fontSize: fontXs,
     },
   },
 })
@@ -78,7 +87,7 @@ export const submitButton = style({
     'screen and (max-width: 768px)': {
       height: '35px',
       marginTop: '10px',
-      fontSize: '0.8rem',
+      fontSize: fontXs,
     },
   },
 })

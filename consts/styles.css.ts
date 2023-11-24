@@ -20,3 +20,9 @@ export const gray = 'rgba(0, 0, 0, 0.2)'
 
 export const baseColor = '#333'
 export const baseColorLight = '#ddd'
+
+export const fontXs = '0.8rem'
+export const fontSm = '1rem'
+export const fontMd = '1.2rem'
+export const fontLg = '1.4rem'
+export const fontXl = '2rem'

@@ -1,4 +1,4 @@
-import { baseColor, gray, lightGray } from '@/consts/styles.css'
+import { baseColor, fontSm, fontXs, gray, lightGray } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const replyContainer = style({
@@ -27,12 +27,12 @@ export const createdAt = style({
   backgroundColor: baseColor,
   border: '2px solid #000',
   whiteSpace: 'nowrap',
-  fontSize: '1rem',
+  fontSize: fontSm,
   textAlign: 'center',
   '@media': {
     'screen and (max-width: 768px)': {
       width: '120px',
-      fontSize: '0.8rem',
+      fontSize: fontXs,
     },
   },
 })
