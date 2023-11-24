@@ -1,4 +1,4 @@
-import { answered, requirement, old, noResult } from '@/components/shared/QACardContainer/index.css'
+import { answered, requirement, old, noResult } from '@/components/QACardContainer/index.css'
 import { continueText, twitterMaxLength } from '@/consts'
 import { AnswerState, MicroCMSResponse, QA } from '@/types'
 import path from 'path'

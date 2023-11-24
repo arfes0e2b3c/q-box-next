@@ -1,12 +1,12 @@
 'use client'
 import { baseFont } from '@/consts/fonts'
 import dayjs from 'dayjs'
-import { AnswerPostBox } from '../AnswerPostBox'
+import { AnswerPostBox } from '../shared/AnswerPostBox'
 import { QA } from '@/types'
 import { useState } from 'react'
 import { answerCard, createdAt, box, question, toggleButton, button } from './index.css'
 import { useDeletePost } from '@/hooks/useDeletePost'
-import { LoadingButton } from '../LoadingButton'
+import { LoadingButton } from '../shared/LoadingButton'
 
 export const AnswerCardForAnswer = (props: { post: QA; refetch: () => void }) => {
   const post = props.post

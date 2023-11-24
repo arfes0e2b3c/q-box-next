@@ -2,7 +2,7 @@
 
 import { PostForm } from '@/components/shared/PostBox'
 import { formContainer, mainContainer, qAListTitle, topPage } from './page.css'
-import { QAListWrapper } from '@/components/shared/qAListWrapper'
+import { QAListWrapper } from '@/components/QAListWrapper'
 import { useAnsweredPosts } from '@/hooks/useAnsweredPosts'
 
 export default function Home() {

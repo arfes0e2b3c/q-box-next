@@ -2,9 +2,9 @@
 
 import { PostForm } from '@/components/shared/PostBox'
 import { formContainer, mainContainer, noResult, qAListTitle, topPage } from './page.css'
-import { QAListWrapper } from '@/components/shared/qAListWrapper'
+import { QAListWrapper } from '@/components/QAListWrapper'
 import { useSearchParams } from 'next/navigation'
-import { QACardContainer } from '@/components/shared/QACardContainer'
+import { QACardContainer } from '@/components/QACardContainer'
 import { noResultQAData } from '@/consts'
 import { useSearchPosts } from '@/hooks/useSearchPosts'
 

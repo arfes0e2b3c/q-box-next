@@ -13,7 +13,7 @@ import { useDeleteReply } from '@/hooks/useDeleteReply'
 import { useReplyPageStore } from '@/store/replyPageStore'
 import { usePostReply } from '@/hooks/usePostReply'
 import { useMoveToAnswer } from '@/hooks/useMoveToAnswer'
-import { LoadingButton } from '../LoadingButton'
+import { LoadingButton } from '../shared/LoadingButton'
 
 export const ReplyCard = (props: { reply: Reply; replyTweetId: string; postId: string }) => {
   const reply = props.reply

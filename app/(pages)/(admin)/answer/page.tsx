@@ -1,6 +1,6 @@
 'use client'
 import { noMoreResult, page, pageInner, title } from './page.css'
-import { AnswerCardForAnswer } from '@/components/shared/AnswerCardForAnswer'
+import { AnswerCardForAnswer } from '@/components/AnswerCardForAnswer'
 import InfiniteScroll from 'react-infinite-scroller'
 import { LoadingCircle } from '@/components/shared/LoadingCircle'
 import { useAnswerPageStore } from '@/store/answerPageStore'

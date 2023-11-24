@@ -1,5 +1,5 @@
 import { PostForm } from '@/components/shared/PostBox'
-import { QACardContainer } from '@/components/shared/QACardContainer'
+import { QACardContainer } from '@/components/QACardContainer'
 import { formContainer, individualPage, qAContainer } from './page.css'
 
 import { fetchPostDetail } from '../../../client/microcms/post/fetchPostDetail'

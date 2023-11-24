@@ -1,7 +1,7 @@
 'use client'
 import { page, pageInner, title } from './page.css'
 // import { Metadata } from 'next'
-import { AnswerCardForReply } from '@/components/shared/AnswerCardForReply'
+import { AnswerCardForReply } from '@/components/AnswerCardForReply'
 import { LoadingCircle } from '@/components/shared/LoadingCircle'
 import InfiniteScroll from 'react-infinite-scroller'
 import { noMoreResult } from '../page.css'

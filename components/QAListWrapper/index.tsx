@@ -5,7 +5,7 @@ import InfiniteScroll from 'react-infinite-scroller'
 import { QACardContainer } from '../QACardContainer'
 import { SuspenseCardContainer } from '../SuspenseCardContainer'
 import { qAListContainer, qAListItem } from './index.css'
-import { LoadingCircle } from '../LoadingCircle'
+import { LoadingCircle } from '../shared/LoadingCircle'
 
 export const QAListWrapper = ({
   pagesData,
