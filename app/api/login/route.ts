@@ -1,6 +1,5 @@
-import { signInWithEmailAndPassword } from 'firebase/auth'
 import { NextRequest, NextResponse } from 'next/server'
-import { auth, isRightAccessUser } from '../firebase'
+import { isRightAccessUser, loginFirebase } from '../firebase'
 
 export async function POST(req: NextRequest) {
   const props = await req.json()
@@ -8,7 +7,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'メールアドレスを入力してください' }, { status: 400 })
   if (props.password === '')
     return NextResponse.json({ error: 'パスワードを入力してください' }, { status: 400 })
-  const res = await signInWithEmailAndPassword(auth, props.email, props.password)
+  const res = await loginFirebase(props.email, props.password)
   return NextResponse.json(res, { status: 200 })
 }
 

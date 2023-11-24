@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth } from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -12,7 +12,10 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 
-export const auth = getAuth(app)
+const auth = getAuth(app)
+
+export const loginFirebase = async (email: string, password: string) =>
+  signInWithEmailAndPassword(auth, email, password)
 
 export const isRightAccessUser = (email: string, uid: string): boolean =>
   email === process.env.OTECIR_EMAIL && uid === process.env.OTECIR_USER_ID
