@@ -11,23 +11,23 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Get npm cache directory path
+        id: npm-cache-dir-path
+        run: echo "::set-output name=dir::$(npm config get cache)"
 
       - uses: actions/cache@v2
-        id: yarn-cache
+        id: npm-cache
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-20231123
+          path: ${{ steps.npm-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}-20231123
           restore-keys: |
-            ${{ runner.os }}-yarn-20231123
+            ${{ runner.os }}-npm-20231123
       - name: Install Dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn install
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm install
 
       - name: lint check
-        run: yarn lint
+        run: npm run lint
       - name: build check
         env:
           MICROCMS_DOMAIN: ${{ secrets.MICROCMS_DOMAIN }}
@@ -35,4 +35,4 @@ jobs:
           FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
           TWITTER_APP_KEY: ${{ secrets.TWITTER_APP_KEY }}
           TWITTER_APP_SECRET: ${{ secrets.TWITTER_APP_SECRET }}
-        run: yarn build
+        run: npm run build
