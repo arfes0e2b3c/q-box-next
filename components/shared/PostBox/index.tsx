@@ -1,12 +1,11 @@
 'use client'
 
 import { baseFont } from '@/consts/fonts'
-import { noticeMessage, postBox, postBoxInput, postBoxTitle } from './index.css'
+import { noticeMessage, postBox, postBoxInput, postBoxTitle, submitButton } from './index.css'
 import { PostMode } from '@/types'
 import { useRef, useState } from 'react'
 import { useCreatePost } from '@/hooks/useCreatePost'
 import { useCreateReply } from '@/hooks/useCreateReply'
-import { button } from '../AnswerCardForAnswer/index.css'
 import { LoadingButton } from '../LoadingButton'
 
 export const PostForm = ({ mode, replyFor }: { mode: PostMode; replyFor?: string }) => {
@@ -75,7 +74,7 @@ export const PostForm = ({ mode, replyFor }: { mode: PostMode; replyFor?: string
       <LoadingButton
         isLoading={isLoading}
         onClick={(event) => event && submitButtonClickHandler(event)}
-        style={button}
+        style={submitButton}
       >
         {formProps.buttonText}
       </LoadingButton>
