@@ -1,4 +1,11 @@
-import { baseColor, fontSm, fontXs, lightGray } from '@/consts/styles.css'
+import {
+  baseColor,
+  baseTransition,
+  fontSm,
+  fontXs,
+  lightGray,
+  longTransition,
+} from '@/consts/styles.css'
 import { globalStyle, style } from '@vanilla-extract/css'
 
 export const answerPostBox = style({
@@ -9,7 +16,7 @@ export const answerPostBox = style({
   alignItems: 'center',
   paddingTop: '0',
   marginTop: '0',
-  transition: '0.3s',
+  transition: baseTransition,
   overflow: 'hidden',
 })
 
@@ -83,7 +90,7 @@ export const button = style({
   height: '40px',
   border: 'none',
   color: 'white',
-  transition: '0.5s',
+  transition: longTransition,
   cursor: 'pointer',
   '@media': {
     'screen and (max-width: 768px)': {

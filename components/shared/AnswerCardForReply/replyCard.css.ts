@@ -1,4 +1,4 @@
-import { baseColor, fontSm, fontXs, gray, lightGray } from '@/consts/styles.css'
+import { baseColor, fontSm, fontXs, gray, lightGray, longTransition } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const replyContainer = style({
@@ -54,7 +54,7 @@ export const button = style({
   border: `1px solid ${gray}`,
   borderRadius: '5px',
   background: 'none',
-  transition: '0.5s',
+  transition: longTransition,
   cursor: 'pointer',
   ':hover': {
     backgroundColor: '#d77',
@@ -88,7 +88,7 @@ export const registerButton = style({
   marginTop: '10px',
   border: 'none',
   color: 'white',
-  transition: '0.5s',
+  transition: longTransition,
   cursor: 'pointer',
 })
 

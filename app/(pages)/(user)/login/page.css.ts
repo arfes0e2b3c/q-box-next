@@ -6,6 +6,7 @@ import {
   lightGray,
   baseColor,
   gray,
+  baseTransition,
 } from '@/consts/styles.css'
 import { globalStyle, style } from '@vanilla-extract/css'
 
@@ -65,7 +66,7 @@ export const formInput = style({
   border: 'none',
   borderBottom: `2px solid ${gray}`,
   borderRadius: '0',
-  transition: '0.2s',
+  transition: baseTransition,
   outline: 'none',
   textAlign: 'center',
   fontSize: '18px',
@@ -83,7 +84,7 @@ export const submitButton = style({
   color: 'white',
   border: 'none',
   borderRadius: '1px',
-  transition: '0.2s',
+  transition: baseTransition,
   cursor: 'pointer',
   overflow: 'hidden',
   ':before': {
@@ -96,7 +97,7 @@ export const submitButton = style({
     height: '0',
     backgroundColor: 'white',
     opacity: '0.2',
-    transition: '0.3s',
+    transition: baseTransition,
   },
 })
 
