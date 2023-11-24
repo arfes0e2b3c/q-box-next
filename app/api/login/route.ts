@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { isRightAccessUser, loginFirebase } from '../firebase'
+import { isRightAccessUser, loginFirebase } from '../../models/firebase'
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   const { email, password } = await req.json()

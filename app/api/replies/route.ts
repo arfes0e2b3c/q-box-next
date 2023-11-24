@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createReply } from '../microcms'
+import { createReply } from '../../models/microcms'
 
 export async function POST(req: NextRequest) {
   const props = await req.json()

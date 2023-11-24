@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { patchPost } from '../../../microcms'
+import { patchPost } from '../../../../models/microcms'
 
 export async function PATCH(req: NextRequest, { params }: { params: { contentId: string } }) {
   const props = await req.json()

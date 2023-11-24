@@ -1,6 +1,6 @@
 import { MicroCMSResponse } from '@/types'
 import { NextRequest, NextResponse } from 'next/server'
-import { createPost, deletePost, fetchPosts } from '../microcms'
+import { createPost, deletePost, fetchPosts } from '../../models/microcms'
 import { filterPublicReplies } from '@/lib'
 
 export async function GET(req: NextRequest): Promise<NextResponse<MicroCMSResponse>> {
