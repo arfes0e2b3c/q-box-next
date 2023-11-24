@@ -2,10 +2,6 @@ import { pcHeaderHeight, pcFooterHeight, spHeaderHeight, spFooterHeight } from '
 import { style } from '@vanilla-extract/css'
 
 export const mainContainer = style({
-  // display: 'flex',
-  // flexDirection: 'column',
-  // justifyContent: 'center',
-  // alignItems: 'center',
   minHeight: `calc(100vh - ${pcHeaderHeight} - ${pcFooterHeight})`,
   '@media': {
     'screen and (max-width: 768px)': {

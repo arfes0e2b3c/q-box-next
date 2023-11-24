@@ -2,8 +2,6 @@ import { bgAnimation } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const suspenseCardWrapper = style({
-  // display: 'grid',
-  // placeContent: 'center',
   width: '100%',
   height: 'auto',
   aspectRatio: '40 / 21',
