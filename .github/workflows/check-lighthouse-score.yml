@@ -58,10 +58,10 @@ jobs:
                 ' ',
                 `*分析したURL: [${Object.keys(links)[0]}](${Object.keys(links)[0]})*`
             ].join('\n')
-             core.setOutput("comment", comment);
+            core.setOutput("comment", comment);
       - name: Lighthouse結果をコメント
         id: comment_to_pr
-        uses: marocchino/sticky-pull-request-comment@v1
+        uses: marocchino/sticky-pull-request-comment@v2
         with:
           GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
           number: ${{ github.event.issue.number }}
