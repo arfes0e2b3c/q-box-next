@@ -1,5 +1,7 @@
+import { appBaseUrl } from '@/consts'
+
 export const patchTweetId = async (contentId: string, tweetId: string) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts/tweet_id/${contentId}`, {
+  const res = await fetch(`${appBaseUrl}/api/posts/tweet_id/${contentId}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',

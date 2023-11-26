@@ -1,5 +1,7 @@
+import { appBaseUrl } from '@/consts'
+
 export const deletePost = async (contentId: string) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`, {
+  const res = await fetch(`${appBaseUrl}/api/posts`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

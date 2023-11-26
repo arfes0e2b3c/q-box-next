@@ -1,5 +1,7 @@
+import { appBaseUrl } from '@/consts'
+
 export const loginFirebase = async (email: string, password: string) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, {
+  const res = await fetch(`${appBaseUrl}/api/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

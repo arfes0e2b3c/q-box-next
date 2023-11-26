@@ -1,5 +1,7 @@
+import { appBaseUrl } from '@/consts'
+
 export const createReply = async (reply: string, replyFor: string) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/replies`, {
+  const res = await fetch(`${appBaseUrl}/api/replies`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

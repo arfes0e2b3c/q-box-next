@@ -1,7 +1,7 @@
-import { replyBaseText } from '@/consts'
+import { appBaseUrl, replyBaseText } from '@/consts'
 
 export const createReply = async (replySentence: string, replyTweetId: string) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/tweet/reply`, {
+  const res = await fetch(`${appBaseUrl}/api/tweet/reply`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
