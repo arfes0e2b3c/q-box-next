@@ -10,14 +10,14 @@ export const LoadingButton = ({
 }: {
   children: React.ReactNode
   isLoading: boolean
-  onClick: (event?: React.MouseEvent<HTMLButtonElement, MouseEvent> | undefined) => void
+  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
   style: string
 }) => {
   return (
     <button
       className={[style, baseFont.className].join(' ')}
       disabled={isLoading}
-      onClick={() => onClick()}
+      onClick={(event) => onClick(event)}
     >
       {isLoading ? (
         <Oval

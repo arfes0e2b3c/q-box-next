@@ -71,11 +71,7 @@ export const PostForm = ({ mode, replyFor }: { mode: PostMode; replyFor?: string
       {isQuestion && (
         <p className={noticeMessage}>正確な回答のため、学部と学年の併記をお願いします！</p>
       )}
-      <LoadingButton
-        isLoading={isLoading}
-        onClick={(event) => event && submitButtonClickHandler(event)}
-        style={submitButton}
-      >
+      <LoadingButton isLoading={isLoading} onClick={submitButtonClickHandler} style={submitButton}>
         {formProps.buttonText}
       </LoadingButton>
     </form>
