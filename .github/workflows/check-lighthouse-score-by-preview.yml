@@ -18,7 +18,7 @@ jobs:
       - name: 不要なURL部分を削除
         id: clean_url
         run: |
-          ORIGINAL_URL=${{ steps.capture_preview_url.outputs.url }}
+          ORIGINAL_URL=${{ steps.capture_preview_url.outputs.vercel_preview_url }}
           CLEANED_URL=$(echo $ORIGINAL_URL | sed -e 's/https:\/\/vercel.live\/open-feedback\///' -e 's/\?via=pr-comment-visit-preview-link&passThrough=1//')
           echo "CLEANED_URL=$CLEANED_URL" >> $GITHUB_ENV
 
