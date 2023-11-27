@@ -1,5 +1,5 @@
 import { QA } from '@/types'
-import { fetchPost } from '../../microcms'
+import { fetchPost } from '../../../models/microcms'
 import { filterPublicReplies } from '@/lib'
 import { NextRequest, NextResponse } from 'next/server'
 

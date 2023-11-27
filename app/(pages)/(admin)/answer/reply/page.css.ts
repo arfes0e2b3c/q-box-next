@@ -1,3 +1,4 @@
+import { fontXl, fontLg } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const page = style({
@@ -13,10 +14,10 @@ export const page = style({
 export const title = style({
   margin: '20px 0 0',
   textAlign: 'center',
-  fontSize: '2.2rem',
+  fontSize: fontXl,
   '@media': {
     'screen and (max-width: 768px)': {
-      fontSize: '1.4rem',
+      fontSize: fontLg,
     },
   },
 })

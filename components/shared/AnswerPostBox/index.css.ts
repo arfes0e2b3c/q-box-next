@@ -1,3 +1,11 @@
+import {
+  baseColor,
+  baseTransition,
+  fontSm,
+  fontXs,
+  lightGray,
+  longTransition,
+} from '@/consts/styles.css'
 import { globalStyle, style } from '@vanilla-extract/css'
 
 export const answerPostBox = style({
@@ -8,7 +16,7 @@ export const answerPostBox = style({
   alignItems: 'center',
   paddingTop: '0',
   marginTop: '0',
-  transition: '0.3s',
+  transition: baseTransition,
   overflow: 'hidden',
 })
 
@@ -42,7 +50,7 @@ export const textInput = style({
   height: '70px',
   padding: '10px',
   outline: 'none',
-  borderColor: 'rgba(0, 0, 0, 0.15)',
+  borderColor: lightGray,
   borderWidth: '2px',
   borderRadius: '10px',
   '@media': {
@@ -54,11 +62,11 @@ export const textInput = style({
 
 export const alertText = style({
   color: 'red',
-  fontSize: '1rem',
+  fontSize: fontSm,
   margin: '5px 0',
   '@media': {
     'screen and (max-width: 768px)': {
-      fontSize: '0.8rem',
+      fontSize: fontXs,
     },
   },
 })
@@ -82,12 +90,12 @@ export const button = style({
   height: '40px',
   border: 'none',
   color: 'white',
-  transition: '0.5s',
+  transition: longTransition,
   cursor: 'pointer',
   '@media': {
     'screen and (max-width: 768px)': {
       width: '100%',
-      fontSize: '0.8rem',
+      fontSize: fontXs,
     },
   },
 })
@@ -100,7 +108,7 @@ export const answered = style({
 })
 
 export const requirement = style({
-  color: '#333',
+  color: baseColor,
   backgroundColor: 'rgba(255, 222, 103, 1)',
   ':hover': {
     backgroundColor: 'rgba(255, 222, 103, 0.8)',

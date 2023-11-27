@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { postReply } from '../../twitter'
+import { postReply } from '../../../models/twitter'
 import { twitterMaxLength } from '@/consts'
 import { countTweetLength } from '@/lib'
 

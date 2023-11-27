@@ -1,14 +1,12 @@
 'use client'
 import { page, pageInner, title } from './page.css'
 // import { Metadata } from 'next'
-import { AnswerCardForReply } from '@/components/shared/AnswerCardForReply'
-import { fetchSliceUnansweredPosts } from '@/app/client/fetchSliceUnansweredPosts'
-import { useInfiniteQuery } from '@tanstack/react-query'
-import { fetchSliceUnansweredReplies } from '@/app/client/fetchSliceUnansweredReplies'
+import { AnswerCardForReply } from '@/components/AnswerCardForReply'
 import { LoadingCircle } from '@/components/shared/LoadingCircle'
 import InfiniteScroll from 'react-infinite-scroller'
 import { noMoreResult } from '../page.css'
 import { useReplyPageStore } from '@/store/replyPageStore'
+import { useUnansweredReplies } from '@/hooks/useUnasnweredReplies'
 
 // export const metadata: Metadata = {
 //   title: '管理者ページ',
@@ -17,17 +15,7 @@ import { useReplyPageStore } from '@/store/replyPageStore'
 
 export default function Answer() {
   const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch } =
-    useInfiniteQuery({
-      queryKey: ['unanswered'],
-      queryFn: ({ pageParam = 0 }) => fetchSliceUnansweredReplies(pageParam),
-      refetchOnWindowFocus: false,
-      staleTime: Infinity,
-      getNextPageParam: (lastPage) =>
-        lastPage?.offset < lastPage?.totalCount ? lastPage?.offset + 20 : false,
-      useErrorBoundary: (error: { response: { status: number } }) => {
-        return error.response?.status >= 500
-      },
-    })
+    useUnansweredReplies()
 
   const setRefetch = useReplyPageStore((state) => state.setRefetch)
   setRefetch(refetch)

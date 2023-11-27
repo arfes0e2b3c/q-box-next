@@ -1,11 +1,13 @@
-import { pcHeaderHeight, pcFooterHeight, spHeaderHeight, spFooterHeight } from '@/consts/styles.css'
+import {
+  pcHeaderHeight,
+  pcFooterHeight,
+  spHeaderHeight,
+  spFooterHeight,
+  fontLg,
+} from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const mainContainer = style({
-  // display: 'flex',
-  // flexDirection: 'column',
-  // justifyContent: 'center',
-  // alignItems: 'center',
   minHeight: `calc(100vh - ${pcHeaderHeight} - ${pcFooterHeight})`,
   '@media': {
     'screen and (max-width: 768px)': {
@@ -28,6 +30,6 @@ export const loadingBody = style({
 })
 
 export const isLoginText = style({
-  fontSize: '1.5rem',
+  fontSize: fontLg,
   margin: '10px 0',
 })

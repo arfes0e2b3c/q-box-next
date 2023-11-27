@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { fetchReplies, patchReply } from '../../microcms'
+import { fetchReplies, patchReply } from '../../../models/microcms'
 
 export async function GET(req: NextRequest, { params }: { params: { contentId: string } }) {
   const res = await fetchReplies({

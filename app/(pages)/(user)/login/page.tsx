@@ -3,7 +3,7 @@ import { baseFont } from '@/consts/fonts'
 import { form, formInner, formInput, formTitle, loginContainer, submitButton } from './page.css'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
-import { useFirebaseLogin } from '@/app/client/useFirebaseLogin'
+import { useFirebaseLogin } from '@/hooks/useFirebaseLogin'
 
 export default function Login() {
   const router = useRouter()

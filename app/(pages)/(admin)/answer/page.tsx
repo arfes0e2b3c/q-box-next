@@ -1,25 +1,14 @@
 'use client'
 import { noMoreResult, page, pageInner, title } from './page.css'
-import { AnswerCardForAnswer } from '@/components/shared/AnswerCardForAnswer'
-import { useInfiniteQuery } from '@tanstack/react-query'
-import { fetchSliceUnansweredPosts } from '@/app/client/fetchSliceUnansweredPosts'
+import { AnswerCardForAnswer } from '@/components/AnswerCardForAnswer'
 import InfiniteScroll from 'react-infinite-scroller'
 import { LoadingCircle } from '@/components/shared/LoadingCircle'
 import { useAnswerPageStore } from '@/store/answerPageStore'
+import { useUnansweredPosts } from '@/hooks/useUnansweredPosts'
 
 export default function Answer() {
   const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch } =
-    useInfiniteQuery({
-      queryKey: ['unanswered'],
-      queryFn: ({ pageParam = 0 }) => fetchSliceUnansweredPosts(pageParam),
-      refetchOnWindowFocus: false,
-      staleTime: Infinity,
-      getNextPageParam: (lastPage) =>
-        lastPage?.offset < lastPage?.totalCount ? lastPage?.offset + 20 : false,
-      useErrorBoundary: (error: { response: { status: number } }) => {
-        return error.response?.status >= 500
-      },
-    })
+    useUnansweredPosts()
 
   const setRefetch = useAnswerPageStore((state) => state.setRefetch)
   setRefetch(refetch)

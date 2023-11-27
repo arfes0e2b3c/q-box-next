@@ -10,7 +10,7 @@ import { AnswerHeader } from '@/components/shared/AnswerHeader'
 import { Footer } from '@/components/shared/Footer'
 import { baseFont } from '@/consts/fonts'
 import Providers from '@/app/(pages)/providers'
-import { isRightAccessUser } from '@/lib/firebase'
+import { fetchIsLoggedIn } from '@/app/client/firebase/fetchIsLoggedIn'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [cookies] = useCookies()
@@ -18,21 +18,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const path = usePathname()
   const [isLogin, setIsLogin] = useState(false)
 
-  useEffect(() => {
-    try {
-      if (!cookies.access_token || typeof cookies.access_token !== 'string') {
-        throw new Error('不正なアクセスです')
-      }
+  const isRightAccessUser = async (email: string, user_id: string) =>
+    fetchIsLoggedIn(email, user_id)
 
-      const { email, user_id }: { email: string; user_id: string } = jwtDecode(cookies.access_token)
-      if (isRightAccessUser(email, user_id)) {
-        setIsLogin(true)
-      } else {
-        throw new Error('不正なアクセスです')
+  useEffect(() => {
+    ;(async function () {
+      try {
+        if (!cookies.access_token || typeof cookies.access_token !== 'string') {
+          throw new Error('不正なアクセスです')
+        }
+
+        const { email, user_id }: { email: string; user_id: string } = jwtDecode(
+          cookies.access_token
+        )
+        if (await isRightAccessUser(email, user_id)) {
+          setIsLogin(true)
+        } else {
+          throw new Error('不正なアクセスです')
+        }
+      } catch (e) {
+        router.push('/login')
       }
-    } catch (e) {
-      router.push('/login')
-    }
+    })()
   }, [cookies])
 
   return isLogin ? (
@@ -54,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           width={80}
           height={80}
           color='#888'
-          secondaryColor='#ddd'
+          secondaryColor='baseColorLight'
           ariaLabel='loading'
         /> */}
         <p className={isLoginText}>ログイン中です...</p>

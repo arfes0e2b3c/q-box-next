@@ -1,6 +1,6 @@
 import { MicroCMSResponse } from '@/types'
 import { NextRequest, NextResponse } from 'next/server'
-import { fetchPosts } from '../../microcms'
+import { fetchPosts } from '../../../models/microcms'
 
 export async function GET(req: NextRequest): Promise<NextResponse<MicroCMSResponse>> {
   const { searchParams } = new URL(req.url)

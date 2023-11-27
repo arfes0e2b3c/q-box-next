@@ -1,6 +1,6 @@
 import { MicroCMSResponse, QA } from '@/types'
 import { NextResponse } from 'next/server'
-import { fetchPosts } from '../microcms'
+import { fetchPosts } from '../../models/microcms'
 
 export async function GET(): Promise<NextResponse<{ data: QA[] }>> {
   let currentOffset = 0

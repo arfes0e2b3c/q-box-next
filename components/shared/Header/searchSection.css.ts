@@ -1,4 +1,4 @@
-import { baseTransition } from '@/consts/styles.css'
+import { baseTransition, fontSm, lightGray } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const searchSection = style({
@@ -9,9 +9,9 @@ export const searchInput = style({
   width: '100%',
   height: '100%',
   paddingLeft: '10px',
-  backgroundColor: 'rgba(0, 0, 0, 0.1)',
+  backgroundColor: lightGray,
   color: '#666',
-  fontSize: '1rem',
+  fontSize: fontSm,
   border: 'none',
   borderRadius: '0',
   outline: 'none',

@@ -1,6 +1,6 @@
 import { MicroCMSResponse } from '@/types'
 import { NextRequest, NextResponse } from 'next/server'
-import { fetchPosts } from '../../microcms'
+import { fetchPosts } from '../../../models/microcms'
 import { filterPostsHasOpenReply } from '@/lib'
 
 export async function GET(req: NextRequest): Promise<NextResponse<MicroCMSResponse>> {
@@ -17,6 +17,6 @@ export async function GET(req: NextRequest): Promise<NextResponse<MicroCMSRespon
       offset: offset ? Number(offset) : 0,
     },
   })
-  res.contents = filterPostsHasOpenReply(res.contents)
-  return NextResponse.json(res)
+
+  return NextResponse.json(filterPostsHasOpenReply(res))
 }
