@@ -1,7 +1,5 @@
-import { appBaseUrl } from '@/consts'
-
 export const createTweet = async (answer: string) => {
-  const res = await fetch(`${appBaseUrl}/api/tweet`, {
+  const res = await fetch(`/api/tweet`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -1,7 +1,5 @@
-import { appBaseUrl } from '@/consts'
-
 export const deleteReply = async (contentId: string) => {
-  const res = await fetch(`${appBaseUrl}/api/replies/${contentId}`, {
+  const res = await fetch(`/api/replies/${contentId}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',

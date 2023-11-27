@@ -1,7 +1,5 @@
-import { appBaseUrl } from '@/consts'
-
 export const patchTweetId = async (contentId: string, tweetId: string) => {
-  const res = await fetch(`${appBaseUrl}/api/posts/tweet_id/${contentId}`, {
+  const res = await fetch(`/api/posts/tweet_id/${contentId}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
