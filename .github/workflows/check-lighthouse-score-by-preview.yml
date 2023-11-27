@@ -19,8 +19,8 @@ jobs:
         id: clean_url
         run: |
           ORIGINAL_URL=${{ steps.capture_preview_url.outputs.vercel_preview_url }}
-          CLEANED_URL=$(echo $ORIGINAL_URL | sed -e 's/https:\/\/vercel.live\/open-feedback\///' -e 's/\?via=pr-comment-visit-preview-link&passThrough=1//')
-          echo "CLEANED_URL=$CLEANED_URL" >> $GITHUB_ENV
+          CLEANED_URL=$(echo $ORIGINAL_URL | sed -e 's/vercel.live\/open-feedback\///' -e 's/\?via=pr-comment-visit-preview-link&passThrough=1//')
+          echo "::set-output name=value::${CLEANED_URL}"
 
       - name: チェックアウト
         uses: actions/checkout@v3
@@ -40,7 +40,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v10
         with:
           urls: |
-            ${{ env.CLEANED_URL }}
+            ${{ steps.clean_url.outputs.value }}
           uploadArtifacts: true
           temporaryPublicStorage: true
 
