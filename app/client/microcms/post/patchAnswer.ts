@@ -1,8 +1,7 @@
-import { appBaseUrl } from '@/consts'
 import { AnswerState } from '@/types'
 
 export const patchAnswer = async (answer: string, contentId: string, state: AnswerState) => {
-  const res = await fetch(`${appBaseUrl}/api/posts/answer/${contentId}`, {
+  const res = await fetch(`/api/posts/answer/${contentId}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
