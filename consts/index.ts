@@ -1,8 +1,10 @@
 import { QA } from '@/types'
 
 export const appBaseUrl =
-  process.env.NODE_ENV === 'development'
+  process.env.NEXT_PUBLIC_VERCEL_ENV === 'development'
     ? 'http://localhost:3000'
+    : process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview'
+    ? `https://${process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL}`
     : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
 
 export const noResultQAData: QA = {

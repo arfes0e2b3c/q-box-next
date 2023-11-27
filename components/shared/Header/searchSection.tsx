@@ -32,7 +32,8 @@ export const SearchSection = () => {
         type='text'
         placeholder='キーワードで検索'
         onFocus={() => {
-          console.log(process.env.NEXT_PUBLIC_VERCEL_URL || 'no url')
+          console.log('vercel-url', process.env.NEXT_PUBLIC_VERCEL_URL || 'no url')
+          console.log('branch-url', process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL || 'no url')
           setIsOpen(true)
         }}
         onKeyUp={(event) => {
