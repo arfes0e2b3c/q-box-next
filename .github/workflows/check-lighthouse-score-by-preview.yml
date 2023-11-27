@@ -8,7 +8,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     name: Lighthouse分析と結果コメント投稿
-    # if: github.event.issue.pull_request && contains(github.event.comment.body, 'deployed to') && github.event.comment.user.login == 'vercel[bot]'
+    if: github.event.issue.pull_request && contains(github.event.comment.body, 'deployed to') && github.event.comment.user.login == 'vercel[bot]'
     outputs:
       vercel_preview_url: ${{ steps.capture_preview_url.outputs.vercel_preview_url }}
     steps:
