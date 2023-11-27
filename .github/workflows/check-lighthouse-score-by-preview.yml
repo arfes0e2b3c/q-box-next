@@ -2,12 +2,15 @@ name: PRのLighthouseスコアチェック
 
 on:
   issue_comment:
-    types: [edited]
+    types: [created]
 
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
     name: Lighthouse分析と結果コメント投稿
+    if: github.event.issue.pull_request && contains(github.event.comment.body, 'deployed to') && github.event.comment.user.login == 'vercel[bot]'
+    outputs:
+      vercel_preview_url: ${{ steps.capture_preview_url.outputs.vercel_preview_url }}
     steps:
       - name: チェックアウト
         uses: actions/checkout@v3
@@ -26,7 +29,6 @@ jobs:
           echo "REDIRECTED_URL=$REDIRECTED_URL" >> "$GITHUB_OUTPUT"
 
       - name: コメントを追加
-        id: loading_comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
@@ -50,7 +52,7 @@ jobs:
         id: format_lighthouse_score
         uses: actions/github-script@v3
         with:
-          github-token: ${{secrets.SECRET_TOKEN}}
+          github-token: ${{ secrets.SECRET_TOKEN }}
           script: |
             const result = ${{ steps.lighthouse_audit.outputs.manifest }}[0].summary
             const links = ${{ steps.lighthouse_audit.outputs.links }}
@@ -72,11 +74,9 @@ jobs:
             core.setOutput("comment", comment);
 
       - name: Lighthouse結果をコメント
-        id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
           number: ${{ github.event.issue.number }}
           header: lighthouse
-          message: |
-            ${{ steps.format_lighthouse_score.outputs.comment }}
+          message: ${{ steps.format_lighthouse_score.outputs.comment }}
