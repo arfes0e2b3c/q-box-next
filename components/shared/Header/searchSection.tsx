@@ -31,11 +31,7 @@ export const SearchSection = () => {
         className={[searchInput, baseFont.className].join(' ')}
         type='text'
         placeholder='キーワードで検索'
-        onFocus={() => {
-          console.log('vercel-url', process.env.NEXT_PUBLIC_VERCEL_URL || 'no url')
-          console.log('branch-url', process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL || 'no url')
-          setIsOpen(true)
-        }}
+        onFocus={() => setIsOpen(true)}
         onKeyUp={(event) => {
           if (isEnterKey(event.key) && event.currentTarget.value !== '') {
             router.push(`/search/?q=${event.currentTarget.value}`)
