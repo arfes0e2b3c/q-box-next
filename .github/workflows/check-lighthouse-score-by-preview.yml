@@ -14,8 +14,17 @@ jobs:
         uses: aaimio/vercel-preview-url-action@v2.2.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 不要なURL部分を削除
+        id: clean_url
+        run: |
+          ORIGINAL_URL=${{ steps.capture_preview_url.outputs.url }}
+          CLEANED_URL=$(echo $ORIGINAL_URL | sed -e 's/https:\/\/vercel.live\/open-feedback\///' -e 's/\?via=pr-comment-visit-preview-link&passThrough=1//')
+          echo "CLEANED_URL=$CLEANED_URL" >> $GITHUB_ENV
+
       - name: チェックアウト
         uses: actions/checkout@v3
+
       - name: コメントを追加
         id: loading_comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v2
@@ -25,14 +34,16 @@ jobs:
           header: lighthouse
           message: |
             Lighthouseで分析中...
+
       - name: Lighthouseでページを分析
         id: lighthouse_audit
         uses: treosh/lighthouse-ci-action@v10
         with:
           urls: |
-            ${{ steps.capture_preview_url.outputs.vercel_preview_url }}
+            ${{ env.CLEANED_URL }}
           uploadArtifacts: true
           temporaryPublicStorage: true
+
       - name: スコアを整形する
         id: format_lighthouse_score
         uses: actions/github-script@v3
@@ -57,6 +68,7 @@ jobs:
                 `*分析したURL: [${Object.keys(links)[0]}](${Object.keys(links)[0]})*`
             ].join('\n')
             core.setOutput("comment", comment);
+
       - name: Lighthouse結果をコメント
         id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v2
