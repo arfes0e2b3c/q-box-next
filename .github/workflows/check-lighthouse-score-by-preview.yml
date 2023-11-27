@@ -2,32 +2,22 @@ name: PRのLighthouseスコアチェック
 
 on:
   issue_comment:
-    types: [created]
+    types: [edited]
 
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
     name: Lighthouse分析と結果コメント投稿
-    if: github.event.issue.pull_request && contains(github.event.comment.body, 'deployed to') && github.event.comment.user.login == 'vercel[bot]'
-    outputs:
-      vercel_preview_url: ${{ steps.capture_preview_url.outputs.vercel_preview_url }}
     steps:
       - name: プレビューURLを取得
         id: capture_preview_url
-        env:
-          COMMENT_BODY: ${{ github.event.comment.body }}
-        run: |
-          URL_REGEX="https:\/\/[^ ]*vercel\.app"
-          if [[ $COMMENT_BODY =~ $URL_REGEX ]]; then
-            PREVIEW_URL="${BASH_REMATCH[0]}"
-            echo "::set-output name=vercel_preview_url::$PREVIEW_URL"
-          else
-            echo "No preview URL found in the comment."
-            exit 1
-
+        uses: aaimio/vercel-preview-url-action@v2.2.0
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: チェックアウト
         uses: actions/checkout@v3
       - name: コメントを追加
+        id: loading_comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
@@ -47,7 +37,7 @@ jobs:
         id: format_lighthouse_score
         uses: actions/github-script@v3
         with:
-          github-token: ${{ secrets.SECRET_TOKEN }}
+          github-token: ${{secrets.SECRET_TOKEN}}
           script: |
             const result = ${{ steps.lighthouse_audit.outputs.manifest }}[0].summary
             const links = ${{ steps.lighthouse_audit.outputs.links }}
@@ -66,11 +56,13 @@ jobs:
                 ' ',
                 `*分析したURL: [${Object.keys(links)[0]}](${Object.keys(links)[0]})*`
             ].join('\n')
-            core.setOutput("comment", comment)
+            core.setOutput("comment", comment);
       - name: Lighthouse結果をコメント
+        id: comment_to_pr
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           GITHUB_TOKEN: ${{ secrets.SECRET_TOKEN }}
           number: ${{ github.event.issue.number }}
           header: lighthouse
-          message: ${{ steps.format_lighthouse_score.outputs.comment }}
+          message: |
+            ${{ steps.format_lighthouse_score.outputs.comment }}
