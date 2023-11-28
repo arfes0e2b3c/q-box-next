@@ -25,11 +25,14 @@ jobs:
           echo $ORIGINAL_URL | sed -e 's/vercel.live\/open-feedback\///' -e 's/\?via=pr-comment-visit-preview-link&passThrough=1//'
           echo $CLEANED_URL
           echo "CLEANED_URL=${CLEANED_URL}" >> $GITHUB_ENV
+          echo "ORIGINAL_URL=${ORIGINAL_URL}" >> $GITHUB_ENV
 
       - name: CLEANED_URLのデバッグ
         run: |
           CHECK_URL=${{ env.CLEANED_URL }}
+          CHECK_URL_ORIGINAL=${{ env.ORIGINAL_URL }}
           echo $CHECK_URL
+          echo $CHECK_URL_ORIGINAL
           echo $CLEANED_URL
 
       - name: チェックアウト
@@ -51,6 +54,9 @@ jobs:
         with:
           urls: |
             $CLEANED_URL
+            $ORIGINAL_URL
+            ${{ env.CLEANED_URL }}
+            ${{ env.ORIGINAL_URL }}
           uploadArtifacts: true
           temporaryPublicStorage: true
 
