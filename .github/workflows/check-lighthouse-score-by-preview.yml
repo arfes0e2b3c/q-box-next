@@ -21,8 +21,8 @@ jobs:
       - name: リダイレクト後のURLを取得
         id: get_redirected_url
         run: |
-          PREVIEW_URL=${{ steps.capture_preview_url.outputs.vercel_preview_url }}
-          REDIRECTED_URL=$(curl -Ls -o /dev/null -w %{url_effective} $PREVIEW_URL)
+          PREVIEW_URL="${{ steps.capture_preview_url.outputs.vercel_preview_url }}"
+          REDIRECTED_URL=$(curl -Ls -o /dev/null -w %{url_effective} "$PREVIEW_URL")
           echo "REDIRECTED_URL=$REDIRECTED_URL" >> "$GITHUB_OUTPUT"
 
       - name: コメントを追加
