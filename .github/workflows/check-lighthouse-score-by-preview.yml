@@ -8,7 +8,6 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     name: Lighthouse分析と結果コメント投稿
-    if: github.event.issue.pull_request && github.event.comment.user.login == 'vercel[bot]'
     steps:
       - name: チェックアウト
         uses: actions/checkout@v3
