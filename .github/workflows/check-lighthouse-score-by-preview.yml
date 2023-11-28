@@ -55,6 +55,8 @@ jobs:
           urls: |
             $CLEANED_URL
             $ORIGINAL_URL
+            ${{ env.CLEANED_URL }}
+            ${{ env.ORIGINAL_URL }}
           uploadArtifacts: true
           temporaryPublicStorage: true
 
