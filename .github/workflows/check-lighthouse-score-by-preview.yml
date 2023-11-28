@@ -21,6 +21,8 @@ jobs:
         run: |
           ORIGINAL_URL=${{ steps.capture_preview_url.outputs.vercel_preview_url }}
           CLEANED_URL=$(echo $ORIGINAL_URL | sed -e 's/vercel.live\/open-feedback\///' -e 's/\?via=pr-comment-visit-preview-link&passThrough=1//')
+          echo $ORIGINAL_URL
+          echo $ORIGINAL_URL | sed -e 's/vercel.live\/open-feedback\///' -e 's/\?via=pr-comment-visit-preview-link&passThrough=1//'
           echo $CLEANED_URL
           echo "CLEANED_URL=${CLEANED_URL}" >> $GITHUB_ENV
 
