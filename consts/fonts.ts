@@ -1,3 +1,3 @@
-import { Zen_Kurenaido } from 'next/font/google'
+import { Zen_Maru_Gothic } from 'next/font/google'
 
-export const baseFont = Zen_Kurenaido({ weight: '400', subsets: ['latin'] })
+export const baseFont = Zen_Maru_Gothic({ weight: '400', subsets: ['latin'] })
