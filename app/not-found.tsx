@@ -1,7 +1,7 @@
 import { QACardContainer } from '@/components/QACardContainer'
 import MotionWrapper from '@/components/shared/MotionWrapper'
-import { individualPage, qAContainer } from './(pages)/(user)/[contentId]/page.css'
 import { notFoundQAData } from '@/consts'
+import { individualPage, qAContainer } from './not-found.css'
 
 export default function NotFound() {
   return (
