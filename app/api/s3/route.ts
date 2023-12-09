@@ -18,7 +18,7 @@ export async function POST(req: NextRequest): Promise<NextResponse<string>> {
     const baseUrl = exchangeStateToUrl(props.state)
     const imageUrl =
       baseUrl +
-      '?w=1200&h=630&blend-mode=normal&blend-align=middle,center&blend=https%3A%2F%2Fassets.imgix.net%2F%7Etext%3Fw%3D1000%26txt-color%3D333%26txt-align%3Dcenter%26txt-size%3D44%26txtfont%3DZenKurenaido-Regular%26txt64%3D' +
+      '?w=1200&h=630&blend-mode=normal&blend-align=middle,center&blend=https%3A%2F%2Fassets.imgix.net%2F%7Etext%3Fw%3D1000%26txt-color%3D333%26txt-align%3Dcenter%26txt-size%3D44%26txtfont%3DZenMaruGothic-Regular%26txt64%3D' +
       base64url(props.question)
 
     const imageRes = await fetch(imageUrl)
