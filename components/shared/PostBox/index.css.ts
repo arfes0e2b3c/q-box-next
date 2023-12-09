@@ -17,7 +17,6 @@ export const postBox = style({
   marginTop: '20px',
   marginBottom: '10px',
   overflow: 'hidden',
-  transition: baseTransition,
   '@media': {
     'screen and (max-width: 768px)': {
       marginTop: '10px',

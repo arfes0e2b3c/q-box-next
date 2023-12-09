@@ -5,7 +5,7 @@ export const searchModal = style({
   position: 'absolute',
   top: '100%',
   left: '0',
-  zIndex: 0,
+  zIndex: -1,
   width: '100%',
 })
 

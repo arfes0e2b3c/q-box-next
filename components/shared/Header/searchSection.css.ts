@@ -16,7 +16,6 @@ export const searchInput = style({
   borderRadius: '0',
   outline: 'none',
   transition: baseTransition,
-  zIndex: 100,
   ':focus': {
     backgroundColor: 'rgb(48, 48, 48)',
     color: 'white',

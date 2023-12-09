@@ -83,6 +83,8 @@ export const toggleButton = style({
 })
 
 export const registerButton = style({
+  display: 'grid',
+  placeContent: 'center',
   width: '180px',
   height: '40px',
   marginTop: '10px',

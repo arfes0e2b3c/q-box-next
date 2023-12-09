@@ -11,6 +11,7 @@ export async function GET(req: NextRequest, { params }: { params: { contentId: s
 }
 
 export async function PATCH(req: NextRequest, { params }: { params: { contentId: string } }) {
-  const res = await patchReply(params.contentId, { isDeleted: true })
+  const props = await req.json()
+  const res = await patchReply(params.contentId, { ...props.content })
   return NextResponse.json(res, { status: 200 })
 }

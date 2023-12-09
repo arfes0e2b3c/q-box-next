@@ -7,6 +7,7 @@ import { fetchAllPostIds } from '../../../client/microcms/post/fetchAllPostIds'
 import { BackButton } from '@/components/shared/BackButton'
 import { exchangeStateToUrl } from '@/lib'
 import base64url from 'base64url'
+import MotionWrapper from '@/components/shared/MotionWrapper'
 
 export async function generateStaticParams() {
   const data = await fetchAllPostIds()
@@ -54,15 +55,17 @@ export default async function IndividualPage({ params }: { params: { contentId: 
   const data = await fetchPostDetail(params.contentId)
 
   return (
-    <main className={individualPage}>
-      <BackButton />
-      <div className={qAContainer}>
-        <QACardContainer qAData={data} />
-        <PostForm mode={'reply'} replyFor={params.contentId} />
-      </div>
-      <div className={formContainer}>
-        <PostForm mode={'question'} />
-      </div>
-    </main>
+    <MotionWrapper>
+      <main className={individualPage}>
+        <BackButton />
+        <div className={qAContainer}>
+          <QACardContainer qAData={data} />
+          <PostForm mode={'reply'} replyFor={params.contentId} />
+        </div>
+        <div className={formContainer}>
+          <PostForm mode={'question'} />
+        </div>
+      </main>
+    </MotionWrapper>
   )
 }
