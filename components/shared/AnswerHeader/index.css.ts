@@ -71,3 +71,8 @@ export const noBorder = style({
     },
   },
 })
+
+export const danger = style({
+  color: 'red',
+  fontWeight: 'bold',
+})
