@@ -5,6 +5,8 @@ import { SearchModal } from './searchModal'
 import { searchInput, searchSection } from './searchSection.css'
 import { baseFont } from '@/consts/fonts'
 import { useRouter } from 'next/navigation'
+import { AnimatePresence, motion } from 'framer-motion'
+import { searchModal } from './searchModal.css'
 
 export const SearchSection = () => {
   const router = useRouter()
@@ -44,7 +46,20 @@ export const SearchSection = () => {
           }
         }}
       />
-      {isOpen && <SearchModal onBlur={() => setIsOpen(false)} />}
+      <AnimatePresence mode='wait'>
+        {isOpen && (
+          <motion.div
+            key={'searchModal'}
+            className={searchModal}
+            initial={{ opacity: 0, y: '-10px' }}
+            animate={{ opacity: 1, y: '0px' }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+          >
+            <SearchModal onBlur={() => setIsOpen(false)} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
