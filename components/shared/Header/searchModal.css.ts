@@ -44,6 +44,7 @@ export const searchModalList = style({
   padding: '0',
   '@media': {
     'screen and (max-width: 768px)': {
+      justifyContent: 'center',
       gap: '5px',
     },
   },
