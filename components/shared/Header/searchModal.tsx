@@ -12,10 +12,14 @@ import { AnimatePresence, motion } from 'framer-motion'
 
 export const SearchModal = ({ onBlur }: { onBlur: () => void }) => {
   const keywords = [
-    { id: 1, title: '２外' },
-    { id: 2, title: '単位' },
-    { id: 3, title: '履修' },
-    { id: 4, title: '成績' },
+    { id: 1, title: '履修登録' },
+    { id: 2, title: '仮登録' },
+    { id: 3, title: '英語' },
+    { id: 4, title: '外国語' },
+    { id: 5, title: '2外' },
+    { id: 6, title: '抽選' },
+    { id: 7, title: '成績' },
+    { id: 8, title: '留学' },
   ]
   return (
     <AnimatePresence mode='wait'>
