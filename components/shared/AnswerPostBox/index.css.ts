@@ -1,5 +1,6 @@
 import {
   baseColor,
+  baseColorRed,
   baseTransition,
   fontSm,
   fontXs,
@@ -61,7 +62,7 @@ export const textInput = style({
 })
 
 export const alertText = style({
-  color: 'red',
+  color: baseColorRed,
   fontSize: fontSm,
   margin: '5px 0',
   '@media': {

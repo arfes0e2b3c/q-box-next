@@ -1,4 +1,4 @@
-import { fontXl, fontLg } from '@/consts/styles.css'
+import { fontXl, fontLg, fontMd, fontSm, baseColorRed } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
 export const page = style({
@@ -21,6 +21,22 @@ export const title = style({
       fontSize: fontLg,
     },
   },
+})
+
+export const twitterApiRequestCount = style({
+  margin: '10px 0 0',
+  textAlign: 'center',
+  fontSize: fontMd,
+  color: '#666',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      fontSize: fontSm,
+    },
+  },
+})
+
+export const limit = style({
+  color: baseColorRed,
 })
 
 export const pageInner = style({

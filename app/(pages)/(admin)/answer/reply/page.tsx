@@ -1,10 +1,10 @@
 'use client'
-import { page, pageInner, title } from './page.css'
+import { limit, noMoreResult, page, pageInner, title, twitterApiRequestCount } from './page.css'
 // import { Metadata } from 'next'
 import { AnswerCardForReply } from '@/components/AnswerCardForReply'
 import { LoadingCircle } from '@/components/shared/LoadingCircle'
 import InfiniteScroll from 'react-infinite-scroller'
-import { noMoreResult } from '../page.css'
+
 import { useReplyPageStore } from '@/store/replyPageStore'
 import { useUnansweredReplies } from '@/hooks/useUnasnweredReplies'
 
@@ -14,13 +14,17 @@ import { useUnansweredReplies } from '@/hooks/useUnasnweredReplies'
 // }
 
 export default function Answer() {
-  const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch } =
-    useUnansweredReplies()
+  const {
+    posts: { replyData, replyIsLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch },
+    twitterApiLogs: { logData, logIsLoading },
+  } = useUnansweredReplies()
 
   const setRefetch = useReplyPageStore((state) => state.setRefetch)
   setRefetch(refetch)
 
-  const pagesData = data?.pages ?? []
+  const pagesData = replyData?.pages ?? []
+
+  const isLoading = replyIsLoading || logIsLoading
 
   if (isLoading) {
     return <div>ローディング中</div>
@@ -30,9 +34,15 @@ export default function Answer() {
     return <div>エラーが発生しました</div>
   }
 
+  const isTwitterApiLimit = logData?.totalCount && logData?.totalCount >= 50
+
   return (
     <main className={page}>
       <h2 className={title}>未回答の情報提供：{pagesData[0].totalCount}件</h2>
+      <h3 className={[twitterApiRequestCount, isTwitterApiLimit ? limit : ''].join(' ')}>
+        今日のTwitterAPI使用数：{logData?.totalCount}
+        {isTwitterApiLimit ? '（上限に達しました）' : ''}
+      </h3>
       <InfiniteScroll
         loadMore={(page) => {
           isFetching || fetchNextPage({ pageParam: page * 10 })
@@ -50,7 +60,7 @@ export default function Answer() {
         </ul>
       </InfiniteScroll>
       {isFetching && <LoadingCircle />}
-      {!hasNextPage && <p className={noMoreResult}>検索結果は以上です</p>}
+      {!hasNextPage && <p className={noMoreResult}>最後の質問です</p>}
     </main>
   )
 }

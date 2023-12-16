@@ -1,5 +1,5 @@
 'use client'
-import { noMoreResult, page, pageInner, title } from './page.css'
+import { limit, noMoreResult, page, pageInner, title, twitterApiRequestCount } from './page.css'
 import { AnswerCardForAnswer } from '@/components/AnswerCardForAnswer'
 import InfiniteScroll from 'react-infinite-scroller'
 import { LoadingCircle } from '@/components/shared/LoadingCircle'
@@ -7,13 +7,17 @@ import { useAnswerPageStore } from '@/store/answerPageStore'
 import { useUnansweredPosts } from '@/hooks/useUnansweredPosts'
 
 export default function Answer() {
-  const { data, isLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch } =
-    useUnansweredPosts()
+  const {
+    posts: { postData, postIsLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch },
+    twitterApiLogs: { logData, logIsLoading },
+  } = useUnansweredPosts()
 
   const setRefetch = useAnswerPageStore((state) => state.setRefetch)
   setRefetch(refetch)
 
-  const pagesData = data?.pages ?? []
+  const pagesData = postData?.pages ?? []
+
+  const isLoading = postIsLoading || logIsLoading
 
   if (isLoading) {
     return <div>ローディング中</div>
@@ -23,9 +27,15 @@ export default function Answer() {
     return <div>エラーが発生しました</div>
   }
 
+  const isTwitterApiLimit = logData?.totalCount && logData?.totalCount >= 50
+
   return (
     <main className={page}>
       <h2 className={title}>未回答の質問：{pagesData[0].totalCount}件</h2>
+      <h3 className={[twitterApiRequestCount, isTwitterApiLimit ? limit : ''].join(' ')}>
+        今日のTwitterAPI使用数：{logData?.totalCount}
+        {isTwitterApiLimit ? '（上限に達しました）' : ''}
+      </h3>
       <InfiniteScroll
         loadMore={(page) => {
           isFetching || fetchNextPage({ pageParam: page * 10 })
@@ -45,7 +55,7 @@ export default function Answer() {
         </ul>
       </InfiniteScroll>
       {isFetching && <LoadingCircle />}
-      {!hasNextPage && <p className={noMoreResult}>検索結果は以上です</p>}
+      {!hasNextPage && <p className={noMoreResult}>最後の質問です</p>}
     </main>
   )
 }
