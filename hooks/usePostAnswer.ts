@@ -40,6 +40,7 @@ const postTweetThread = async (answer: string, contentId: string) => {
 
     if (tweets.length > 1) {
       const replyId = await createTweetReplies(tweetReplyId, tweets.slice(1))
+      await createTwitterApiLog('reply', replyId)
       return replyId
     } else {
       return tweetReplyId
