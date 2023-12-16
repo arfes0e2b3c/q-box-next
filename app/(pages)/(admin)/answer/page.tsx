@@ -8,14 +8,16 @@ import { useUnansweredPosts } from '@/hooks/useUnansweredPosts'
 
 export default function Answer() {
   const {
-    posts: { postData, isLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch },
-    twitterApiLogs: logData,
+    posts: { postData, postIsLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch },
+    twitterApiLogs: { logData, logIsLoading },
   } = useUnansweredPosts()
 
   const setRefetch = useAnswerPageStore((state) => state.setRefetch)
   setRefetch(refetch)
 
   const pagesData = postData?.pages ?? []
+
+  const isLoading = postIsLoading || logIsLoading
 
   if (isLoading) {
     return <div>ローディング中</div>

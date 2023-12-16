@@ -5,7 +5,7 @@ import { fetchTwitterApiLogs } from '@/app/client/microcms/twitterApiRequest/fet
 export const useUnansweredPosts = () => {
   const {
     data: postData,
-    isLoading,
+    isLoading: postIsLoading,
     isError,
     isFetching,
     fetchNextPage,
@@ -22,11 +22,15 @@ export const useUnansweredPosts = () => {
       return error.response?.status >= 500
     },
   })
-  const { data: logData } = useQuery(['twitterApiLogs'], async () => await fetchTwitterApiLogs(), {
-    refetchOnWindowFocus: false,
-  })
+  const { data: logData, isLoading: logIsLoading } = useQuery(
+    ['twitterApiLogs'],
+    async () => await fetchTwitterApiLogs(),
+    {
+      refetchOnWindowFocus: false,
+    }
+  )
   return {
-    posts: { postData, isLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch },
-    twitterApiLogs: logData,
+    posts: { postData, postIsLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch },
+    twitterApiLogs: { logData, logIsLoading },
   }
 }
