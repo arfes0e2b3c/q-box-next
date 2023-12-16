@@ -97,3 +97,11 @@ export const createTwitterApiLog = async (type: string, twitterId: string) => {
   })
   return res
 }
+
+export const fetchTwitterApiLogs = async (queries?: MicroCMSQueries) => {
+  const res = await client.get({
+    endpoint: 'q_box_twitter_api_logs',
+    queries,
+  })
+  return res
+}

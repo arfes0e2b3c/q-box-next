@@ -1,5 +1,21 @@
-import { createTwitterApiLog } from '@/app/models/microcms'
+import { createTwitterApiLog, fetchPosts, fetchTwitterApiLogs } from '@/app/models/microcms'
+import { MicroCMSResponse } from '@/types'
+import dayjs from 'dayjs'
 import { NextRequest, NextResponse } from 'next/server'
+
+export async function GET(req: NextRequest): Promise<NextResponse<MicroCMSResponse>> {
+  const now = dayjs()
+  const aDayAgo = now.subtract(1, 'day')
+  const formatADayAgo = aDayAgo.format('YYYY-MM-DDTHH:mm:ss')
+
+  const limitCount = 0
+  const res: MicroCMSResponse = await fetchTwitterApiLogs({
+    filters: 'createdAt[greater_than]' + formatADayAgo,
+    limit: limitCount,
+  })
+
+  return NextResponse.json(res)
+}
 
 export async function POST(req: NextRequest) {
   const props = await req.json()

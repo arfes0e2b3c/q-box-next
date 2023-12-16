@@ -1,8 +1,17 @@
-import { useInfiniteQuery } from '@tanstack/react-query'
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { fetchSliceUnansweredPosts } from '../app/client/microcms/post/fetchSliceUnansweredPosts'
+import { fetchTwitterApiLogs } from '@/app/client/microcms/twitterApiRequest/fetchTwitterApiLog'
 
-export const useUnansweredPosts = () =>
-  useInfiniteQuery({
+export const useUnansweredPosts = () => {
+  const {
+    data: postData,
+    isLoading,
+    isError,
+    isFetching,
+    fetchNextPage,
+    hasNextPage,
+    refetch,
+  } = useInfiniteQuery({
     queryKey: ['unanswered'],
     queryFn: ({ pageParam = 0 }) => fetchSliceUnansweredPosts(pageParam),
     refetchOnWindowFocus: false,
@@ -13,3 +22,11 @@ export const useUnansweredPosts = () =>
       return error.response?.status >= 500
     },
   })
+  const { data: logData } = useQuery(['twitterApiLogs'], async () => await fetchTwitterApiLogs(), {
+    refetchOnWindowFocus: false,
+  })
+  return {
+    posts: { postData, isLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch },
+    twitterApiLogs: logData,
+  }
+}
