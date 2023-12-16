@@ -30,3 +30,5 @@ export const twitterMaxLength = 280
 export const tweetBaseText = `\n#お手伝いサークル ${appBaseUrl}`
 export const replyBaseText = `【提供していただいた情報】\n\n`
 export const continueText = '(続く)'
+
+export const sliceLimitCount = 10
