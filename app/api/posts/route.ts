@@ -2,17 +2,17 @@ import { MicroCMSResponse } from '@/types'
 import { NextRequest, NextResponse } from 'next/server'
 import { createPost, deletePost, fetchPosts } from '../../models/microcms'
 import { filterPublicReplies } from '@/lib'
+import { sliceLimitCount } from '@/consts'
 
 export async function GET(req: NextRequest): Promise<NextResponse<MicroCMSResponse>> {
   const { searchParams } = new URL(req.url)
   const offset = searchParams.get('offset')
 
-  const limitCount = 10
   const res: MicroCMSResponse = await fetchPosts({
     queries: {
       filters: 'answer[exists]',
       fields: 'id,createdAt,question,answer,state,replies',
-      limit: limitCount,
+      limit: sliceLimitCount,
       offset: offset ? Number(offset) : 0,
       orders: '-updatedAt',
     },
