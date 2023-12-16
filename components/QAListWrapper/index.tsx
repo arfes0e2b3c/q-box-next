@@ -6,6 +6,7 @@ import { QACardContainer } from '../QACardContainer'
 import { SuspenseCardContainer } from '../SuspenseCardContainer'
 import { qAListContainer, qAListItem } from './index.css'
 import { LoadingCircle } from '../shared/LoadingCircle'
+import { noMoreResult } from '@/app/(pages)/(admin)/answer/page.css'
 
 export const QAListWrapper = ({
   pagesData,
@@ -51,6 +52,7 @@ export const QAListWrapper = ({
             </ul>
           </InfiniteScroll>
           {isFetching && <LoadingCircle />}
+          {!hasNextPage && <p className={noMoreResult}>検索結果は以上です</p>}
         </>
       )}
     </>
