@@ -86,3 +86,14 @@ export const patchReply = async (contentId: string, content: Partial<Reply>) => 
   })
   return res
 }
+
+export const createTwitterApiLog = async (type: string, twitterId: string) => {
+  const res = await client.create({
+    endpoint: 'q_box_twitter_api_logs',
+    content: {
+      type,
+      twitterId,
+    },
+  })
+  return res
+}
