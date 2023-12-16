@@ -14,7 +14,7 @@ export async function GET(req: NextRequest): Promise<NextResponse<MicroCMSRespon
       fields: 'id,createdAt,question,answer,state,replies',
       limit: sliceLimitCount,
       offset: offset ? Number(offset) : 0,
-      orders: '-updatedAt',
+      orders: '-createdAt',
     },
   })
 
