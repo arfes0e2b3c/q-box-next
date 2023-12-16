@@ -1,4 +1,4 @@
-import { baseColor, baseColorLight } from '@/consts/styles.css'
+import { baseColor, baseColorLight, baseColorRed } from '@/consts/styles.css'
 import { createVar, style } from '@vanilla-extract/css'
 export const strokePercent = createVar()
 export const strokePercentWithPx = createVar()
@@ -37,8 +37,8 @@ export const circleBg = style({
 })
 
 export const over = style({
-  stroke: 'red',
-  color: 'red',
+  stroke: baseColorRed,
+  color: baseColorRed,
 })
 
 export const circleMain = style({
