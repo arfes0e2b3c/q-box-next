@@ -52,7 +52,7 @@ export const QAListWrapper = ({
             </ul>
           </InfiniteScroll>
           {isFetching && <LoadingCircle />}
-          {!hasNextPage && <p className={noMoreResult}>検索結果は以上です</p>}
+          {!hasNextPage && <p className={noMoreResult}>最後の質問です</p>}
         </>
       )}
     </>
