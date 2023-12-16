@@ -5,6 +5,7 @@ import {
   lightGray,
   gray,
   baseColor,
+  baseColorRed,
 } from '@/consts/styles.css'
 import { style } from '@vanilla-extract/css'
 
@@ -73,6 +74,6 @@ export const noBorder = style({
 })
 
 export const danger = style({
-  color: 'red',
+  color: baseColorRed,
   fontWeight: 'bold',
 })

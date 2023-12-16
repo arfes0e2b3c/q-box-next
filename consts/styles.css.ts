@@ -21,6 +21,7 @@ export const gray = 'rgba(0, 0, 0, 0.2)'
 
 export const baseColor = '#333'
 export const baseColorLight = '#ddd'
+export const baseColorRed = '#ed1a3d'
 
 export const fontXs = '0.8rem'
 export const fontSm = '1rem'

@@ -6,6 +6,7 @@ import { createTweet } from '../app/client/twitter/createTweet'
 import { patchAnswer } from '../app/client/microcms/post/patchAnswer'
 import { AnswerState } from '@/types'
 import { createS3Image } from '../app/client/s3/createS3Image'
+import { createTwitterApiLog } from '@/app/client/microcms/twitterApiRequest/createTwitterApiLog'
 
 export const usePostAnswer = () =>
   useMutation(
@@ -35,9 +36,11 @@ const postTweetThread = async (answer: string, contentId: string) => {
 
   try {
     const tweetReplyId: string = await createTweet(tweets[0])
+    await createTwitterApiLog('tweet', tweetReplyId)
 
     if (tweets.length > 1) {
       const replyId = await createTweetReplies(tweetReplyId, tweets.slice(1))
+      await createTwitterApiLog('reply', replyId)
       return replyId
     } else {
       return tweetReplyId

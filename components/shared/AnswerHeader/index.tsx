@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { appTitle, appTitleContainer, danger, header, linkToHome, noBorder } from './index.css'
 import { fetchHasUnanseredPost } from '@/app/client/microcms/post/fetchHasUnanseredPost'
-import { fetchHasUnanseredReply } from '@/app/client/microcms/post/fetchHasUnanseredReply'
+import { fetchHasUnanseredReply } from '@/app/client/microcms/reply/fetchHasUnanseredReply'
 
 export const AnswerHeader = (props: { path: string }) => {
   const [hasUnanswered, setHasUnanswered] = useState({

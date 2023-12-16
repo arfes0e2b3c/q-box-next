@@ -45,7 +45,11 @@ export const PostForm = ({ mode, replyFor }: { mode: PostMode; replyFor?: string
             createReply.mutate(
               { reply: input, replyFor },
               {
-                onSuccess: () => alert('情報提供を送信しました！'),
+                onSuccess: () => {
+                  alert('情報提供を送信しました！')
+                  setInput('')
+                  textarefRef.current && (textarefRef.current.value = '')
+                },
                 onError: (error) => alert(error),
               }
             )
