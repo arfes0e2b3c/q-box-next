@@ -11,7 +11,7 @@ export const filterPublicReplies = (post: QA): QA => {
   return post
 }
 
-export const exchangeStateToStyle = (state: string): string => {
+export const exchangeStateToStyle = (state: AnswerState): string => {
   switch (state) {
     case 'answered':
       return answered
