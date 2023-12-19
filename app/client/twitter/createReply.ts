@@ -1,4 +1,4 @@
-import { appBaseUrl, replyBaseText } from '@/consts'
+import { replyBaseText } from '@/consts'
 
 export const createReply = async (replySentence: string, replyTweetId: string) => {
   const res = await fetch(`/api/tweet/reply`, {

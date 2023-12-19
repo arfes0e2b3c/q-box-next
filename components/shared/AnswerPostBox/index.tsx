@@ -99,6 +99,7 @@ export const AnswerPostBox = (props: {
             回答
           </LoadingButton>
         </div>
+        {tweetBaseText}
       </div>
     </CSSTransition>
   )
