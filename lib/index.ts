@@ -76,3 +76,18 @@ export const displayCount = (count: number): number => {
   while (count > twitterMaxLength) count -= twitterMaxLength
   return count / 2
 }
+
+export const calculateFontSize = (text: string): number => {
+  const lines = text.split('\n')
+
+  for (let setting of imgFontSettings) {
+    let lineCount = 0
+    for (const line of lines) {
+      lineCount += Math.ceil(line.length / setting.lineMaxCount)
+    }
+    if (lineCount <= setting.limitCount) {
+      return setting.fontSize
+    }
+  }
+  return imgFontSettings[imgFontSettings.length - 1].fontSize
+}
