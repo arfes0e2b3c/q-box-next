@@ -10,6 +10,7 @@ export const Footer = () => {
   return (
     <footer className={footer}>
       <a className={footerImageSection} href='https://twitter.com/PALDOW2022' target='_blank'>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src='/otecir-logo.jpeg' alt='otetsudai-circle' />
       </a>
       <div className={footerTextSection}>

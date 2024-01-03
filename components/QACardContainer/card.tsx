@@ -11,6 +11,7 @@ export const Card = ({ text, contentId }: { text: string; contentId?: string }) 
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className={qACardImage} src={imgSrc} alt={text} />
     </MotionDiv>
   )
