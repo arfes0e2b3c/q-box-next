@@ -6,6 +6,16 @@ import { fetchPostDetail } from '../../../client/microcms/post/fetchPostDetail'
 import { fetchAllPostIds } from '../../../client/microcms/post/fetchAllPostIds'
 import { BackButton } from '@/components/shared/BackButton'
 import MotionWrapper from '@/components/shared/MotionWrapper'
+import base64url from 'base64url'
+import { calculateFontSize, exchangeStateToUrl } from '@/lib'
+
+const fontSizeByText = calculateFontSize(props.question)
+
+const baseUrl = exchangeStateToUrl(props.state)
+const imageUrl = (question: string): string =>
+  `${baseUrl}?w=1200&h=630&blend-mode=normal&blend-align=middle,center&blend=https%3A%2F%2Fassets.imgix.net%2F%7Etext%3Fw%3D1000%26txt-color%3D333%26txt-align%3Dcenter%26txt-size%3D${fontSizeByText}%26txtfont%3DZenMaruGothic-Regular%26txt64%3D${base64url(
+    question
+  )}`
 
 export async function generateStaticParams() {
   const data = await fetchAllPostIds()
@@ -23,7 +33,7 @@ export const generateMetadata = async ({ params }: { params: { contentId: string
     openGraph: {
       images: [
         {
-          url: [`${process.env.NEXT_PUBLIC_CLOUDFRONT_BASE_URL}/${params.contentId}`],
+          url: [imageUrl(data.question)],
         },
       ],
     },
@@ -33,7 +43,7 @@ export const generateMetadata = async ({ params }: { params: { contentId: string
       description: 'お手伝いサークル公式サイト',
       images: [
         {
-          url: [`${process.env.NEXT_PUBLIC_CLOUDFRONT_BASE_URL}/${params.contentId}`],
+          url: [imageUrl(data.question)],
         },
       ],
     },
