@@ -8,14 +8,17 @@ import { BackButton } from '@/components/shared/BackButton'
 import MotionWrapper from '@/components/shared/MotionWrapper'
 import base64url from 'base64url'
 import { calculateFontSize, exchangeStateToUrl } from '@/lib'
+import { AnswerState } from '@/types'
 
-const fontSizeByText = calculateFontSize(props.question)
+const fontSizeByText = (question: string): number => calculateFontSize(question)
 
-const baseUrl = exchangeStateToUrl(props.state)
-const imageUrl = (question: string): string =>
-  `${baseUrl}?w=1200&h=630&blend-mode=normal&blend-align=middle,center&blend=https%3A%2F%2Fassets.imgix.net%2F%7Etext%3Fw%3D1000%26txt-color%3D333%26txt-align%3Dcenter%26txt-size%3D${fontSizeByText}%26txtfont%3DZenMaruGothic-Regular%26txt64%3D${base64url(
+const baseUrl = (state: AnswerState): string => exchangeStateToUrl(state)
+const generateImageUrl = (question: string, state: AnswerState): string =>
+  `${baseUrl(
+    state
+  )}?w=1200&h=630&blend-mode=normal&blend-align=middle,center&blend=https%3A%2F%2Fassets.imgix.net%2F%7Etext%3Fw%3D1000%26txt-color%3D333%26txt-align%3Dcenter%26txt-size%3D${fontSizeByText(
     question
-  )}`
+  )}%26txtfont%3DZenMaruGothic-Regular%26txt64%3D${base64url(question)}`
 
 export async function generateStaticParams() {
   const data = await fetchAllPostIds()
@@ -33,7 +36,7 @@ export const generateMetadata = async ({ params }: { params: { contentId: string
     openGraph: {
       images: [
         {
-          url: [imageUrl(data.question)],
+          url: [generateImageUrl(data.question, data.state)],
         },
       ],
     },
@@ -43,7 +46,7 @@ export const generateMetadata = async ({ params }: { params: { contentId: string
       description: 'お手伝いサークル公式サイト',
       images: [
         {
-          url: [imageUrl(data.question)],
+          url: [generateImageUrl(data.question, data.state)],
         },
       ],
     },
