@@ -1,7 +1,6 @@
 import { answered, requirement, old, noResult } from '@/components/QACardContainer/index.css'
-import { continueText, twitterMaxLength } from '@/consts'
+import { continueText, imgFontSettings, twitterMaxLength } from '@/consts'
 import { AnswerState, MicroCMSResponse, QA } from '@/types'
-import path from 'path'
 import twitterText from 'twitter-text'
 
 export const filterPublicReplies = (post: QA): QA => {
@@ -40,7 +39,6 @@ export const exchangeStateToUrl = (state: AnswerState): string => {
     default:
       return baseUrl + '/690434409f8a4b2f9e53fe9f8dd23102/answered-right.png'
   }
-  return baseUrl + path
 }
 
 export const filterPostsHasOpenReply = (data: MicroCMSResponse): MicroCMSResponse => {
@@ -75,4 +73,19 @@ export const isDisplayedRed = (count: number): boolean => {
 export const displayCount = (count: number): number => {
   while (count > twitterMaxLength) count -= twitterMaxLength
   return count / 2
+}
+
+export const calculateFontSize = (text: string): number => {
+  const lines = text.split('\n')
+
+  for (let setting of imgFontSettings) {
+    let lineCount = 0
+    for (const line of lines) {
+      lineCount += Math.ceil(line.length / setting.lineMaxCount)
+    }
+    if (lineCount <= setting.limitCount) {
+      return setting.fontSize
+    }
+  }
+  return imgFontSettings[imgFontSettings.length - 1].fontSize
 }

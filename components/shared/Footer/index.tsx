@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import {
   footer,
   footerImageSection,
@@ -11,7 +10,8 @@ export const Footer = () => {
   return (
     <footer className={footer}>
       <a className={footerImageSection} href='https://twitter.com/PALDOW2022' target='_blank'>
-        <Image src='/otecir-logo.jpeg' alt='otetsudai-circle' width={100} height={100} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src='/otecir-logo.jpeg' alt='otetsudai-circle' />
       </a>
       <div className={footerTextSection}>
         <h2 className={footerTitle}>お手伝いサークル</h2>

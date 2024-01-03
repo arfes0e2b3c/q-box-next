@@ -28,3 +28,31 @@ export const replyBaseText = `【提供していただいた情報】\n\n`
 export const continueText = '(続く)'
 
 export const sliceLimitCount = 10
+
+export const imgFontSettings = [
+  {
+    fontSize: 44,
+    limitCount: 7,
+    lineMaxCount: 22,
+  },
+  {
+    fontSize: 40,
+    limitCount: 8,
+    lineMaxCount: 25,
+  },
+  {
+    fontSize: 36,
+    limitCount: 9,
+    lineMaxCount: 27,
+  },
+  {
+    fontSize: 32,
+    limitCount: 10,
+    lineMaxCount: 30,
+  },
+  {
+    fontSize: 28,
+    limitCount: 11,
+    lineMaxCount: 35,
+  },
+]

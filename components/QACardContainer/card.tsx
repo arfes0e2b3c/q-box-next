@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { qACard, qACardImage } from './card.css'
 import { MotionDiv } from '../shared/Motion/motionDiv'
 
@@ -12,14 +11,8 @@ export const Card = ({ text, contentId }: { text: string; contentId?: string }) 
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
     >
-      <Image
-        className={qACardImage}
-        src={imgSrc}
-        width={1200}
-        height={630}
-        alt={text}
-        sizes='(max-width: 768px) 400px, 210'
-      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className={qACardImage} src={imgSrc} alt={text} />
     </MotionDiv>
   )
 }
