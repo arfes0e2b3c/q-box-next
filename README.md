@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 概要
 
-## Getting Started
+横浜国立大学に存在する「お手伝いサークル」の公式サイトです。
+学生生活や大学についての質問を募集・回答することができます。
 
-First, run the development server:
+サービス自体は2023/3〜稼働していましたが、2023/11に既存のNuxt.jsからNext.jsにフルリプレイスを行いました。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# サービスURL
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+https://www.otetsudai-circle.com/
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 記事URL
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+より詳細なものは以下記事に記載しています。
 
-## Learn More
+[【質問箱】お手伝いサークル公式サイトをNext.jsにリプレイスしました](https://www.arfes.jp/article/lb1nprwauz0f)
 
-To learn more about Next.js, take a look at the following resources:
+# 開発の経緯
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+お手伝いサークル(弊学に存在する、X上で学生生活や大学についての質問を回答する活動を行う団体)が既存の質問箱で活動を行なっていたのですが、その際に課題があると感じていたことから開発に着手しました。
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# 画面構成
 
-## Deploy on Vercel
+- ユーザー側
+  - ログイン画面
+  - 一覧画面
+  - 詳細画面
+  - 検索画面
+- アドミン側
+  - 未回答の質問画面
+  - 未回答の返信画面
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# 使用技術
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| 種類           | Before                  | After                   |
+| -------------- | ----------------------- | ----------------------- |
+| ホスティング   | Google App Engine       | Vercel                  |
+| フロントエンド | Nuxt.js v2.15.8         | Next.js v13.5.6         |
+| CSS            | Sass                    | vanilla-extract         |
+| Fetch          | axios                   | react-query             |
+| 状態管理       | -                       | Zustand                 |
+| 認証           | Firebase Authentication | Firebase Authentication |
+| ストレージ     | microCMS                | S3, microCMS            |
+| CDN            | -                       | Cloudfront              |
+| CI             | -                       | GitHubActions           |
+
+# インフラ構成図
+
+![](<https://images.microcms-assets.io/assets/ca0c41f03efd472a910782fea07dff31/e1b9cc29e11544d0bb456e9e8215e4ca/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E6%88%90%E3%81%99%E3%82%99%20(3).jpg>)
