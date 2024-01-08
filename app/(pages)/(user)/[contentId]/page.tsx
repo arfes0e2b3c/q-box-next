@@ -42,6 +42,7 @@ export const generateMetadata = async ({ params }: { params: { contentId: string
     },
     twitter: {
       card: 'summary_large_image',
+      title: ' ',
       description: 'お手伝いサークル公式サイト',
       images: [
         {
