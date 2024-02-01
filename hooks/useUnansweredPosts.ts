@@ -12,7 +12,7 @@ export const useUnansweredPosts = () => {
     hasNextPage,
     refetch,
   } = useInfiniteQuery({
-    queryKey: ['unanswered'],
+    queryKey: ['unansweredPosts'],
     queryFn: ({ pageParam = 0 }) => fetchSliceUnansweredPosts(pageParam),
     refetchOnWindowFocus: false,
     staleTime: Infinity,

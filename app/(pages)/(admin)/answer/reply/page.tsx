@@ -15,14 +15,12 @@ import { useUnansweredReplies } from '@/hooks/useUnasnweredReplies'
 
 export default function Answer() {
   const {
-    posts: { replyData, replyIsLoading, isError, isFetching, fetchNextPage, hasNextPage, refetch },
+    posts: { replyData, replyIsLoading, isError, isFetching, refetch },
     twitterApiLogs: { logData, logIsLoading },
   } = useUnansweredReplies()
 
   const setRefetch = useReplyPageStore((state) => state.setRefetch)
   setRefetch(refetch)
-
-  const pagesData = replyData?.pages ?? []
 
   const isLoading = replyIsLoading || logIsLoading
 
@@ -38,29 +36,20 @@ export default function Answer() {
 
   return (
     <main className={page}>
-      <h2 className={title}>未回答の情報提供：{pagesData[0].totalCount}件</h2>
+      <h2 className={title}>未回答の情報提供：{replyData?.totalCount}件</h2>
       <h3 className={[twitterApiRequestCount, isTwitterApiLimit ? limit : ''].join(' ')}>
         今日のTwitterAPI使用数：{logData?.totalCount}
         {isTwitterApiLimit ? '（上限に達しました）' : ''}
       </h3>
-      <InfiniteScroll
-        loadMore={(page) => {
-          isFetching || fetchNextPage({ pageParam: page * 10 })
-        }}
-        hasMore={hasNextPage}
-      >
-        <ul className={pageInner}>
-          {pagesData && pagesData[0].contents.length ? (
-            pagesData.map((page) =>
-              page.contents.map((post) => <AnswerCardForReply key={post.id} post={post} />)
-            )
-          ) : (
-            <p>質問はありません</p>
-          )}
-        </ul>
-      </InfiniteScroll>
+
+      <ul className={pageInner}>
+        {replyData && replyData.contents.length ? (
+          replyData.contents.map((post) => <AnswerCardForReply key={post.id} post={post} />)
+        ) : (
+          <p>質問はありません</p>
+        )}
+      </ul>
       {isFetching && <LoadingCircle />}
-      {!hasNextPage && <p className={noMoreResult}>最後の質問です</p>}
     </main>
   )
 }
