@@ -13,7 +13,8 @@ export const useUnansweredReplies = () => {
     queryKey: ['unansweredReplies'],
     queryFn: fetchAllUnansweredReplies,
     refetchOnWindowFocus: false,
-    staleTime: Infinity,
+    staleTime: 60000,
+    cacheTime: 60000,
     useErrorBoundary: (error: { response: { status: number } }) => {
       return error.response?.status >= 500
     },
