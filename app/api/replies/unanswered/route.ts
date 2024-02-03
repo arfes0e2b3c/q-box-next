@@ -35,9 +35,7 @@ export async function GET(): Promise<NextResponse<MicroCMSResponse>> {
     },
     {
       headers: {
-        'Cache-Control': 'public, s-maxage=1',
-        'CDN-Cache-Control': 'public, s-maxage=60',
-        'Vercel-CDN-Cache-Control': 'public, s-maxage=3600',
+        'Cache-Control': 'no-store, maxage=0',
       },
     }
   )
