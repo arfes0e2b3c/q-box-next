@@ -10,12 +10,13 @@ import {
   registerButton,
 } from './replyCard.css'
 import { useDeleteReply } from '@/hooks/useDeleteReply'
-import { useReplyPageStore } from '@/store/replyPageStore'
 import { usePostReply } from '@/hooks/usePostReply'
 import { useMoveToAnswer } from '@/hooks/useMoveToAnswer'
 import { LoadingButton } from '../shared/LoadingButton'
+import { useRouter } from 'next/navigation'
 
 export const ReplyCard = (props: { reply: Reply; replyTweetId: string; postId: string }) => {
+  const router = useRouter()
   const reply = props.reply
   const replyTweetId = props.replyTweetId
   const postId = props.postId
@@ -26,7 +27,8 @@ export const ReplyCard = (props: { reply: Reply; replyTweetId: string; postId: s
       deleteReply.mutate(reply.id, {
         onSuccess: () => {
           alert('質問を削除しました')
-          refetch()
+          router.push('/answer/reply')
+          router.refresh()
         },
         onError: (error) => alert(error),
       })
@@ -46,7 +48,8 @@ export const ReplyCard = (props: { reply: Reply; replyTweetId: string; postId: s
         {
           onSuccess: () => {
             alert('情報提供を公開しました')
-            refetch()
+            router.push('/answer/reply')
+            router.refresh()
           },
           onError: (error) => alert(error),
         }
@@ -61,7 +64,8 @@ export const ReplyCard = (props: { reply: Reply; replyTweetId: string; postId: s
         {
           onSuccess: () => {
             alert('移動が完了しました')
-            refetch()
+            router.push('/answer/reply')
+            router.refresh()
           },
           onError: (error) => alert(error),
         }
@@ -69,8 +73,6 @@ export const ReplyCard = (props: { reply: Reply; replyTweetId: string; postId: s
     }
   }
   const isLoading = deleteReply.isLoading || postReply.isLoading || moveToAnswer.isLoading
-
-  const refetch = useReplyPageStore((state) => state.refetch)
 
   return (
     <div className={replyContainer} key={reply.id}>
