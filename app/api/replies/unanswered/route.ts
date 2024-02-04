@@ -3,8 +3,6 @@ import { NextResponse } from 'next/server'
 import { fetchPosts } from '../../../models/microcms'
 import { filterPostsHasOpenReply } from '@/lib'
 
-export const runtime = 'edge'
-
 export async function GET(): Promise<NextResponse<MicroCMSResponse>> {
   const limitCount = 100
   let offset = 0
@@ -26,19 +24,10 @@ export async function GET(): Promise<NextResponse<MicroCMSResponse>> {
     }
   }
 
-  return NextResponse.json(
-    {
-      contents: allPostsHasReplies,
-      totalCount: allPostsHasReplies.length,
-      offset: 0,
-      limit: limitCount,
-    },
-    {
-      headers: {
-        'Cache-Control': 'public, s-maxage=1',
-        'CDN-Cache-Control': 'public, s-maxage=60',
-        'Vercel-CDN-Cache-Control': 'public, s-maxage=3600',
-      },
-    }
-  )
+  return NextResponse.json({
+    contents: allPostsHasReplies,
+    totalCount: allPostsHasReplies.length,
+    offset: 0,
+    limit: limitCount,
+  })
 }
