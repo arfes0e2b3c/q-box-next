@@ -1,9 +1,10 @@
 import { MicroCMSResponse, QA } from '@/types'
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { fetchPosts } from '../../../models/microcms'
 import { filterPostsHasOpenReply } from '@/lib'
 
-export async function GET(): Promise<NextResponse<MicroCMSResponse>> {
+export async function GET(req: NextRequest): Promise<NextResponse<MicroCMSResponse>> {
+  const _ = req.url
   const limitCount = 100
   let offset = 0
   const allPostsHasReplies: QA[] = []
