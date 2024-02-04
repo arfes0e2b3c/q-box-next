@@ -1,11 +1,3 @@
 {
-  "regions": ["hnd1"],
-  "routes": [
-    {
-      "src": "/api/replies/unanswered",
-      "headers": {
-        "Cache-Control": "no-cache, no-store, must-revalidate"
-      }
-    }
-  ]
+  "regions": ["hnd1"]
 }
