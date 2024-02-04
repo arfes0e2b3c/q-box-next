@@ -35,7 +35,9 @@ export async function GET(): Promise<NextResponse<MicroCMSResponse>> {
     },
     {
       headers: {
-        'Cache-Control': 'no-store, maxage=0',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+        Pragma: 'no-cache',
+        Expires: 'Thu, 01 Jan 1970 00:00:00 GMT',
       },
     }
   )

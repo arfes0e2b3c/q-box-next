@@ -1,38 +1,29 @@
-'use client'
 import { limit, noMoreResult, page, pageInner, title, twitterApiRequestCount } from './page.css'
 // import { Metadata } from 'next'
 import { AnswerCardForReply } from '@/components/AnswerCardForReply'
-import { LoadingCircle } from '@/components/shared/LoadingCircle'
-import InfiniteScroll from 'react-infinite-scroller'
-
-import { useReplyPageStore } from '@/store/replyPageStore'
-import { useUnansweredReplies } from '@/hooks/useUnasnweredReplies'
+import { MicroCMSResponse } from '@/types'
 
 // export const metadata: Metadata = {
 //   title: '管理者ページ',
 //   description: 'お手伝いサークルの管理者用ページです。',
 // }
 
-export default function Answer() {
-  const {
-    posts: { replyData, replyIsLoading, isError, isFetching, refetch },
-    twitterApiLogs: { logData, logIsLoading },
-  } = useUnansweredReplies()
+export default async function Answer() {
+  const replyRes = await fetch(`http://localhost:3000/api/replies/unanswered`, {
+    cache: 'no-store',
+  })
+  const replyData: MicroCMSResponse = await replyRes.json()
 
-  const setRefetch = useReplyPageStore((state) => state.setRefetch)
-  setRefetch(refetch)
+  const logRes = await fetch(`http://localhost:3000/api/twitter_api_logs`)
+  const logData: MicroCMSResponse = await logRes.json()
 
-  const isLoading = replyIsLoading || logIsLoading
+  const isTwitterApiLimit = logData?.totalCount && logData?.totalCount >= 50
+
+  const isLoading = !replyData || !logData
 
   if (isLoading) {
     return <div>ローディング中</div>
   }
-
-  if (isError) {
-    return <div>エラーが発生しました</div>
-  }
-
-  const isTwitterApiLimit = logData?.totalCount && logData?.totalCount >= 50
 
   return (
     <main className={page}>
@@ -49,7 +40,6 @@ export default function Answer() {
           <p>質問はありません</p>
         )}
       </ul>
-      {isFetching && <LoadingCircle />}
     </main>
   )
 }
