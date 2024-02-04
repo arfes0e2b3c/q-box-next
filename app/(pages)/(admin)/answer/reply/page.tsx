@@ -9,12 +9,12 @@ import { MicroCMSResponse } from '@/types'
 // }
 
 export default async function Answer() {
-  const replyRes = await fetch(`http://localhost:3000/api/replies/unanswered`, {
+  const replyRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/replies/unanswered`, {
     cache: 'no-store',
   })
   const replyData: MicroCMSResponse = await replyRes.json()
 
-  const logRes = await fetch(`http://localhost:3000/api/twitter_api_logs`)
+  const logRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/twitter_api_logs`)
   const logData: MicroCMSResponse = await logRes.json()
 
   const isTwitterApiLimit = logData?.totalCount && logData?.totalCount >= 50
