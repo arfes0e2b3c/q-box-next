@@ -18,4 +18,5 @@ export const loginFirebase = async (email: string, password: string) =>
   signInWithEmailAndPassword(auth, email, password)
 
 export const isRightAccessUser = (email: string, uid: string): boolean =>
-  email === process.env.OTECIR_EMAIL && uid === process.env.OTECIR_USER_ID
+  (email === process.env.CURRENT_OTECIR_EMAIL && uid === process.env.CURRENT_OTECIR_USER_ID) ||
+  (email === process.env.NEW_OTECIR_EMAIL && uid === process.env.NEW_OTECIR_USER_ID)
