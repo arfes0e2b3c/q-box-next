@@ -21,6 +21,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const isRightAccessUser = async (email: string, user_id: string) =>
     fetchIsLoggedIn(email, user_id)
 
+  const isExipred = (auth_time: string): boolean => {
+    const weekOfDaySeconds = 604800
+    return Number(auth_time) - new Date().getTime() / 1000 > weekOfDaySeconds
+  }
+
   useEffect(() => {
     ;(async function () {
       try {
@@ -28,13 +33,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           throw new Error('不正なアクセスです')
         }
 
-        const { email, user_id }: { email: string; user_id: string } = jwtDecode(
-          cookies.access_token
-        )
-        if (await isRightAccessUser(email, user_id)) {
-          setIsLogin(true)
-        } else {
+        const { email, user_id, auth_time }: { email: string; user_id: string; auth_time: string } =
+          jwtDecode(cookies.access_token)
+        if (await !isRightAccessUser(email, user_id)) {
           throw new Error('不正なアクセスです')
+        } else if (isExipred(auth_time)) {
+          throw new Error('ログイン期限が切れています')
+        } else {
+          setIsLogin(true)
         }
       } catch (e) {
         router.push('/login')
