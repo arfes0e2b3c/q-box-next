@@ -23,9 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   const isExipred = (auth_time: string): boolean => {
     const weekOfDaySeconds = 604800
-    return = new Date().getTime() / 1000 - Number(auth_time) > weekOfDaySeconds
-    
-     
+    return new Date().getTime() / 1000 - Number(auth_time) > weekOfDaySeconds
   }
 
   useEffect(() => {
