@@ -24,7 +24,7 @@ export const notFoundQAData: QA = {
 
 export const twitterMaxLength = 280
 export const tweetBaseText = `\n#お手伝いサークル ${appBaseUrl}`
-export const replyBaseText = `【提供していただいた情報】\n\n`
+export const replyBaseText = `【お寄せいただいた情報】\n`
 export const continueText = '(続く)'
 
 export const sliceLimitCount = 10
