@@ -46,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         router.push('/login')
       }
     })()
-  }, [cookies])
+  }, [cookies, router])
 
   return isLogin ? (
     <html lang='ja'>
