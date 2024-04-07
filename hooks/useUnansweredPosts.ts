@@ -1,6 +1,7 @@
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { fetchSliceUnansweredPosts } from '../app/client/microcms/post/fetchSliceUnansweredPosts'
 import { fetchTwitterApiLogs } from '@/app/client/microcms/twitterApiRequest/fetchTwitterApiLog'
+import { sliceLimitCount } from '@/consts'
 
 export const useUnansweredPosts = () => {
   const {
@@ -17,7 +18,7 @@ export const useUnansweredPosts = () => {
     refetchOnWindowFocus: false,
     staleTime: Infinity,
     getNextPageParam: (lastPage) =>
-      lastPage?.offset < lastPage?.totalCount ? lastPage?.offset + 20 : false,
+      lastPage?.offset < lastPage?.totalCount ? lastPage?.offset + sliceLimitCount : false,
     useErrorBoundary: (error: { response: { status: number } }) => {
       return error.response?.status >= 500
     },

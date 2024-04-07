@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   const isExipred = (auth_time: string): boolean => {
     const weekOfDaySeconds = 604800
-    return Number(auth_time) - new Date().getTime() / 1000 > weekOfDaySeconds
+    return new Date().getTime() / 1000 - Number(auth_time) > weekOfDaySeconds
   }
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         router.push('/login')
       }
     })()
-  }, [cookies])
+  }, [cookies, router])
 
   return isLogin ? (
     <html lang='ja'>
