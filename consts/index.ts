@@ -27,7 +27,7 @@ export const tweetBaseText = `\n#お手伝いサークル ${appBaseUrl}`
 export const replyBaseText = `【お寄せいただいた情報】\n`
 export const continueText = '(続く)'
 
-export const sliceLimitCount = 10
+export const sliceLimitCount = 20
 
 export const imgFontSettings = [
   {
