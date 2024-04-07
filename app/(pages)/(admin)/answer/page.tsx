@@ -38,7 +38,7 @@ export default function Answer() {
       </h3>
       <InfiniteScroll
         loadMore={(page) => {
-          isFetching || fetchNextPage({ pageParam: page * 10 })
+          isFetching || fetchNextPage()
         }}
         hasMore={hasNextPage}
       >
