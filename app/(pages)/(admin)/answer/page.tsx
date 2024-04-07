@@ -37,7 +37,7 @@ export default function Answer() {
         {isTwitterApiLimit ? '（上限に達しました）' : ''}
       </h3>
       <InfiniteScroll
-        loadMore={(page) => {
+        loadMore={() => {
           isFetching || fetchNextPage()
         }}
         hasMore={hasNextPage}
