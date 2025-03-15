@@ -47,3 +47,9 @@ https://www.otetsudai-circle.com/
 # インフラ構成図
 
 ![](<https://images.microcms-assets.io/assets/ca0c41f03efd472a910782fea07dff31/e1b9cc29e11544d0bb456e9e8215e4ca/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E6%A7%8B%E6%88%90%E3%81%99%E3%82%99%20(3).jpg>)
+
+# テスト環境
+## URL
+https://staging-q-box-next.vercel.app
+## twitter
+https://x.com/jinji_kawaii
