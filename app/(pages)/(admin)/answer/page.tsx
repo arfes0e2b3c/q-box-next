@@ -27,7 +27,8 @@ export default function Answer() {
     return <div>エラーが発生しました</div>
   }
 
-  const isTwitterApiLimit = logData?.totalCount && logData?.totalCount >= 50
+  const apiLimit = 17
+  const isTwitterApiLimit = (logData?.totalCount && logData?.totalCount >= apiLimit) || false
 
   return (
     <main className={page}>
@@ -46,7 +47,12 @@ export default function Answer() {
           {pagesData && pagesData[0].contents.length ? (
             pagesData.map((page) =>
               page.contents.map((post) => (
-                <AnswerCardForAnswer key={post.id} post={post} refetch={refetch} />
+                <AnswerCardForAnswer
+                  key={post.id}
+                  post={post}
+                  refetch={refetch}
+                  isTwitterApiLimit={isTwitterApiLimit ?? false}
+                />
               ))
             )
           ) : (
