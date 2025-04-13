@@ -27,7 +27,7 @@ export default function Answer() {
     return <div>エラーが発生しました</div>
   }
 
-  const apiLimit = 17
+  const apiLimit = 16
   const isTwitterApiLimit = (logData?.totalCount && logData?.totalCount >= apiLimit) || false
 
   return (
