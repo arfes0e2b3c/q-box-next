@@ -61,6 +61,20 @@ const findLinks = (text: string): LinkInfoList => {
   return links
 }
 
+export const makeTweetText = (answer: string, contentId: string): string[] => {
+  let tweets = splitTweet(answer)
+  tweets = addContinueText(tweets)
+  tweets = addBaseText(tweets, contentId)
+  return tweets
+}
+
+export const makeReplyText = (replySentence: string): string[] => {
+  let replies = splitReply(replySentence)
+  replies = addContinueText(replies)
+  replies = addBaseTextToReply(replies)
+  return replies
+}
+
 export const splitReply = (replySentence: string): string[] => {
   let currentReply = ''
   let replies = []
@@ -112,6 +126,13 @@ export const addContinueText = (tweets: string[]): string[] => {
   return tweets.map((tweet, index) => {
     if (!isLastTweet(index, tweets.length)) return tweet + continueText
     else return tweet
+  })
+}
+
+export const addBaseTextToReply = (replies: string[]): string[] => {
+  return replies.map((reply, index) => {
+    if (index === 0) return replyBaseText + reply
+    return reply
   })
 }
 

@@ -8,7 +8,11 @@ import { answerCard, createdAt, box, question, toggleButton, button } from './in
 import { useDeletePost } from '@/hooks/useDeletePost'
 import { LoadingButton } from '../shared/LoadingButton'
 
-export const AnswerCardForAnswer = (props: { post: QA; refetch: () => void }) => {
+export const AnswerCardForAnswer = (props: {
+  post: QA
+  refetch: () => void
+  isTwitterApiLimit: boolean
+}) => {
   const post = props.post
 
   const [isOpened, setIsOpened] = useState(false)
@@ -44,7 +48,12 @@ export const AnswerCardForAnswer = (props: { post: QA; refetch: () => void }) =>
           開閉
         </button>
       </div>
-      <AnswerPostBox isOpened={isOpened} contentId={post.id} question={post.question} />
+      <AnswerPostBox
+        isOpened={isOpened}
+        contentId={post.id}
+        question={post.question}
+        isTwitterApiLimit={props.isTwitterApiLimit}
+      />
     </li>
   )
 }

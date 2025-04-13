@@ -14,14 +14,17 @@ export const usePostReply = () =>
       contentId,
       replySentence,
       replyTweetId,
+      withoutTweet,
     }: {
       postId: string
       contentId: string
       replySentence: string
       replyTweetId: string
+      withoutTweet: boolean
     }) => {
       await patchReplyAnswer(contentId)
       await createS3Image(contentId, replySentence, 'answered')
+      if (withoutTweet) return true
       const tweetId = await postReplyThread(replyTweetId, replySentence)
       await patchTweetId(postId, tweetId)
     }
@@ -31,8 +34,7 @@ export const postReplyThread = async (
   replyTweetId: string,
   replySentence: string
 ): Promise<string> => {
-  let replies = splitReply(replySentence)
-  replies = addContinueText(replies)
+  const replies = splitReply(replySentence)
   try {
     let replyId: string = await createReply(replies[0], replyTweetId)
     await createTwitterApiLog('reply', replyId)

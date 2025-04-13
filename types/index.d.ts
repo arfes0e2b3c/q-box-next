@@ -19,7 +19,7 @@ export interface QA extends MicroCMSTimes {
   id: string
   question: string
   answer: string
-  replyTweetId: string
+  replyTweetId: string | undefined
   state: AnswerState
   replies: Reply[]
 }

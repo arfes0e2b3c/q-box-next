@@ -75,6 +75,14 @@ export const replySentence = style({
   textAlign: 'center',
 })
 
+export const manualPostText = style({
+  margin: '0',
+  marginTop: '10px',
+  padding: '0',
+  fontSize: fontXs,
+  color: 'rgba(0, 0, 0, 0.5)',
+})
+
 export const toggleButton = style({
   ':hover': {
     backgroundColor: 'rgb(48,48,48)',
