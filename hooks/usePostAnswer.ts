@@ -1,4 +1,4 @@
-import { splitTweet, addContinueText, addBaseText } from '@/lib/twitter'
+import { splitTweet, addContinueText, addBaseText, makeTweetText } from '@/lib/twitter'
 import { useMutation } from '@tanstack/react-query'
 import { patchTweetId } from '../app/client/microcms/post/patchTweetId'
 import { createTweetReplies } from '../app/client/twitter/createTweetReplies'
@@ -15,25 +15,25 @@ export const usePostAnswer = () =>
       contentId,
       state,
       question,
+      isTwitterApiLimit,
     }: {
       answer: string
       contentId: string
       state: AnswerState
       question: string
+      isTwitterApiLimit: boolean
     }) => {
       const patchAnswerRes = await patchAnswer(answer, contentId, state)
       if (patchAnswerRes.error) throw new Error(patchAnswerRes.error)
       await createS3Image(contentId, question, state)
+      if (isTwitterApiLimit) return
       const tweetId = await postTweetThread(answer, contentId)
       await patchTweetId(contentId, tweetId)
     }
   )
 
 const postTweetThread = async (answer: string, contentId: string) => {
-  let tweets = splitTweet(answer)
-  tweets = addContinueText(tweets)
-  tweets = addBaseText(tweets, contentId)
-
+  const tweets = makeTweetText(answer, contentId)
   try {
     const tweetReplyId: string = await createTweet(tweets[0])
     await createTwitterApiLog('tweet', tweetReplyId)
