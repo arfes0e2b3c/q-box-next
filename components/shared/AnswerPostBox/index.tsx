@@ -29,12 +29,35 @@ export const AnswerPostBox = (props: {
   const [count, setCount] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [tweetTexts, setTweetTexts] = useState<string[]>([])
+  const [shouldRefetchAfterModalClose, setShouldRefetchAfterModalClose] = useState(false)
 
   useEffect(() => {
     setCount(countTweetLength(input + tweetBaseText))
   }, [input])
 
   const postAnswer = usePostAnswer()
+  const copyTweetsToClipboard = (tweets: string[]) => {
+    navigator.clipboard.writeText(tweets.join('\n\n')).catch((error) => {
+      console.error('クリップボードへのコピーに失敗しました:', error)
+      alert('コピーに失敗しました')
+    })
+  }
+
+  const openTweetModal = (tweets: string[], refetchAfterClose = false) => {
+    setTweetTexts(tweets)
+    setShouldRefetchAfterModalClose(refetchAfterClose)
+    setIsModalOpen(true)
+    copyTweetsToClipboard(tweets)
+  }
+
+  const closeTweetModal = () => {
+    setIsModalOpen(false)
+    if (shouldRefetchAfterModalClose) {
+      setShouldRefetchAfterModalClose(false)
+      refetch()
+    }
+  }
+
   const postAsRequirementButtonClickHandler = () => {
     if (confirm('情報募集中として回答を投稿しますか？')) {
       postAnswer.mutate(
@@ -88,19 +111,18 @@ export const AnswerPostBox = (props: {
           contentId: props.contentId,
           state: 'requirement',
           question: props.question,
-          isTwitterApiLimit: props.isTwitterApiLimit,
+          isTwitterApiLimit: true,
         },
         {
           onSuccess: () => {
             alert('回答を投稿しました')
+            const tweets = makeTweetText(input, props.contentId)
+            openTweetModal(tweets)
             refetch()
           },
           onError: (error) => alert(error),
         }
       )
-      const tweets = makeTweetText(input, props.contentId)
-      setTweetTexts(tweets)
-      setIsModalOpen(true)
     }
   }
   const manualPostAsAnswerButtonClickHandler = () => {
@@ -113,15 +135,13 @@ export const AnswerPostBox = (props: {
           contentId: props.contentId,
           state: 'answered',
           question: props.question,
-          isTwitterApiLimit: props.isTwitterApiLimit,
+          isTwitterApiLimit: true,
         },
         {
           onSuccess: () => {
             alert('回答を投稿しました')
             const tweets = makeTweetText(input, props.contentId)
-            setTweetTexts(tweets)
-            setIsModalOpen(true)
-            refetch()
+            openTweetModal(tweets, true)
           },
           onError: (error) => alert(error),
         }
@@ -146,7 +166,7 @@ export const AnswerPostBox = (props: {
           </p>
           <div className={buttonContainer}>
             <TweetLengthGauge count={count} />
-            {props.isTwitterApiLimit ? (
+            {/* {props.isTwitterApiLimit ? ( */}
               <>
                 <LoadingButton
                   isLoading={isLoading}
@@ -163,7 +183,7 @@ export const AnswerPostBox = (props: {
                   回答(手動)
                 </LoadingButton>
               </>
-            ) : (
+            {/* ) : (
               <>
                 <LoadingButton
                   isLoading={false}
@@ -180,12 +200,12 @@ export const AnswerPostBox = (props: {
                   回答
                 </LoadingButton>
               </>
-            )}
+            )} */}
           </div>
         </div>
       </CSSTransition>
 
-      <TweetModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} tweets={tweetTexts} />
+      <TweetModal isOpen={isModalOpen} onClose={closeTweetModal} tweets={tweetTexts} />
     </>
   )
 }
